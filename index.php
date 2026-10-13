@@ -1,7 +1,4 @@
-<?
+<?php
+require_once 'Router.php';
 
-
-
-
-require("views/index.view.php");
-?>
+Router::dispatch();
