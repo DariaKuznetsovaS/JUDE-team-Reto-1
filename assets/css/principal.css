@@ -3,3 +3,21 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+body{
+     background-color: #F3F6F9;
+     font-family: 'Roboto';
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .botonesSesion{
+    background-color: #247BA0;
+}
+header .botonesSesion:nth-child(2){
+    background-color: #163A5F;
+}
