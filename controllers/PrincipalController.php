@@ -1,13 +1,16 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../models/XxxxxModel.php';
+require_once __DIR__ . '/../models/PreguntaModel.php';
 
-class EmpleadoController extends BaseController {
+class PrincipalController extends BaseController {
     
     public function index() {
-        
+        $preguntas=PreguntaModel::getAll();
+        require "views/index.view.php";
+         
+
     }
-    
+   
     public function show() {
         
     }
