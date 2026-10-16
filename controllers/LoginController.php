@@ -1,11 +1,11 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../models/XxxxxModel.php';
+require_once __DIR__ . '/../models/LoginModel.php';
 
-class EmpleadoController extends BaseController {
+class LoginController extends BaseController {
     
     public function index() {
-        
+        require "views/login.php";
     }
     
     public function show() {

@@ -60,9 +60,8 @@ CREATE TABLE respuestas (
         ON DELETE CASCADE
 );
 
--- NOTA: se elimina el CHECK chk_adjuntos_destino porque MySQL 8 no permite
--- CHECK sobre columnas que tienen FK con ON DELETE CASCADE (error 3823).
--- La misma regla se valida ahora en los triggers de adjuntos.
+
+
 CREATE TABLE adjuntos (
     id_adjunto INT AUTO_INCREMENT PRIMARY KEY,
     id_pregunta INT NULL,

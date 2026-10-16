@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Fondo azul aeronáutico */
+body {
+    background-color: #163A5F;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Bloque id="1" */
+#d1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+#d1 img {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 12px;
+}
+
+/* Título en azul tecnológico */
+#d1 h2 {
+    color: #247BA0;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+/* Formulario e Inputs */
+form {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Fondo gris azulado y texto gris oscuro */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: none;
+    background-color: #F3F6F9;
+    color: #263746;
+    font-size: 1.05rem;
+    font-weight: 600;
+    outline: none;
+}
+
+/* Texto del placeholder en gris claro */
+form input[type="text"]::placeholder,
+form input[type="password"]::placeholder {
+    color: #6B767B;
+    font-weight: 500;
+}
+
+/* Botón Iniciar Sesión (Azul tecnológico y texto blanco) */
+form input[type="button"],
+form input[type="submit"] {
+    background-color: #247BA0;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 32px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover del botón en turquesa */
+form input[type="button"]:hover,
+form input[type="submit"]:hover {
+    background-color: #20B8A6;
+}
