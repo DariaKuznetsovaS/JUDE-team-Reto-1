@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -9,11 +10,34 @@
 </head>
 <body>
     <header>
-    <img src="../assets/images/logoAergibide.png" alt="logoAergibide" class="logo">
-    <input type="search" placeholder="Buscar por título, tema...">
-    <div class="botonesSesion">
-        <a href="" class="bIniciarSesion">Iniciar sesión</a>
-        <a href="" class="bRegistrarse">Registrarse</a>
-    </div>
-    </header>
+        <img src="../assets/images/logoAergibide.png"
+             alt="Logo de Aergibide"
+             class="logo">
 
+        <input type="search" placeholder="Buscar por título, tema...">
+
+        <div class="botonesSesion">
+
+            <?php if (isset($_SESSION["id_usuario"])): ?>
+
+                <a href="index.php?controller=usuario&accion=perfil"
+                   class="bPerfil">
+                    Mi perfil
+                </a>
+
+            <?php else: ?>
+
+                <a href="index.php?controller=usuario&accion=login"
+                   class="bIniciarSesion">
+                    Iniciar sesión
+                </a>
+
+                <a href="index.php?controller=usuario&accion=registro"
+                   class="bRegistrarse">
+                    Registrarse
+                </a>
+
+            <?php endif; ?>
+
+        </div>
+    </header>
