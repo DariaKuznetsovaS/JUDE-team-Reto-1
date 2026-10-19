@@ -1,42 +1,56 @@
-<?php
 
-require "layout/header.php";
+<?php include __DIR__ . '/layout/header.php'; ?>
 
-require_once "models/PreguntaModel.php";
+<main class="listaPreguntas">
 
-?>
-
-<main>
     <?php if (!empty($preguntas)): ?>
-        <?php foreach($preguntas as $pregunta): ?>
-            <div>//quitar el estio del div
-                <div style = "display:flex; justify-content: space-between">
-                <h2> <?= $pregunta['titulo']; ?> </h2>
+
+        <?php foreach ($preguntas as $pregunta): ?>
+
+            <a href="index.php?controller=PreguntaController&accion=index&id=<?=$pregunta["id_pregunta"]?>" class="enlacePregunta">
+            <div class="preguntaCard">
+
+                <div class="cabeceraCard">
+                    <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
+
+                    <p class="cardFecha">
+                        <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
+                    </p>
                 </div>
 
-                <div>
-                    <?php if(!empty($pregunta['imagen_ruta'])) : ?>
-                        <img src="<?= $pregunta['imagen_ruta'] ?>" >
-                    <?php else: ?>
-                        <img src="../assets/images/SinImagen.png" alt="Imagen de la pregunta">
-                    <?php endif; ?>
-                    
-                    <p> <?= $pregunta['descripcion'] ?> </p>
+                <div class="contenidoCard">
+
+                    <div class="imagenCard">
+                        <?php if (!empty($pregunta['imagen_ruta'])): ?>
+
+                            <img
+                                src="<?= htmlspecialchars($pregunta['imagen_ruta']) ?>"
+                                alt="Imagen de la pregunta">
+
+                        <?php else: ?>
+
+                            <img src="../assets/images/SinImagen.png" alt="Imagen de la pregunta">
+
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="descCard">
+                        <p><?= htmlspecialchars($pregunta['descripcion']) ?></p>
+                    </div>
+
                 </div>
 
             </div>
-        <?php endforeach;?>
+            </a>
+
+        <?php endforeach; ?>
 
     <?php else: ?>
 
-    <p>No hay preguntas disponibles.</p>
+        <p>No hay preguntas disponibles.</p>
 
     <?php endif; ?>
 
 </main>
 
-
-
-<?php
-require "layout/footer.php";
-?>
+<?php include __DIR__ . '/layout/footer.php'; ?>

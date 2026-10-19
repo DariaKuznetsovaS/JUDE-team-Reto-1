@@ -9,15 +9,137 @@ body{
      font-family: 'Roboto';
 }
 
-header{
+/*El header*/
+
+
+/* El header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10rem;
+}
+
+header .logo {
+    width: 100px;
+    height: auto;
+}
+
+header input[type="search"] {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: inset 0 2px 3px #6B767B;
+    outline: none;
+}
+
+header input[type="search"]:focus {
+    border-color: #247BA0;
+    box-shadow: 0 0 0 3px #247BA025;
+    outline: none;
+}
+/* Contenedor de los botones */
+
+header .botonesSesion {
+    display: flex;
+    gap: 5px;
+}
+
+
+header .bIniciarSesion {
+    background-color: #247BA0;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 7px;
+}
+
+header .bIniciarSesion:hover, header .bRegistrarse:hover{
+    background-color: #20B8A6;
+    color: #163A5F;
+    font-weight: bold;
+}
+
+
+header .bRegistrarse {
+    background-color: #163A5F;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 7px;
+}
+
+/*Vista Principal:*/
+
+.listaPreguntas {
+    padding: 10px 0;
+}
+
+.preguntaCard {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-bottom: 12px;
+    padding: 6px;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px #999;
+}
+
+.cabeceraCard {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header .botonesSesion{
-    background-color: #247BA0;
+.cabeceraCard h2 {
+    font-size: 14px;
+    margin: 0;
+    color: #163A5F;
 }
-header .botonesSesion:nth-child(2){
-    background-color: #163A5F;
+
+.cardFecha {
+    font-size: 11px;
+    color: #6B767B;
+    margin: 0;
+}
+
+.contenidoCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    margin-top: 4px;
+}
+
+.imagenCard img {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.descCard {
+    flex: 1;
+}
+
+.descCard p {
+    margin: 0;
+    font-size: 11px;
+    color: #247BA0;
+}
+
+.enlacePregunta {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.preguntaCard {
+    cursor: pointer;
+}
+
+.preguntaCard:hover {
+    box-shadow: 0 4px 12px #00000020;
 }

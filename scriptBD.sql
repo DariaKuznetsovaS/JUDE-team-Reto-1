@@ -206,3 +206,93 @@ BEGIN
     END IF;
 END//
 DELIMITER ;
+
+
+-- 6. Insertar preguntas de ejemplo(no se necesitan delimeter porque no son triggers)
+INSERT INTO preguntas (id_usuario, titulo, descripcion, tipo, estado)
+VALUES
+(
+    2,
+    '¿Cómo afecta la humedad a los materiales compuestos?',
+    'Estamos estudiando el uso de materiales compuestos en componentes aeronáuticos. ¿Qué efectos puede tener la exposición prolongada a la humedad sobre sus propiedades mecánicas y cómo se puede prevenir su deterioro?',
+    'materiales',
+    'abierto'
+),
+(
+    3,
+    'Problemas de estabilidad durante el vuelo',
+    'En una simulación aerodinámica hemos detectado oscilaciones inesperadas durante determinadas maniobras. ¿Qué parámetros deberíamos revisar para identificar la causa del problema?',
+    'aerodinamica',
+    'abierto'
+),
+(
+    2,
+    '¿Qué mantenimiento preventivo necesitan las turbinas?',
+    '¿Cuáles son las inspecciones preventivas más importantes para detectar desgaste en los componentes de una turbina aeronáutica antes de que provoquen una avería?',
+    'motores',
+    'abierto'
+),
+(
+    3,
+    'Error al procesar archivos de simulación',
+    'Nuestra herramienta de simulación deja de procesar archivos de gran tamaño y muestra errores de memoria. ¿Qué estrategias podemos aplicar para optimizar el procesamiento sin perder precisión en los resultados?',
+    'software',
+    'abierto'
+),
+(
+    2,
+    'Cómo mejorar la trazabilidad de las piezas',
+    'Necesitamos mejorar el seguimiento de las piezas durante las distintas fases de fabricación y montaje. ¿Qué métodos o sistemas recomendáis para mantener una trazabilidad completa?',
+    'procesos',
+    'abierto'
+),
+(
+    3,
+    'Criterios para reducir el peso de una estructura',
+    'Estamos revisando el diseño de un soporte estructural para reducir su peso sin comprometer su resistencia. ¿Qué criterios deberíamos considerar durante la fase de diseño?',
+    'diseño',
+    'abierto'
+),
+(
+    1,
+    'Buenas prácticas para documentar conocimiento técnico',
+    '¿Qué información debería incluir un informe técnico para que otros ingenieros puedan comprender el problema, reproducir las pruebas realizadas y reutilizar la solución en futuros proyectos?',
+    'otros',
+    'abierto'
+),
+(
+    2,
+    'Corrosión en componentes aeronáuticos',
+    'Hemos detectado signos de corrosión superficial en un componente metálico. ¿Qué factores ambientales pueden acelerar este proceso y qué medidas preventivas se pueden aplicar?',
+    'materiales',
+    'abierto'
+),
+(
+    3,
+    'Comparación de resultados entre simulación y pruebas reales',
+    'Los resultados de una simulación no coinciden completamente con los obtenidos durante las pruebas experimentales. ¿Qué posibles causas deberíamos investigar para explicar las diferencias?',
+    'aerodinamica',
+    'abierto'
+),
+(
+    2,
+    'Automatización de informes de ensayos',
+    'Actualmente elaboramos los informes de ensayo manualmente. ¿Qué partes del proceso podrían automatizarse para reducir errores y ahorrar tiempo sin perder trazabilidad?',
+    'software',
+    'abierto'
+),
+(
+    3,
+    'Gestión de incidencias durante el montaje',
+    '¿Cómo podemos registrar y clasificar las incidencias que aparecen durante el montaje para detectar problemas recurrentes y compartir las soluciones entre equipos?',
+    'procesos',
+    'abierto'
+),
+(
+    1,
+    'Revisión de un diseño antes de fabricar un prototipo',
+    '¿Qué comprobaciones técnicas conviene realizar antes de fabricar un prototipo para detectar posibles errores de diseño y reducir el número de iteraciones?',
+    'diseño',
+    'cerrado'
+);
+

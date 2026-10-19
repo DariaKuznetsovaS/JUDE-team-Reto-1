@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="JUDE team">
     <title>AERGIBIDE, S.L.</title>
-    <link rel="stylesheet" href="../assets/css/principal.css">
+    <link rel="stylesheet" href="assets/css/principal.css">
 </head>
 <body>
     <header>
-        <img src="../assets/images/logoAergibide.png"
-             alt="Logo de Aergibide"
-             class="logo">
+        <a href="index.php">
+    <img src="assets/images/logoAergibide.png" alt="Logo de Aergibide" class="logo">
+        </a>
 
         <input type="search" placeholder="Buscar por título, tema...">
 
