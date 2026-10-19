@@ -9,7 +9,7 @@ require_once "models/PreguntaModel.php";
 <main>
     <?php if (!empty($preguntas)): ?>
         <?php foreach($preguntas as $pregunta): ?>
-            <div>
+            <div>//quitar el estio del div
                 <div style = "display:flex; justify-content: space-between">
                 <h2> <?= $pregunta['titulo']; ?> </h2>
                 </div>
