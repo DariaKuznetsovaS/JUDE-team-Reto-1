@@ -17,6 +17,10 @@ class RespuestaController extends BaseController {
     }
     
     public function store() {
+        if(!isset($_SESSION["usuario"])){
+            header("Location: index.php?controller=LoginController$accion=index");
+            exit;
+        }
         
     }
     
