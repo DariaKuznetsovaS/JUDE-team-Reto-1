@@ -32,5 +32,22 @@ class PreguntaModel {
         
     }
 
+    public static function create($idUsuario, $titulo, $descripcion, $tipo){
+        $db=Database::getConnection();
+
+        $stmt=$db->prepare(
+            "INSET INTO preguntas(id_usuario, titulo, descripcion, tipo)
+            VALUES(:id_usuario, :titulo, :descripcion, :tipo)"
+        );
+
+        $stmt->execute([
+            "id_usuario"=>$idUsuario,
+            "titulo"=>$titulo,
+            "descripcion"=>$descripcion,
+            "tipo"=>$tipo
+        ]);
+
+    }
+
 
 }

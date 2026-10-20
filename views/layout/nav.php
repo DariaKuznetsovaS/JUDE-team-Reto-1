@@ -3,14 +3,14 @@
     <nav class="menuLateral">
 
     <div class="navInicio">
-        <img href="../assets/images/Iconos/Home.png">
+        <img src="../assets/images/Iconos/Home.png">
         <a href="index.php" class="opcionNav">
             Inicio
         </a>
     </div>
 
     <div class="navMisPreguntas">
-        <img href="../assets/images/Iconos/Pregunta.png">
+        <img src="../assets/images/Iconos/Pregunta.png">
         <a href="index.php?controller=usuario&accion=misPreguntas"
            class="opcionNav">
             Mis Preguntas/Respuestas
@@ -18,7 +18,7 @@
     </div>
 
     <div class="navMisFavoritos">
-        <img href="../assets/images/Iconos/Favorito.png">
+        <img src="../assets/images/Iconos/Favorito.png">
         <a href="index.php?controller=usuario&accion=favoritos"
            class="opcionNav">
             Mis Favoritos
@@ -26,7 +26,7 @@
     </div>
     
     <div class="navAjustes">
-        <img href="../assets/images/Iconos/Ajustes.png">
+        <img src="../assets/images/Iconos/Ajustes.png">
         <a href="index.php?controller=usuario&accion=ajustes"
            class="opcionNav">
             Ajustes
@@ -47,7 +47,7 @@
         <?php endif; ?>
 
     <div class="navSalir">
-        <img href="../assets/images/Iconos/Salir.png">
+        <img src="../assets/images/Iconos/Salir.png">
         <a href="index.php?controller=usuario&accion=logout"
            class="opcionNav">
             Salir
