@@ -1,13 +1,17 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../models/XxxxxModel.php';
 
-class EmpleadoController extends BaseController {
-    
+class UsuarioController extends BaseController {
+
     public function index() {
-        
+        $id = $_GET["id"];
+        $user = UsuarioModel::getById($id);
+        $preguntasUsuario = UsuarioModel::getByIdUsuario($id);
+        require "views/usuarios.view.php";
+         
+
     }
-    
+   
     public function show() {
         
     }
@@ -23,4 +27,6 @@ class EmpleadoController extends BaseController {
     public function destroyAll() {
         
     }
+
+
 }
