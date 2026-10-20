@@ -26,7 +26,7 @@ class PreguntaModel {
                                LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
                                WHERE p.id_pregunta = :id_pregunta");
 
-        $stmt-> execute('id_pregunta' => $id);
+        $stmt-> execute(['id_pregunta' => $id]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
         

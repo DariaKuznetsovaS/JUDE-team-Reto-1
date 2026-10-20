@@ -6,10 +6,10 @@ require_once __DIR__ . '/../models/RespuestaModel.php';
 class PreguntaController extends BaseController {
     
     public function index() {
-        $pregunta=PreguntaModel::getById();
-        $respuestas=RespuestaModel::getAll();
+        $id=$_GET["id"];
+        $pregunta=PreguntaModel::getById($id);
+        $respuestas=RespuestaModel::getByPreguntaId($id);
         require "views/pregunta.view.php";
-         
 
     }
    

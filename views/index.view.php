@@ -1,5 +1,6 @@
 
 <?php include __DIR__ . '/layout/header.php'; ?>
+<?php include __DIR__ . '/layout/nav.php'; ?>
 
 <main class="listaPreguntas">
 
