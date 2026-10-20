@@ -10,6 +10,7 @@ class PreguntaController extends BaseController {
         $pregunta=PreguntaModel::getById($id);
         $respuestas=RespuestaModel::getByPreguntaId($id);
         require "views/pregunta.view.php";
+        
 
     }
    
@@ -74,4 +75,8 @@ class PreguntaController extends BaseController {
     public function destroyAll() {
         
     }
+
+    public function crear() {
+    require "views/crearPregunta.view.php";
+}
 }
