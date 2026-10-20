@@ -26,10 +26,24 @@ class PreguntaModel {
                                LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
                                WHERE p.id_pregunta = :id_pregunta");
 
-        $stmt-> execute('id_pregunta' => $id);
+        $stmt-> execute(['id_pregunta' => $id]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
         
+    }
+
+    public static function getByIdUsuario($id) {
+
+        $db = Database::getConnection();
+
+        $stmt = $db-> prepare("SELECT *
+                               FROM preguntas
+                               WHERE id_usuario = :id_usuario");
+
+        $stmt-> execute(['id_usuario' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
     }
 
 
