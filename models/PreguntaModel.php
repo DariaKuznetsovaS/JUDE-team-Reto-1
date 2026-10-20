@@ -46,6 +46,18 @@ class PreguntaModel {
             "descripcion"=>$descripcion,
             "tipo"=>$tipo
         ]);
+        
+    public static function getByIdUsuario($id) {
+
+        $db = Database::getConnection();
+
+        $stmt = $db-> prepare("SELECT *
+                               FROM preguntas
+                               WHERE id_usuario = :id_usuario");
+
+        $stmt-> execute(['id_usuario' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
 
     }
 
