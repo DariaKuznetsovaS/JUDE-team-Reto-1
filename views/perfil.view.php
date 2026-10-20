@@ -22,7 +22,7 @@ require "layout/header.php";
     </div>
 
 
-    <div class="preguntas">
+    <div class="preguntasContainer">
         <button>+ Publicar nueva pregunta</button>
         <div class="misPreguntas">
             <div>
@@ -30,7 +30,8 @@ require "layout/header.php";
                 
             </div>
             <div>
-
+                <h2>Respuestas</h2>
+                
             </div>
         </div>
     </div>

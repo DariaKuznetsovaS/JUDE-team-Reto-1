@@ -4,8 +4,9 @@ require_once __DIR__ . '/BaseController.php';
 class UsuarioController extends BaseController {
 
     public function index() {
-        $user = UsuarioModel::getById();
-        $preguntasUsuario = UsuarioModel::getByIdUsuario();
+        $id = $_GET["id"];
+        $user = UsuarioModel::getById($id);
+        $preguntasUsuario = UsuarioModel::getByIdUsuario($id);
         require "views/usuarios.view.php";
          
 

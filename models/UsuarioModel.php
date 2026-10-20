@@ -16,7 +16,8 @@ class UsuarioModel {
         
     }
 
-    public static function getById($id) {
+    
+    public static function getByIdUsuario($id) {
 
         $db = Database::getConnection();
 
