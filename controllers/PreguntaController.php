@@ -22,13 +22,13 @@ class PreguntaController extends BaseController {
     public function store() {
 
     if (!isset($_SESSION["id_usuario"])) {
-        header("Location: index.php?controller=usuario&accion=login");
-        exit;
+        //This porque hereda el método de base controller
+        $this->redirect("index.php?controller=usuario&accion=login");
     }
     
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header("Location: index.php");
-        exit;
+        $this->redirect("index.php");
+        
     }
 
     
@@ -40,7 +40,6 @@ class PreguntaController extends BaseController {
     if ($titulo === "" || $descripcion === "" || $tipo === "") {
         exit("Debes rellenar todos los campos.");
     }
-
 
     $idPregunta = PreguntaModel::create(
         $idUsuario,
@@ -63,8 +62,8 @@ class PreguntaController extends BaseController {
     }
 
     // Volver a la página principal
-    header("Location: index.php");
-    exit;
+    $this->redirect("index.php");
+   
 }
 
     
