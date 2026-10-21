@@ -26,7 +26,7 @@
 
                 <a href="index.php?controller=UsuarioController&accion=perfil"
                    class="bPerfil">
-                    Mi perfil
+                    <img src="assets/images/Iconos/User.png">
                 </a>
 
             <?php else: ?>

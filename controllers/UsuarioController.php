@@ -49,8 +49,14 @@ class UsuarioController extends BaseController {
         
     }
     
-    public function show() {
-        
+    public function perfil() {
+       $id = $_SESSION["id_usuario"];
+
+        $usuario = UsuarioModel::getById($id);
+
+        $this->render('perfil.view.php', [
+            'usuario' => $usuario
+        ]);
     }
 
 
