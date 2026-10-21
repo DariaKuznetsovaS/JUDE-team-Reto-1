@@ -5,10 +5,14 @@ require_once __DIR__ . '/../models/PreguntaModel.php';
 class RespuestaController extends BaseController {
     
     public function index() {
-        /*$pregunta=PreguntaModel::getById();
+        $pregunta=PreguntaModel::getById();
         $respuestas=RespuestaModel::getAll();
-        require "views/pregunta.view.php";
-         */
+        $this->render("pregunta.view.php",[
+            "pregunta"=>$pregunta,
+            "respuestas"=>$respuestas
+        ]);
+        //require "views/pregunta.view.php";
+         
 
     }
    
@@ -18,8 +22,7 @@ class RespuestaController extends BaseController {
     
     public function store() {
         if(!isset($_SESSION["usuario"])){
-            header("Location: index.php?controller=LoginController$accion=index");
-            exit;
+            $this->redirect("index.php?controller=LoginController$accion=index");
         }
         
     }
