@@ -1,31 +1,29 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../models/LoginModel.php';
+require_once __DIR__ . '/../models/UsuarioModel.php';
 
 
 
-class LoginController extends BaseController {
+class UsuarioController extends BaseController {
     
-    public function index() {
+    public function login() {
         require "views/login.php";
         
     }
 
     public function iniciarSesion(){
-        echo "funcion";
         $contrasenna=$_POST["contrasenna"];
         $nombreUsuario=$_POST["nombreUsuario"];
 
-        echo $contrasenna;
-        $usuario = LoginModel::iniciarSesion($nombreUsuario, $contrasenna);
+        $usuario = UsuarioModel::iniciarSesion($nombreUsuario, $contrasenna);
         $tipo = $usuario->tipo;
                 
         if ($usuario) {
             session_start();
-            $_SESSION['usuario'] = $usuario;
+            $_SESSION['id_usuario'] = $usuario;
             
             
-            header("Location: index.php?controller=RegistroController&accion=index&tipo=$tipo");
+            header("Location: index.php?controller=PrincipalController&accion=index&tipo=$tipo");
             exit();
         } else {
             echo "User invalido";
@@ -34,7 +32,21 @@ class LoginController extends BaseController {
             header("Location: index.php?controller=LoginController&accion=index");
             exit();
         }
-        echo $nombreUsuario;
+    }
+
+    public function registro() {
+        require "views/registro.php";
+    }
+
+    public function registrarse() {
+        $nombreUsuario=$_POST["nombreUsuario"];
+        $nombre=$_POST["nombre"];
+        $apellidos=$_POST["apellidos"];
+        $contrasenna=$_POST["contrasenna"];
+
+        $usuario=UsuarioModel::registrarse($nombreUsuario,$nombre, $apellidos, $contrasenna);
+        
+        
     }
     
     public function show() {
