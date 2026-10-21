@@ -9,7 +9,10 @@ class PreguntaController extends BaseController {
         $id=$_GET["id"];
         $pregunta=PreguntaModel::getById($id);
         $respuestas=RespuestaModel::getByPreguntaId($id);
-        require "views/pregunta.view.php";
+        $this->render('pregunta.view.php', [
+        'pregunta' => $pregunta,
+        'respuestas' => $respuestas
+    ]);
         
 
     }
