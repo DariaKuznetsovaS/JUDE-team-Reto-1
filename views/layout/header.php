@@ -24,7 +24,7 @@
 
             <?php if (isset($_SESSION["id_usuario"])): ?>
 
-                <a href="index.php?controller=usuario&accion=perfil"
+                <a href="index.php?controller=UsuarioController&accion=perfil"
                    class="bPerfil">
                     Mi perfil
                 </a>

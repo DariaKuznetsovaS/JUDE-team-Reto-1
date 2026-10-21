@@ -11,7 +11,7 @@ class UsuarioModel {
             'nombreUsuario' => $nombreUsuario,
             'contrasenna'   => $contrasenna
         ]);
-        return $stmt->fetch();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     public static function registrarse($nombreUsuario,$nombre, $apellidos, $contrasenna){

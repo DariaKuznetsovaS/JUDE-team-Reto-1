@@ -16,20 +16,19 @@ class UsuarioController extends BaseController {
         $nombreUsuario=$_POST["nombreUsuario"];
 
         $usuario = UsuarioModel::iniciarSesion($nombreUsuario, $contrasenna);
-        $tipo = $usuario->tipo;
+        
                 
         if ($usuario) {
-            session_start();
-            $_SESSION['id_usuario'] = $usuario;
+            $_SESSION['id_usuario'] = $nombreUsuario;
+            $tipo = $usuario->tipo;
             
             
             $this->redirect("index.php?controller=PrincipalController&accion=index&tipo=$tipo");
             
         } else {
-            echo "User invalido";
 
             
-            $this->redirect("index.php?controller=LoginController&accion=index");
+            $this->redirect("index.php?controller=UsuarioController&accion=login");
             
         }
     }
