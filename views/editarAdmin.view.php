@@ -5,7 +5,7 @@ require "layout/header.php";
 
 <div class="cabecera">
 
-    <img src="../assets/images/iconos/Editar" alt="">
+    <img src="../assets/images/iconos/Editar.png" alt="">
     <h1>Edición de usuario</h1>
 
 </div>
@@ -16,7 +16,7 @@ require "layout/header.php";
 
         <input type="text" name="nuevoNombre" placeholder="Nuevo Nombre">
         <input type="text" name="nuevoApellido" placeholder="Nuevo Apellido">
-        <input type="text" name="nuevUsername" placeholder="Nuevo Username">
+        <input type="text" name="nuevoUsername" placeholder="Nuevo Username">
         <input type="password" name="nuevaContrasena" placeholder="Nueva Contrasena">
         <select name="tipo" id="tipo" required>
             <option value="" disabled selected>Tipo de usuario</option>

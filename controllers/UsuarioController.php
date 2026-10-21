@@ -11,6 +11,26 @@ class UsuarioController extends BaseController {
          
 
     }
+
+    public function actualizar(){
+
+        session_start();
+
+        if(isset($POST['aceptar'])) {
+            $idUsuario = $_SESSION['usuario_id'];
+
+            $datos = [
+                'nombre' => $_POST['nuevoNombre'],
+                'apellido' => $_POST['nuevoApellido'],
+                'nombre_usuario' => $_POST['nuevoUsername'],
+                'contrasena' => $_POST['nuevaContrasena']
+            ]
+
+            $modelo = new UsuarioModel();
+            $modelo-> actualizarUsuario($idUsuario, $datos)
+        }
+
+    }
    
     public function show() {
         

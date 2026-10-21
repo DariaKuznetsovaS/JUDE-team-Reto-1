@@ -32,4 +32,25 @@ class UsuarioModel {
     }
 
 
+    public static function updateUsuario($id,$datos) {
+
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("UPDATE usuarios 
+                              SET nombre_usuario = :nombre_usuario, contrasenna = :contrasenna, nombre = :nombre, apellidos = :apellidos
+                              WHERE id = :id");
+
+
+        $stmt->bindParam(':id',$id );
+        $stmt->bindParam(':nombre_usuario',$datos['nombre_usuario']);
+        $stmt->bindParam(':contrasena',$datos['contrasena']);
+        $stmt->bindParam(':nombre',$datos['nombre']);
+        $stmt->bindParam(':apellido',$datos['apellido']);
+
+
+        return $stmt->execute();
+
+    }
+
+
 }
