@@ -6,7 +6,14 @@ class PrincipalController extends BaseController {
     
     public function index() {
         $preguntas=PreguntaModel::getAll();
-        require "views/index.view.php";
+
+       /*
+       Para aprovechar el render, esto:
+       require "views/index.view.php";
+       se convierte en esto: */
+       $this->render("index.view.php",[
+        "preguntas"=>$preguntas
+       ]);
          
 
     }
