@@ -1,30 +1,26 @@
-<?php 
+<?php include __DIR__ . '/layout/header.php'; ?>
+<?php include __DIR__ . '/layout/nav.php'; ?>
 
 
-require "layout/header.php";
-
-?>
-
-
-<main>
+<main class="perfil">
     <div class="userContainer">
 
-        <img src="../assets/images/User.png" alt="Imagen usuario">
+        <img src="assets/images/Iconos/User.png" alt="Imagen usuario">
         <div class="datosUsuario">
-            <h1><?= htmlspecialchars($user['nombre_usuario'] ?? '') ?></h1>
+            <h1><?= htmlspecialchars($usuario['nombre_usuario'] ?? '') ?></h1>
 
-            <p> <?= htmlspecialchars(($user['nombre'] ?? '') . ' ' . ($user['apellido'] ?? '')) ?></p>
+            <p> <?= htmlspecialchars(($usuario['nombre'] ?? '') . ' ' . ($usuario['apellido'] ?? '')) ?></p>
 
-            <p> <?= htmlspecialchars($user['tipo'] ?? '') ?></p>
+            <p> <?= htmlspecialchars($usuario['tipo'] ?? '') ?></p>
         </div>
 
         <div class="enlaces">
-            <a href="index.php?controller=UsuarioController&accion=editar&id=<?= $user['id_usuario'] ?>">
-                <img src="../assets/images/Editar.png" alt="Editar perfil">
+            <a href="index.php?controller=UsuarioController&accion=editar&id=<?= $usuario['id_usuario'] ?>">
+                <img src="assets/images/Iconos/Editar.png" alt="Editar perfil">
             </a>
 
             <a href="index.php?controller=UsuarioController&accion=logout">
-                <img src="../assets/images/Salir.png" alt="">
+                <img src="assets/images/Iconos/Salir.png" alt="">
             </a>
     </div>
 
@@ -62,7 +58,7 @@ require "layout/header.php";
 
                                     <?php else: ?>
 
-                                        <img src="../assets/images/SinImagen.png" alt="Imagen de la pregunta">
+                                        <img src="assets/images/Iconos/SinImagen.png" alt="Imagen de la pregunta">
 
                                     <?php endif; ?>
                                 </div>
