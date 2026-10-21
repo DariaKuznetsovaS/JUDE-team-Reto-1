@@ -19,7 +19,7 @@ class UsuarioController extends BaseController {
         
                 
         if ($usuario) {
-            $_SESSION['id_usuario'] = $nombreUsuario;
+            $_SESSION['id_usuario'] = $usuario;
             $tipo = $usuario->tipo;
             
             
@@ -46,6 +46,12 @@ class UsuarioController extends BaseController {
         $usuario=UsuarioModel::registrarse($nombreUsuario,$nombre, $apellidos, $contrasenna);
         $this->redirect("index.php?controller=PrincipalController&accion=index");
         
+        
+    }
+
+    public function logout() {
+        session_unset();
+        $this->redirect("index.php?controller=PrincipalController&accion=index");
         
     }
     
