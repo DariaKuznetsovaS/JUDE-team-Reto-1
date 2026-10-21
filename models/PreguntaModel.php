@@ -32,5 +32,35 @@ class PreguntaModel {
         
     }
 
+    public static function create($idUsuario, $titulo, $descripcion, $tipo){
+        $db=Database::getConnection();
+
+        $stmt=$db->prepare(
+            "INSET INTO preguntas(id_usuario, titulo, descripcion, tipo)
+            VALUES(:id_usuario, :titulo, :descripcion, :tipo)"
+        );
+
+        $stmt->execute([
+            "id_usuario"=>$idUsuario,
+            "titulo"=>$titulo,
+            "descripcion"=>$descripcion,
+            "tipo"=>$tipo
+        ]);
+    }
+        
+    public static function getByIdUsuario($id) {
+
+        $db = Database::getConnection();
+
+        $stmt = $db-> prepare("SELECT *
+                               FROM preguntas
+                               WHERE id_usuario = :id_usuario");
+
+        $stmt-> execute(['id_usuario' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    }
+
 
 }

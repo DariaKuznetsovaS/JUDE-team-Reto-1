@@ -23,14 +23,14 @@ class UsuarioController extends BaseController {
             $_SESSION['id_usuario'] = $usuario;
             
             
-            header("Location: index.php?controller=PrincipalController&accion=index&tipo=$tipo");
-            exit();
+            $this->redirect("index.php?controller=PrincipalController&accion=index&tipo=$tipo");
+            
         } else {
             echo "User invalido";
 
             
-            header("Location: index.php?controller=LoginController&accion=index");
-            exit();
+            $this->redirect("index.php?controller=LoginController&accion=index");
+            
         }
     }
 
@@ -45,6 +45,7 @@ class UsuarioController extends BaseController {
         $contrasenna=$_POST["contrasenna"];
 
         $usuario=UsuarioModel::registrarse($nombreUsuario,$nombre, $apellidos, $contrasenna);
+        $this->redirect("index.php?controller=PrincipalController&accion=index");
         
         
     }
