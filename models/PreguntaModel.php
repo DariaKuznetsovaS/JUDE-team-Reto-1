@@ -46,6 +46,7 @@ class PreguntaModel {
             "descripcion"=>$descripcion,
             "tipo"=>$tipo
         ]);
+    }
         
     public static function getByIdUsuario($id) {
 

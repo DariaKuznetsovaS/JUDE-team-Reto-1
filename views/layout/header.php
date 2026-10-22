@@ -24,19 +24,19 @@
 
             <?php if (isset($_SESSION["id_usuario"])): ?>
 
-                <a href="index.php?controller=usuario&accion=perfil"
+                <a href="index.php?controller=UsuarioController&accion=perfil"
                    class="bPerfil">
                     Mi perfil
                 </a>
 
             <?php else: ?>
 
-                <a href="index.php?controller=usuario&accion=login"
+                <a href="index.php?controller=UsuarioController&accion=login"
                    class="bIniciarSesion">
                     Iniciar sesión
                 </a>
 
-                <a href="index.php?controller=usuario&accion=registro"
+                <a href="index.php?controller=UsuarioController&accion=registro"
                    class="bRegistrarse">
                     Registrarse
                 </a>

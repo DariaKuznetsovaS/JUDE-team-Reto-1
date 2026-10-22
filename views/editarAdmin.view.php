@@ -10,7 +10,9 @@ require "layout/header.php";
 
 </div>
 
-<form action="" method="">
+<form action="" method="POST">
+
+    <input type="hidden" name="id" value="<?= $usuarioAEditar['id_usuario'] ?> ">
 
     <div class="camposForm">
 
