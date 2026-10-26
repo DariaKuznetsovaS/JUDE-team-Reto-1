@@ -69,6 +69,7 @@ header .bRegistrarse {
     border-radius: .5rem;
 }
 /*Nav*/
+
 .menuLateral {
     width: 185px;
     flex-shrink: 0;
@@ -79,8 +80,8 @@ header .bRegistrarse {
     box-sizing: border-box;
 }
 
-/* Cada opción del menú */
-.menuLateral > div {
+/* Cada opción completa del menú */
+.menuLateral > a {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -89,6 +90,12 @@ header .bRegistrarse {
     background-color: #163A5F;
     border-radius: 6px;
     box-sizing: border-box;
+
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 1.3;
 }
 
 /* Iconos */
@@ -99,32 +106,35 @@ header .bRegistrarse {
     flex-shrink: 0;
 }
 
-/* Texto de las opciones */
-.menuLateral .opcionNav {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    line-height: 1.3;
-}
-
 /* Efecto al pasar el ratón */
-.menuLateral > div:hover {
+.menuLateral > a:hover {
     background-color: #247BA0;
 }
-.contenedorPrincipal {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 8px 12px;
-    box-sizing: border-box;
-}
+
 
 /*Vista Principal:*/
 
+.contenedorPrincipal {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+.menuLateral {
+    width: 185px;
+    flex-shrink: 0;
+}
+
 .listaPreguntas {
+    flex: 1;
+    min-width: 0;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 10px 0;
-    height: 80vh;
+    box-sizing: border-box;
 }
 
 .preguntaCard {
@@ -757,3 +767,41 @@ footer {
 #botonCerrarNormas:hover {
     background-color: #163A5F;
 }
+
+/*Ver más*/
+#verMasPreguntas {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 24px;
+
+    background-color: #247BA0;
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#verMasPreguntas:hover {
+    background-color: #163A5F;
+}
+
+#verMasPreguntas[hidden] {
+    display: none;
+}
+
+
+/* Ocultar las preguntas marcadas como ocultas */
+.enlacePregunta[hidden] {
+    display: none;
+}
+
+/* Ocultar el botón cuando tenga el atributo hidden */
+#verMasPreguntas[hidden] {
+    display: none;
+}
+
+

@@ -1,63 +1,49 @@
+
 <?php if (isset($_SESSION["id_usuario"])): ?>
 
     <nav class="menuLateral">
 
-    <div class="navInicio">
-        <img src="assets/images/Iconos/HomeClaro.png">
-        <a href="index.php" class="opcionNav">
-            Inicio
+        <a href="index.php" class="navInicio opcionNav">
+            <img src="assets/images/Iconos/HomeClaro.png" alt="">
+            <span>Inicio</span>
         </a>
-    </div>
 
-    <div class="navMisPreguntas">
-
-        <img src="assets/images/Iconos/PreguntaClaro.png">
         <a href="index.php?controller=UsuarioController&accion=misPreguntas"
-           class="opcionNav">
-            Mis Preguntas/Respuestas
+           class="navMisPreguntas opcionNav">
+            <img src="assets/images/Iconos/PreguntaClaro.png" alt="">
+            <span>Mis Preguntas/Respuestas</span>
         </a>
-    </div>
 
     <div class="navMisFavoritos">
 
         <img src="assets/images/Iconos/FavoritoClaro.png">
         <a href="index.php?controller=FavoritosController&accion=favoritos"
            class="opcionNav">
-            Mis Favoritos
+            <span>Mis Favoritos</span>
         </a>
-    </div>
-    
-    <div class="navAjustes">
 
-        <img src="assets/images/Iconos/AjustesClaro.png">
         <a href="index.php?controller=AjustesController&accion=ajustes"
-           class="opcionNav">
-            Ajustes
+           class="navAjustes opcionNav">
+            <img src="assets/images/Iconos/AjustesClaro.png" alt="">
+            <span>Ajustes</span>
         </a>
-    </div>
 
-    <!-- SOLO VISIBLE PARA ADMINS: -->
-    <?php if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] === "admin"): ?>
+        <!-- SOLO VISIBLE PARA ADMINS -->
+        <?php if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] === "admin"): ?>
 
-    <div class="navUsuarios">
-
-        <img src="assets/images/Iconos/UsuariosClaro.png" alt="">
             <a href="index.php?controller=UsuarioController&accion=listar"
-                class="opcionNav">
-                Usuarios
+               class="navUsuarios opcionNav">
+                <img src="assets/images/Iconos/UsuariosClaro.png" alt="">
+                <span>Usuarios</span>
             </a>
-    </div>
 
         <?php endif; ?>
 
-    <div class="navSalir">
-
-        <img src="assets/images/Iconos/SalirClaro.png">
         <a href="index.php?controller=UsuarioController&accion=logout"
-           class="opcionNav">
-            Salir
+           class="navSalir opcionNav">
+            <img src="assets/images/Iconos/SalirClaro.png" alt="">
+            <span>Salir</span>
         </a>
-    </div>
 
     </nav>
 

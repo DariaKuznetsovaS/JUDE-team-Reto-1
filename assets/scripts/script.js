@@ -4,35 +4,79 @@ const modalNormas = document.getElementById("modalNormas");
 const cerrarNormas = document.getElementById("cerrarNormas");
 const botonCerrarNormas = document.getElementById("botonCerrarNormas");
 
-// Abrir la ventana al pulsar el enlace del footer
-enlaceNormas.addEventListener("click", function (event) {
-    event.preventDefault();
-    modalNormas.hidden = false;
-    cerrarNormas.focus();
-});
+// Comprobar que los elementos existen antes de añadir eventos
+if (enlaceNormas && modalNormas && cerrarNormas && botonCerrarNormas) {
 
-// Función para cerrar la ventana
-function cerrarModal() {
-    modalNormas.hidden = true;
-    enlaceNormas.focus();
+    enlaceNormas.addEventListener("click", function (event) {
+        event.preventDefault();
+        modalNormas.hidden = false;
+        cerrarNormas.focus();
+    });
+
+    function cerrarModal() {
+        modalNormas.hidden = true;
+        enlaceNormas.focus();
+    }
+
+    cerrarNormas.addEventListener("click", cerrarModal);
+    botonCerrarNormas.addEventListener("click", cerrarModal);
+
+    modalNormas.addEventListener("click", function (event) {
+        if (event.target === modalNormas) {
+            cerrarModal();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !modalNormas.hidden) {
+            cerrarModal();
+        }
+    });
 }
 
-// Cerrar con la X
-cerrarNormas.addEventListener("click", cerrarModal);
 
-// Cerrar con el botón inferior
-botonCerrarNormas.addEventListener("click", cerrarModal);
+//VER MÁS:
 
-// Cerrar al pulsar fuera del contenido
-modalNormas.addEventListener("click", function (event) {
-    if (event.target === modalNormas) {
-        cerrarModal();
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const preguntas = document.querySelectorAll(".listaPreguntas .enlacePregunta");
+    const botonVerMas = document.getElementById("verMasPreguntas");
+
+    const cantidadInicial = 5;
+    const cantidadPorCarga = 5;
+
+    let preguntasVisibles = cantidadInicial;
+
+    if (!botonVerMas) {
+        return;
     }
+
+    // Ocultar todas las preguntas a partir de la sexta
+    preguntas.forEach(function (pregunta, indice) {
+        pregunta.hidden = indice >= cantidadInicial;
+    });
+
+    // Mostrar el botón solo si hay más de 5 preguntas
+    botonVerMas.hidden = preguntas.length <= cantidadInicial;
+
+    botonVerMas.addEventListener("click", function () {
+
+        const nuevoLimite = Math.min(
+            preguntasVisibles + cantidadPorCarga,
+            preguntas.length
+        );
+
+        for (let i = preguntasVisibles; i < nuevoLimite; i++) {
+            preguntas[i].hidden = false;
+        }
+
+        preguntasVisibles = nuevoLimite;
+
+        // Ocultar el botón cuando ya no queden preguntas
+        botonVerMas.hidden = preguntasVisibles >= preguntas.length;
+    });
+
 });
 
-// Cerrar al pulsar Escape
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && !modalNormas.hidden) {
-        cerrarModal();
-    }
-});
+
