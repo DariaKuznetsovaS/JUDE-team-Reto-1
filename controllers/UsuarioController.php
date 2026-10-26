@@ -29,15 +29,15 @@ class UsuarioController extends BaseController {
     }
 
     public function editar() {
-    $id = $_GET["id"] ?? null;
+        $id = $_GET["id"] ?? null;
 
-    if ($id === null) {
-        return;
+        if ($id === null) {
+            return;
+        }
+
+        $user = UsuarioModel::getById($id);
+        require "views/editarUser.view.php";
     }
-
-    $user = UsuarioModel::getById($id);
-    require "views/editarUser.view.php";
-}
 
     public function logout() {
         session_start();
