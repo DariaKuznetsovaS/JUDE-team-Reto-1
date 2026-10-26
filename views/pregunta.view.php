@@ -76,7 +76,6 @@
                               required></textarea>
 
                     <div class="accionesRespuesta">
-                        <label for="adjunto">Adjuntar archivo</label>
                         <input type="file" name="adjunto" id="adjunto">
                         <button type="submit">Publicar</button>
                     </div>
