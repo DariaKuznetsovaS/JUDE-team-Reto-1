@@ -6,13 +6,13 @@ require "BaseController.php";
 class FavsController extends BaseController{
 
     public function index() {
-        $pregunta=PreguntaModel::getById();
-        $respuestas=RespuestaModel::getAll();
-        $this->render("pregunta.view.php",[
-            "pregunta"=>$pregunta,
-            "respuestas"=>$respuestas
-        ]);
-        //require "views/pregunta.view.php";
+        $respuestasFavoritas=FavsModel::getByIdUsuario();
+         $user = UsuarioModel::getById($id);
+
+
+        $this-> redirect(
+            "views/favoritos.view.php"
+        ) ;
          
 
     }

@@ -12,6 +12,7 @@ class UsuarioController extends BaseController {
         $preguntasUsuario = UsuarioModel::getByIdUsuario($id);
         $usuarios = UsuarioModel::getAll();
         require "views/usuarios.view.php";
+        
          
 
     }

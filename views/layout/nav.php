@@ -29,7 +29,7 @@
         </a>
 
         <!-- SOLO VISIBLE PARA ADMINS -->
-        <?php if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] === "admin"): ?>
+        <?php if (isset($_SESSION["id_usuario"]->tipo) && $_SESSION["id_usuario"]->tipo === "admin"): ?>
 
             <a href="index.php?controller=UsuarioController&accion=listar"
                class="navUsuarios opcionNav">
