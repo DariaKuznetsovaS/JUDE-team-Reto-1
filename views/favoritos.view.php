@@ -80,41 +80,13 @@ require "layout/header.php";
 
                 <?php else: ?>
 
-                    <p>No hay preguntas disponibles.</p>
+                    <p>No hay respuestas favoritas.</p>
 
                 <?php endif; ?>
             </div>
 
 
-
-            <div>
-                <h2>Respuestas</h2>
-                <?php if (!empty($respuestas)): ?>
-
-                    <?php foreach ($respuestas as $respuesta): ?>
-
-                        <div class="respuestaCard">
-
-                            <div>
-                                <p><?= htmlspecialchars($respuesta['texto']) ?></p>
-                            </div>
-
-                            <?php if (!empty($respuesta['imagen_ruta'])): ?>
-                                <img
-                                    src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
-                                    alt="Imagen de la respuesta">
-                            <?php endif; ?>
-
-                        </div>
-
-                    <?php endforeach; ?>
-
-                <?php else: ?>
-
-                    <p>No hay respuestas disponibles.</p>
-
-                <?php endif; ?>
-            </div>
+            
         </div>
     </div>
 </main>
