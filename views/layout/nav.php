@@ -11,7 +11,7 @@
 
     <div class="navMisPreguntas">
 
-        <img src="assets/images/Iconos/Pregunta.png">
+        <img src="assets/images/Iconos/PreguntaClaro.png">
         <a href="index.php?controller=UsuarioController&accion=misPreguntas"
            class="opcionNav">
             Mis Preguntas/Respuestas
@@ -20,7 +20,7 @@
 
     <div class="navMisFavoritos">
 
-        <img src="assets/images/Iconos/Favorito.png">
+        <img src="assets/images/Iconos/FavoritoClaro.png">
         <a href="index.php?controller=UsuarioController&accion=favoritos"
            class="opcionNav">
             Mis Favoritos
@@ -29,7 +29,7 @@
     
     <div class="navAjustes">
 
-        <img src="assets/images/Iconos/Ajustes.png">
+        <img src="assets/images/Iconos/AjustesClaro.png">
         <a href="index.php?controller=AjustesController&accion=ajustes"
            class="opcionNav">
             Ajustes
@@ -41,7 +41,7 @@
 
     <div class="navUsuarios">
 
-        <img src="assets/images/Iconos/Usuarios.png" alt="">
+        <img src="assets/images/Iconos/UsuariosClaro.png" alt="">
             <a href="index.php?controller=UsuarioController&accion=listar"
                 class="opcionNav">
                 Usuarios
@@ -52,7 +52,7 @@
 
     <div class="navSalir">
 
-        <img src="assets/images/Iconos/Salir.png">
+        <img src="assets/images/Iconos/SalirClaro.png">
         <a href="index.php?controller=UsuarioController&accion=logout"
            class="opcionNav">
             Salir

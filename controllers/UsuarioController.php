@@ -102,13 +102,7 @@ class UsuarioController extends BaseController {
         require "views/editarUser.view.php";
     }
 
-    public function logout() {
-        session_start();
-        session_destroy();
-
-        header("Location: index.php");
-        exit;
-    }
+    
 
 
 }
