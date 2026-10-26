@@ -5,18 +5,20 @@ require "layout/header.php";
 
 <div class="cabecera">
 
-    <img src="../assets/images/iconos/Editar" alt="">
+    <img src="../assets/images/iconos/Editar.png" alt="">
     <h1>Edición de usuario</h1>
 
 </div>
 
-<form action="" method="">
+<form action="" method="POST">
+
+    <input type="hidden" name="id" value="<?= $usuarioAEditar['id_usuario'] ?> ">
 
     <div class="camposForm">
 
         <input type="text" name="nuevoNombre" placeholder="Nuevo Nombre">
         <input type="text" name="nuevoApellido" placeholder="Nuevo Apellido">
-        <input type="text" name="nuevUsername" placeholder="Nuevo Username">
+        <input type="text" name="nuevoUsername" placeholder="Nuevo Username">
         <input type="password" name="nuevaContrasena" placeholder="Nueva Contrasena">
         <select name="tipo" id="tipo" required>
             <option value="" disabled selected>Tipo de usuario</option>
