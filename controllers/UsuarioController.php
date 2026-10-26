@@ -5,6 +5,16 @@ require_once __DIR__ . '/../models/UsuarioModel.php';
 
 
 class UsuarioController extends BaseController {
+
+    public function index() {
+        $id = $_GET["id"];
+        $user = UsuarioModel::getById($id);
+        $preguntasUsuario = UsuarioModel::getByIdUsuario($id);
+        $usuarios = UsuarioModel::getAll();
+        require "views/usuarios.view.php";
+         
+
+    }
     
     public function login() {
         require "views/login.php";
@@ -32,6 +42,7 @@ class UsuarioController extends BaseController {
             
         }
     }
+
 
     public function registro() {
         require "views/registro.php";
@@ -63,6 +74,7 @@ class UsuarioController extends BaseController {
         $this->render('perfil.view.php', [
             'usuario' => $usuario
         ]);
+
     }
 
 
@@ -77,5 +89,27 @@ class UsuarioController extends BaseController {
     public function destroyAll() {
         
     }
+
+
+    public function editar() {
+        $id = $_GET["id"] ?? null;
+
+        if ($id === null) {
+            return;
+        }
+
+        $user = UsuarioModel::getById($id);
+        require "views/editarUser.view.php";
+    }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+
+        header("Location: index.php");
+        exit;
+    }
+
+
 }
 
