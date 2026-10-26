@@ -30,7 +30,7 @@ class UsuarioController extends BaseController {
         
                 
         if ($usuario) {
-            $_SESSION['id_usuario'] = $nombreUsuario;
+            $_SESSION['id_usuario'] = $usuario;
             $tipo = $usuario->tipo;
             
             
@@ -61,61 +61,11 @@ class UsuarioController extends BaseController {
         
     }
 
-
-    public function actualizar(){
-        
-        if(isset($POST['aceptar'])) {
-            $idUsuario = $_SESSION['usuario_id'];
-            
-            $datos = [
-                'nombre' => $_POST['nuevoNombre'],
-                'apellido' => $_POST['nuevoApellido'],
-                'nombre_usuario' => $_POST['nuevoUsername'],
-                'contrasena' => $_POST['nuevaContrasena']
-            ];
-            
-            UsuarioModel::actualizarUsuario($idUsuario, $datos);
-        }
-    }
-
-    public function mostrarActualizarAdmin() {
-
-        if(isset($_GET['id'])) {
-
-            $id_usuario = $_GET['id'];
-
-            $usuarioAEditar = UsuarioModel::getById($id_usuario);
-
-            require "views/editarAdmin.view.php";
-
-        }else  {
-            
-        }
-
-    }
-
-    public function editar() {
-        $id = $_GET["id"] ?? null;
-
-        if ($id === null) {
-            return;
-        }
-
-        $user = UsuarioModel::getById($id);
-        require "views/editarUser.view.php";
-    }
-
     public function logout() {
-        session_start();
-        session_destroy();
-
-        header("Location: index.php");
-        exit;
-    }
-   
-    public function show() {}
+        session_unset();
+        $this->redirect("index.php?controller=PrincipalController&accion=index");
         
-
+    }
     
     public function perfil() {
        $id = $_SESSION["id_usuario"];
@@ -153,13 +103,7 @@ class UsuarioController extends BaseController {
         require "views/editarUser.view.php";
     }
 
-    public function logout() {
-        session_start();
-        session_destroy();
-
-        header("Location: index.php");
-        exit;
-    }
+    
 
 
 }

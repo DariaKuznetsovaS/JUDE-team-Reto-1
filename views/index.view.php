@@ -54,6 +54,10 @@
 
     <?php endif; ?>
 
+    <button type="button" id="verMasPreguntas" hidden>
+        Ver más
+    </button>
+
 </main>
 
 </div>
