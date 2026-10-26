@@ -54,6 +54,11 @@ class UsuarioController extends BaseController {
         $apellidos=$_POST["apellidos"];
         $contrasenna=$_POST["contrasenna"];
 
+        if ($this->errorContrasenna($contrasenna) !== '') {
+            $this->redirect("index.php?controller=UsuarioController&accion=registro");
+            return;
+        }
+
         $usuario=UsuarioModel::registrarse($nombreUsuario,$nombre, $apellidos, $contrasenna);
         $this->redirect("index.php?controller=PrincipalController&accion=index");
         
@@ -102,6 +107,40 @@ class UsuarioController extends BaseController {
         require "views/editarUser.view.php";
     }
 
+    public function comprobarUsuario() {
+        header('Content-Type: application/json');
+
+        $nombreUsuario = trim($_GET['nombreUsuario'] ?? '');
+
+        if (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $nombreUsuario)) {
+            echo json_encode(['disponible' => false]);
+            return;
+        }
+
+        
+        $existe = UsuarioModel::existeNombreUsuario($nombreUsuario);
+
+        echo json_encode(['disponible' => !$existe]);
+        exit();
+    }
+
+    private function errorContrasenna($contrasenna) {
+        if (strlen($contrasenna) < 6) return 'Mínimo 6 caracteres';
+        if (!preg_match('/[a-z]/', $contrasenna)) return 'Falta una minúscula';
+        if (!preg_match('/[A-Z]/', $contrasenna)) return 'Falta una mayúscula';
+        if (!preg_match('/[0-9]/', $contrasenna)) return 'Falta un número';
+        return '';
+    }
+
+    public function comprobarContrasenna() {
+        header('Content-Type: application/json');
+
+        $contrasenna = $_POST['contrasenna'] ?? '';
+        $error = $this->errorContrasenna($contrasenna);
+
+        echo json_encode(['valida' => $error === '', 'mensaje' => $error]);
+        exit();
+    }
     
 
 

@@ -79,5 +79,12 @@ class UsuarioModel {
 
     }
 
+    public static function existeNombreUsuario($nombreUsuario) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare('SELECT COUNT(*) FROM usuarios WHERE nombre_usuario = :u');
+        $stmt->execute([':u' => $nombreUsuario]);
+        return $stmt->fetchColumn() > 0;
+    }
+
 
 }
