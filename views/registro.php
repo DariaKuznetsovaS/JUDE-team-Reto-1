@@ -12,6 +12,8 @@
     </div>
     <form action="index.php?controller=UsuarioController&accion=registrarse" method="post">
         <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Nombre de Usuario" required >
+                <small id="msgUsuario" aria-live="polite"></small>
+
         <input type="text" name="nombre" id="nombre" placeholder="Nombre" required >
         <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required >
         <input type="password" name="contrasenna" id="contrasenna" placeholder="Contraseña" required >

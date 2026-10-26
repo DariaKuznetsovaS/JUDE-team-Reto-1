@@ -403,9 +403,16 @@ header .bRegistrarse {
         grid-template-columns: 1fr;
     }
 }
+
+
 /* AJUSTES */
 
-
+/* Contenedor que centra la tarjeta */
+#contenedorAjustes {
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+}
 
 /* Tarjeta blanca */
 #tarjeta {
@@ -416,7 +423,7 @@ header .bRegistrarse {
     border-radius: 12px;
     box-shadow: 0 2px 8px #163A5F33;
 }
- 
+
 /* Icono a la izquierda, título centrado */
 #d1 {
     display: grid;
@@ -424,27 +431,27 @@ header .bRegistrarse {
     align-items: center;
     margin-bottom: 40px;
 }
- 
+
 #d1 img {
     width: 36px;
     margin-left: 20%;
 }
- 
+
 #d1 h2 {
     color: #247BA0;
     font-size: 1.6rem;
 }
- 
+
 /* Campos */
-form {
+#tarjeta form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 34px;
 }
- 
-input[type="text"],
-input[type="password"] {
+
+#tarjeta input[type="text"],
+#tarjeta input[type="password"] {
     width: 170px;
     padding: 14px 8px;
     border: 2px solid transparent;
@@ -455,19 +462,19 @@ input[type="password"] {
     font-weight: 500;
     font-size: 0.9rem;
 }
- 
-input[type="text"]::placeholder,
-input[type="password"]::placeholder {
+
+#tarjeta input[type="text"]::placeholder,
+#tarjeta input[type="password"]::placeholder {
     color: #6B767B;
 }
- 
-input[type="text"]:focus,
-input[type="password"]:focus {
+
+#tarjeta input[type="text"]:focus,
+#tarjeta input[type="password"]:focus {
     outline: none;
     border-color: #20B8A6;
     background-color: white;
 }
- 
+
 /* Botones uno al lado del otro */
 #d2 {
     display: flex;
@@ -476,7 +483,7 @@ input[type="password"]:focus {
     gap: 32px;
     margin-top: -8px;
 }
- 
+
 #d2 input[type="submit"],
 #d2 a {
     width: 139px;
@@ -491,15 +498,15 @@ input[type="password"]:focus {
     text-decoration: none;
     cursor: pointer;
 }
- 
+
 #d2 input[type="submit"] {
     background-color: #247BA0;
 }
- 
+
 #d2 a {
     background-color: #6B767B;
 }
- 
+
 #d2 input[type="submit"]:hover,
 #d2 a:hover {
     filter: brightness(0.92);

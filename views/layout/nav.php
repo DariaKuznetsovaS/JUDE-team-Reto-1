@@ -21,7 +21,7 @@
     <div class="navMisFavoritos">
 
         <img src="assets/images/Iconos/FavoritoClaro.png">
-        <a href="index.php?controller=UsuarioController&accion=favoritos"
+        <a href="index.php?controller=FavoritosController&accion=favoritos"
            class="opcionNav">
             Mis Favoritos
         </a>

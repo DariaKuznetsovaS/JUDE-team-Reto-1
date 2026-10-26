@@ -19,7 +19,7 @@ class AjustesController extends BaseController {
         $usuario = $_SESSION['id_usuario'];
         $id = $usuario->id_usuario; 
         AjustesModel::editarUsuario($id, $nombre, $apellidos, $nombreUsuario, $contrasenna);
-        
+        $this->redirect("index.php?controller=AjustesController&accion=ajustes");
     }
     
     
