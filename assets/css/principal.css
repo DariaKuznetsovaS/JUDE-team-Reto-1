@@ -3,10 +3,17 @@
     margin: 0;
     box-sizing: border-box;
 }
+html,
+body {
+    min-height: 100%;
+}
 
 body{
-     background-color: #F3F6F9;
-     font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background-color: #F3F6F9;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 /*El header*/
@@ -209,12 +216,13 @@ header .bRegistrarse {
     background-color: white;
     padding: 40px;
     max-width: 1000px;
-    height: 80vh;
+    width: 100%;
     margin: 20px auto;
     color: #163A5F;
     border-radius: 1rem;
     box-shadow: 0 2px 4px #999;
 }
+
 
 .detalleCabecera {
     display: grid;
@@ -305,6 +313,7 @@ header .bRegistrarse {
     padding: 20px;
 }
 
+
 /* FORMULARIO DE RESPUESTA */
 
 .formularioRespuesta {
@@ -319,58 +328,52 @@ header .bRegistrarse {
     font-size: 18px;
     border-top: 3px solid #247BA0;
     padding-top: 12px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
+/* El textarea ocupa todo el ancho */
 .formularioRespuesta form {
-    display: grid;
-    grid-template-columns: 1fr 0.7fr;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .formularioRespuesta textarea {
     width: 100%;
     min-height: 160px;
     padding: 20px;
-    border: none;
+    border: 1px solid #C5DDE6;
     border-radius: 8px;
-    box-shadow: 0 2px 4px #00000035;
+    box-shadow: 0 2px 4px #00000020;
     font: inherit;
     resize: vertical;
 }
 
+/* Acciones debajo del textarea */
 .accionesRespuesta {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     gap: 15px;
 }
 
-.accionesRespuesta label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 45px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #D9D9D9;
-    color: #247BA0;
-    cursor: pointer;
-    text-align: center;
-}
 
 .accionesRespuesta input[type="file"] {
     max-width: 100%;
+    min-width: 0;
     font-size: 12px;
 }
 
 .accionesRespuesta button {
-    min-height: 45px;
+    padding: 10px 22px;
     border: none;
     border-radius: 8px;
     background-color: #20B8A6;
     color: white;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .accionesRespuesta button:hover {
@@ -378,7 +381,6 @@ header .bRegistrarse {
 }
 
 /* ADAPTACIÓN A MÓVILES */
-
 @media (max-width: 650px) {
     .detallePregunta {
         padding: 20px;
@@ -409,8 +411,12 @@ header .bRegistrarse {
         height: 140px;
     }
 
-    .formularioRespuesta form {
-        grid-template-columns: 1fr;
+    .accionesRespuesta {
+        flex-wrap: wrap;
+    }
+
+    .accionesRespuesta input[type="file"] {
+        max-width: 100%;
     }
 }
 
@@ -678,6 +684,7 @@ footer {
     background-color: #287fa0;
     color:#F3F6F9; 
     padding: 12px;
+    margin-top: auto;
 }
 
 .copyright {
