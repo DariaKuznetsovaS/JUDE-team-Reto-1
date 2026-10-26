@@ -1,6 +1,8 @@
 
 <?php include __DIR__ . '/layout/header.php'; ?>
-<?php include __DIR__ . '/layout/nav.php'; ?>
+
+<div class="contenedorPrincipal">
+    <?php include __DIR__ . '/layout/nav.php'; ?>
 
 <main class="listaPreguntas">
 
@@ -30,7 +32,7 @@
 
                         <?php else: ?>
 
-                            <img src="../assets/images/SinImagen.png" alt="Imagen de la pregunta">
+                            <img src="assets/images/Iconos/SinImagen.png" alt="Imagen de la pregunta">
 
                         <?php endif; ?>
                     </div>
@@ -53,5 +55,7 @@
     <?php endif; ?>
 
 </main>
+
+</div>
 
 <?php include __DIR__ . '/layout/footer.php'; ?>

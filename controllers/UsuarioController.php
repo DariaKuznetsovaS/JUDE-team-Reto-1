@@ -19,7 +19,7 @@ class UsuarioController extends BaseController {
         
                 
         if ($usuario) {
-            $_SESSION['id_usuario'] = $nombreUsuario;
+            $_SESSION['id_usuario'] = $usuario;
             $tipo = $usuario->tipo;
             
             
@@ -48,9 +48,21 @@ class UsuarioController extends BaseController {
         
         
     }
-    
-    public function show() {
+
+    public function logout() {
+        session_unset();
+        $this->redirect("index.php?controller=PrincipalController&accion=index");
         
+    }
+    
+    public function perfil() {
+       $id = $_SESSION["id_usuario"];
+
+        $usuario = UsuarioModel::getById($id);
+
+        $this->render('perfil.view.php', [
+            'usuario' => $usuario
+        ]);
     }
 
 

@@ -9,7 +9,10 @@ class PreguntaController extends BaseController {
         $id=$_GET["id"];
         $pregunta=PreguntaModel::getById($id);
         $respuestas=RespuestaModel::getByPreguntaId($id);
-        require "views/pregunta.view.php";
+        $this->render('pregunta.view.php', [
+        'pregunta' => $pregunta,
+        'respuestas' => $respuestas
+    ]);
         
 
     }
@@ -23,7 +26,7 @@ class PreguntaController extends BaseController {
 
     if (!isset($_SESSION["id_usuario"])) {
         //This porque hereda el método de base controller
-        $this->redirect("index.php?controller=usuario&accion=login");
+        $this->redirect("index.php?controller=UsuarioController&accion=login");
     }
     
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {

@@ -31,8 +31,20 @@ class UsuarioModel {
     }
     
     public static function getById($id) {
-        
-    }
+    $db = Database::getConnection();
+
+    $stmt = $db->prepare(
+        "SELECT id_usuario, nombre_usuario, nombre, apellidos, tipo
+         FROM usuarios
+         WHERE id_usuario = :id_usuario"
+    );
+
+    $stmt->execute([
+        'id_usuario' => $id
+    ]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
     
     public static function create($datos) {
         
