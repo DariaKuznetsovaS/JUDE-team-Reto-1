@@ -60,6 +60,7 @@ class UsuarioController extends BaseController {
         
     }
 
+
     public function actualizar(){
         
         if(isset($POST['aceptar'])) {
@@ -111,8 +112,19 @@ class UsuarioController extends BaseController {
         exit;
     }
    
-    public function show() {
+    public function show() {}
         
+
+    
+    public function perfil() {
+       $id = $_SESSION["id_usuario"];
+
+        $usuario = UsuarioModel::getById($id);
+
+        $this->render('perfil.view.php', [
+            'usuario' => $usuario
+        ]);
+
     }
 
 

@@ -3,14 +3,14 @@
     <nav class="menuLateral">
 
     <div class="navInicio">
-        <img src="../assets/images/Iconos/Home.png">
+        <img src="assets/images/Iconos/HomeClaro.png">
         <a href="index.php" class="opcionNav">
             Inicio
         </a>
     </div>
 
     <div class="navMisPreguntas">
-        <img src="../assets/images/Iconos/Pregunta.png">
+        <img src="assets/images/Iconos/PreguntaClaro.png">
         <a href="index.php?controller=usuario&accion=misPreguntas"
            class="opcionNav">
             Mis Preguntas/Respuestas
@@ -18,7 +18,7 @@
     </div>
 
     <div class="navMisFavoritos">
-        <img src="../assets/images/Iconos/Favorito.png">
+        <img src="assets/images/Iconos/FavoritoClaro.png">
         <a href="index.php?controller=usuario&accion=favoritos"
            class="opcionNav">
             Mis Favoritos
@@ -26,7 +26,7 @@
     </div>
     
     <div class="navAjustes">
-        <img src="../assets/images/Iconos/Ajustes.png">
+        <img src="assets/images/Iconos/AjustesClaro.png">
         <a href="index.php?controller=usuario&accion=ajustes"
            class="opcionNav">
             Ajustes
@@ -37,7 +37,7 @@
     <?php if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] === "admin"): ?>
 
     <div class="navUsuarios">
-        <img src="assets/images/Iconos/Usuarios.png" alt="">
+        <img src="assets/images/Iconos/UsuariosClaro.png" alt="">
             <a href="index.php?controller=usuario&accion=listar"
                 class="opcionNav">
                 Usuarios
@@ -47,7 +47,7 @@
         <?php endif; ?>
 
     <div class="navSalir">
-        <img src="../assets/images/Iconos/Salir.png">
+        <img src="assets/images/Iconos/SalirClaro.png">
         <a href="index.php?controller=usuario&accion=logout"
            class="opcionNav">
             Salir

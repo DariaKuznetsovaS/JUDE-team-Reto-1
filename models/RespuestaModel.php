@@ -30,5 +30,46 @@ class RespuestaModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    
+
+public static function store($idPregunta, $idUsuario, $texto, $ruta = null, $nombre = null) {
+
+    $db = Database::getConnection();
+
+    // Insertar la respuesta
+    $sql = "INSERT INTO respuestas (id_pregunta, id_usuario, texto)
+            VALUES (:id_pregunta, :id_usuario, :texto)";
+
+    $stmt = $db->prepare($sql);
+
+    $stmt->execute([
+        ":id_pregunta" => $idPregunta,
+        ":id_usuario" => $idUsuario,
+        ":texto" => $texto
+    ]);
+
+    // Obtener el ID de la respuesta creada
+    $idRespuesta = $db->lastInsertId();
+
+    // Si hay un adjunto, guardar sus datos
+    if ($ruta !== null && $nombre !== null) {
+
+        $sql = "INSERT INTO adjuntos (id_respuesta, ruta, nombre)
+                VALUES (:id_respuesta, :ruta, :nombre)";
+
+        $stmt = $db->prepare($sql);
+
+        $stmt->execute([
+            ":id_respuesta" => $idRespuesta,
+            ":ruta" => $ruta,
+            ":nombre" => $nombre
+        ]);
+    }
+
+    return $idRespuesta;
+}
+
+
+
 
 }

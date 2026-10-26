@@ -68,6 +68,57 @@ header .bRegistrarse {
     padding: 8px 14px;
     border-radius: .5rem;
 }
+/*Nav*/
+.menuLateral {
+    width: 185px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 8px 0;
+    box-sizing: border-box;
+}
+
+/* Cada opción del menú */
+.menuLateral > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 29px;
+    padding: 5px 8px;
+    background-color: #163A5F;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* Iconos */
+.menuLateral img {
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Texto de las opciones */
+.menuLateral .opcionNav {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+/* Efecto al pasar el ratón */
+.menuLateral > div:hover {
+    background-color: #247BA0;
+}
+.contenedorPrincipal {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+}
 
 /*Vista Principal:*/
 
