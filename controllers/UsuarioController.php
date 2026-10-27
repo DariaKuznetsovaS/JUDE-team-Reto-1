@@ -73,7 +73,7 @@ class UsuarioController extends BaseController {
     }
     
     public function perfil() {
-       $id = $_SESSION["id_usuario"];
+       $id = $_SESSION["id_usuario"]->id_usuario;
 
         $usuario = UsuarioModel::getById($id);
 
