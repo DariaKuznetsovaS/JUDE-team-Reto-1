@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>XXXX</title>
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/perfil.css">
 </head>
 <body>
+    <main class="login">
     <div id="d1">
         <img src="assets/images/Iconos/UserLogin.png" alt="No se pudo cargar esta imagen">
         <h2>Login</h2>
@@ -20,5 +21,6 @@
         <p>¿Aún no tienes cuenta?</p>
         <a href="index.php?controller=UsuarioController&accion=registro">Darse de alta</a>
     </div>
+</main>
 </body>
 </html>

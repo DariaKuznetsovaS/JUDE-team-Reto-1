@@ -386,7 +386,7 @@ header .bRegistrarse {
     width: auto;
     max-height: 350px;
     object-fit: contain;
-    object-position: left center;
+    object-position: center;
     margin-top: 16px;
     border-radius: 8px;
     border: 1px solid #E8EDF2;
@@ -780,33 +780,6 @@ header .bRegistrarse {
     }
 }
 
-
-/*FOOTER*/
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #287fa0;
-    color:#F3F6F9; 
-    padding: 12px;
-    margin-top: auto;
-}
-
-.copyright {
-    text-align: left;
-}
-
-.nombreEmpresa {
-    text-align: center;
-}
-
-.normasUso a {
-    color: #20b9aa;
-    text-decoration: none;
-}
-
-
 /* Fondo de la ventana modal */
 .modalNormas {
     position: fixed;
@@ -917,4 +890,28 @@ footer {
     display: none;
 }
 
+/*FOOTER*/
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #287fa0;
+    color:#F3F6F9; 
+    padding: 12px;
+    margin-top: auto;
+}
+
+.copyright {
+    text-align: left;
+}
+
+.nombreEmpresa {
+    text-align: center;
+}
+
+.normasUso a {
+    color: #20b9aa;
+    text-decoration: none;
+}
 
