@@ -12,11 +12,12 @@ class AjustesController extends BaseController {
     }
    
     public function editarDatos() {
-        $apellidos=$_POST["apellidos"];
-        $nombre=$_POST["nombre"];
-        $nombreUsuario=$_POST["nombreUsuario"];
-        $contrasenna=$_POST["contrasenna"];
+        
         $usuario = $_SESSION['id_usuario'];
+        $apellidos=$_POST["apellidos"]?? $usuario->apellidos;
+        $nombre=$_POST["nombre"]?? $usuario->nombre;
+        $nombreUsuario=$_POST["nombreUsuario"]?? $usuario->nombre_usuario;
+        $contrasenna=$_POST["contrasenna"]?? $usuario->contrasenna;
         $id = $usuario->id_usuario; 
         AjustesModel::editarUsuario($id, $nombre, $apellidos, $nombreUsuario, $contrasenna);
         $this->redirect("index.php?controller=AjustesController&accion=ajustes");
