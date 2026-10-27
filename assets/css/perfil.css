@@ -107,3 +107,251 @@ form input[type="submit"]:hover {
 #d2 a:hover {
     color: #20B8A6;
 }
+
+/*PERFIL DE USUARIO*/
+
+/* Contenedor principal de la página */
+.contenedorPrincipal {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+/* Perfil */
+.perfil {
+    flex: 1;
+    min-width: 0;
+    padding: 25px;
+    background-color: #F3F6F9;
+    border-radius: 12px;
+}
+
+/* Datos del usuario */
+.userContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    padding-right: 100px;
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.userContainer > img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.datosUsuario h1 {
+    margin: 0 0 10px;
+    color: #163A5F;
+    font-size: 25px;
+}
+
+.datosUsuario p {
+    margin: 6px 0;
+    color: #555;
+}
+
+/* Botones de editar y salir */
+.enlaces {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.enlaces a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.enlaces a:hover {
+    background-color: #F3F6F9;
+}
+
+.enlaces img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+/* Sección de preguntas y respuestas */
+.preguntasRespuestasContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.btnPublicar {
+    align-self: center;
+    display: inline-block;
+    padding: 11px 18px;
+    background-color: #247BA0;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btnPublicar:hover {
+    background-color: #163A5F;
+}
+
+/* Columnas de preguntas y respuestas */
+.misPreguntas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.misPreguntas > div > h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #163A5F;
+}
+
+/* Enlace de las tarjetas */
+.enlacePregunta {
+    display: block;
+    margin-bottom: 15px;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Tarjetas de preguntas */
+.preguntaCard,
+.respuestaCard {
+    padding: 18px;
+    margin-bottom: 15px;
+    background-color: white;
+    border: 1px solid #E1E8EF;
+    border-radius: 10px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.enlacePregunta:hover .preguntaCard {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 58, 95, 0.1);
+}
+
+.cabeceraCard {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.cabeceraCard h2 {
+    margin: 0 0 12px;
+    color: #163A5F;
+    font-size: 18px;
+}
+
+.cardFecha {
+    flex-shrink: 0;
+    margin: 3px 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.contenidoCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.imagenCard {
+    flex-shrink: 0;
+    width: 100px;
+    height: 85px;
+}
+
+.imagenCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.descCard {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.descCard p,
+.respuestaCard p {
+    margin-top: 0;
+    color: #444;
+    line-height: 1.5;
+}
+
+.respuestaCard > img {
+    display: block;
+    max-width: 100%;
+    max-height: 220px;
+    margin-top: 12px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 900px) {
+    .misPreguntas {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .perfil {
+        padding: 12px;
+    }
+
+    .userContainer {
+        align-items: flex-start;
+        gap: 12px;
+        padding: 18px;
+        padding-top: 65px;
+    }
+
+    .userContainer > img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .datosUsuario h1 {
+        font-size: 20px;
+        overflow-wrap: anywhere;
+    }
+
+    .enlaces {
+        top: 12px;
+        right: 12px;
+    }
+
+    .contenidoCard {
+        flex-direction: column;
+    }
+
+    .imagenCard {
+        width: 100%;
+        height: 160px;
+    }
+
+    .cabeceraCard {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
