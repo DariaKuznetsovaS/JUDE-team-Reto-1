@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../models/PreguntaModel.php';
+require_once __DIR__ . '/../models/RespuestaModel.php';
 
 
 
@@ -76,12 +78,43 @@ class UsuarioController extends BaseController {
        $id = $_SESSION["id_usuario"]->id_usuario;
 
         $usuario = UsuarioModel::getById($id);
+        $preguntas = PreguntaModel::getByIdUsuario($id);
+        $respuestas = RespuestaModel::getByIdUsuario($id);
 
         $this->render('perfil.view.php', [
-            'usuario' => $usuario
+        'usuario' => $usuario,
+        'preguntas' => $preguntas,
+        'respuestas' => $respuestas
         ]);
 
     }
+
+    
+public function verPerfil() {
+    $id = $_GET['id'] ?? null;
+
+    if (!$id || !is_numeric($id)) {
+        $this->redirect("index.php");
+        return;
+    }
+
+    $usuario = UsuarioModel::getById($id);
+
+    if (!$usuario) {
+        $this->redirect("index.php");
+        return;
+    }
+
+    $preguntas = PreguntaModel::getByIdUsuario($id);
+    $respuestas = RespuestaModel::getByIdUsuario($id);
+
+    $this->render('perfil.view.php', [
+        'usuario' => $usuario,
+        'preguntas' => $preguntas,
+        'respuestas' => $respuestas
+    ]);
+}
+
 
 
     public function store() {
