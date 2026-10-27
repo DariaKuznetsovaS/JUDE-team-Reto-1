@@ -100,6 +100,10 @@ class PreguntaController extends BaseController {
     }
 
     public function crear() {
-    redirect 
-}
+    if (!isset($_SESSION["id_usuario"])) {
+        $this->redirect("index.php?controller=UsuarioController&accion=login");
+    }
+
+    $this->render('formularioPregunta.view.php');
+    }
 }
