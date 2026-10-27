@@ -6,7 +6,8 @@ require "layout/header.php";
 ?>
 
 
-<main>
+<div class="contenedorPrincipal">
+    <?php include __DIR__ . '/layout/nav.php'; ?>
     <div class="userContainer">
 
         <img src="assets/images/Iconos/User.png" alt="Imagen usuario">
@@ -79,7 +80,7 @@ require "layout/header.php";
             
         </div>
     </div>
-</main>
+</div>
 
 
 <?php
