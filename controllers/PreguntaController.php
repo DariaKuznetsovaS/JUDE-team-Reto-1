@@ -79,6 +79,6 @@ class PreguntaController extends BaseController {
     }
 
     public function crear() {
-    require "views/crearPregunta.view.php";
+    redirect 
 }
 }
