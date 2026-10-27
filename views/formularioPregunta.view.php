@@ -1,5 +1,7 @@
 
 <?php include __DIR__ . '/layout/header.php'; ?>
+
+<div class="contenedorPrincipal">
 <?php include __DIR__ . '/layout/nav.php'; ?>
 
 <main class="publicarPregunta">
@@ -37,11 +39,6 @@
 
         <div class="botonesPregunta">
 
-            <label for="adjuntoPregunta" class="botonAdjuntar">
-                Adjuntar
-                <span aria-hidden="true">📎</span>
-            </label>
-
             <input type="file"
                    name="adjunto"
                    id="adjuntoPregunta"
@@ -54,5 +51,6 @@
     </form>
 
 </main>
+</div>
 
 <?php include __DIR__ . '/layout/footer.php'; ?>
