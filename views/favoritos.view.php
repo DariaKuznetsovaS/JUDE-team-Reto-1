@@ -9,7 +9,7 @@ require "layout/header.php";
 <main>
     <div class="userContainer">
 
-        <img src="../assets/images/User.png" alt="Imagen usuario">
+        <img src="assets/images/Iconos/User.png" alt="Imagen usuario">
         <div class="datosUsuario">
             <h1><?= htmlspecialchars($user['nombre_usuario'] ?? '') ?></h1>
 
@@ -19,12 +19,13 @@ require "layout/header.php";
         </div>
 
         <div class="enlaces">
-            <a href="index.php?controller=UsuarioController&accion=editar&id=<?= $user['id_usuario'] ?>">
-                <img src="../assets/images/Editar.png" alt="Editar perfil">
+
+            <a href="index.php?controller=AjustesController&accion=ajustes">
+                <img src="assets/images/Iconos/Editar.png" alt="">
             </a>
 
             <a href="index.php?controller=UsuarioController&accion=logout">
-                <img src="../assets/images/Salir.png" alt="">
+                <img src="assets/images/Iconos/Salir.png" alt="">
             </a>
     </div>
 
@@ -32,7 +33,7 @@ require "layout/header.php";
 
 
     <div class="favsContainer">
-        <a href="index.php?controller=PreguntaController&accion=crear" class="btnPublicar">+ Publicar nueva pregunta</a>
+        
         <div class="misPreguntas">
             <div>
                 <h2> <img src="assets/images/Iconos/Favorito.png" alt=""> Respuestas favoritas</h2>

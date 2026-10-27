@@ -7,13 +7,21 @@ require_once __DIR__ . '/../models/UsuarioModel.php';
 class UsuarioController extends BaseController {
 
     public function index() {
-        $id = $_GET["id"];
+        $id = $_SESSION["id_usuario"]->id_usuario;
         $user = UsuarioModel::getById($id);
-        $preguntasUsuario = UsuarioModel::getByIdUsuario($id);
-        $usuarios = UsuarioModel::getAll();
-        require "views/usuarios.view.php";
+        $preguntasUsuario = PreguntaModel::getByIdUsuario($id);
         
          
+
+    }
+
+    public function obtenerUsuarios() {
+
+        $usuarios = UsuarioModel::getAll();
+        $this->render("views/listaUsuarios.view.php", [
+            'usuarios' => $usuarios
+        ]);
+        
 
     }
     
