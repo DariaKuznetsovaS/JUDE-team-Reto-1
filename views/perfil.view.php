@@ -15,15 +15,33 @@
             <p> <?= htmlspecialchars($usuario['tipo'] ?? '') ?></p>
         </div>
 
-        <div class="enlaces">
-            <a href="index.php?controller=UsuarioController&accion=editar&id=<?= $usuario['id_usuario'] ?>">
-                <img src="assets/images/Iconos/Editar.png" alt="Editar perfil">
-            </a>
+<?php
+$idUsuarioSesion = $_SESSION["id_usuario"]->id_usuario ?? null;
+$tipoUsuarioSesion = $_SESSION["id_usuario"]->tipo ?? null;
 
-            <a href="index.php?controller=UsuarioController&accion=logout">
-                <img src="assets/images/Iconos/Salir.png" alt="">
-            </a>
-    </div>
+$esMiPerfil = $idUsuarioSesion == $usuario['id_usuario'];
+$esAdmin = $tipoUsuarioSesion === 'admin';
+?>
+
+<div class="enlaces">
+
+    <?php if ($idUsuarioSesion !== null && ($esMiPerfil || $esAdmin)): ?>
+
+        <a href="index.php?controller=UsuarioController&accion=editar&id=<?= (int) $usuario['id_usuario'] ?>">
+            <img src="assets/images/Iconos/Editar.png" alt="Editar perfil">
+        </a>
+
+    <?php endif; ?>
+
+    <?php if ($esMiPerfil): ?>
+
+        <a href="index.php?controller=UsuarioController&accion=logout">
+            <img src="assets/images/Iconos/Salir.png" alt="Cerrar sesión">
+        </a>
+
+    <?php endif; ?>
+
+</div>
 
     </div>
 
@@ -33,9 +51,9 @@
         <div class="misPreguntas">
             <div>
                 <h2>Preguntas</h2>
-                <?php if (!empty($preguntasUsuario)): ?>
+                <?php if (!empty($preguntas)): ?>
 
-                    <?php foreach ($preguntasUsuario as $pregunta): ?>
+                    <?php foreach ($preguntas as $pregunta): ?>
 
                         <a href="index.php?controller=PreguntaController&accion=index&id=<?=$pregunta["id_pregunta"]?>" class="enlacePregunta">
                         <div class="preguntaCard">
@@ -51,10 +69,10 @@
                             <div class="contenidoCard">
 
                                 <div class="imagenCard">
-                                    <?php if (!empty($pregunta['imagen_ruta'])): ?>
+                                    <?php if (!empty($pregunta['imagen'])): ?>
 
                                         <img
-                                            src="<?= htmlspecialchars($pregunta['imagen_ruta']) ?>"
+                                            src="<?= htmlspecialchars($pregunta['imagen']) ?>"
                                             alt="Imagen de la pregunta">
 
                                     <?php else: ?>
@@ -88,23 +106,30 @@
                 <h2>Respuestas</h2>
                 <?php if (!empty($respuestas)): ?>
 
-                    <?php foreach ($respuestas as $respuesta): ?>
+                   
+<?php foreach ($respuestas as $respuesta): ?>
 
-                        <div class="respuestaCard">
+    <a href="index.php?controller=PreguntaController&accion=index&id=<?= $respuesta['id_pregunta'] ?>"
+       class="enlacePregunta">
 
-                            <div>
-                                <p><?= htmlspecialchars($respuesta['texto']) ?></p>
-                            </div>
+        <div class="respuestaCard">
 
-                            <?php if (!empty($respuesta['imagen_ruta'])): ?>
-                                <img
-                                    src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
-                                    alt="Imagen de la respuesta">
-                            <?php endif; ?>
+            <div>
+                <p><?= htmlspecialchars($respuesta['texto']) ?></p>
+            </div>
 
-                        </div>
+            <?php if (!empty($respuesta['imagen_ruta'])): ?>
+                <img
+                    src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
+                    alt="Imagen de la respuesta">
+            <?php endif; ?>
 
-                    <?php endforeach; ?>
+        </div>
+
+    </a>
+
+<?php endforeach; ?>
+
 
                 <?php else: ?>
 

@@ -20,22 +20,31 @@ class PreguntaModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function getById($id) {
-        $db = Database::getConnection();
+    
+public static function getById($id) {
+    $db = Database::getConnection();
 
-        $stmt = $db->prepare(
-            "SELECT p.*, a.ruta AS imagen_ruta
-             FROM preguntas p
-             LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
-             WHERE p.id_pregunta = :id_pregunta"
-        );
+    $stmt = $db->prepare(
+        "SELECT p.*,
+                u.nombre_usuario,
+                (
+                    SELECT MIN(a.ruta)
+                    FROM adjuntos a
+                    WHERE a.id_pregunta = p.id_pregunta
+                ) AS imagen
+         FROM preguntas p
+         INNER JOIN usuarios u
+             ON p.id_usuario = u.id_usuario
+         WHERE p.id_pregunta = :id_pregunta"
+    );
 
-        $stmt->execute([
-            'id_pregunta' => $id
-        ]);
+    $stmt->execute([
+        'id_pregunta' => $id
+    ]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 
     public static function create($idUsuario, $titulo, $descripcion, $tipo) {
     $db = Database::getConnection();
@@ -55,21 +64,27 @@ class PreguntaModel {
     return $db->lastInsertId();
 }
 
-    public static function getByIdUsuario($id) {
-        $db = Database::getConnection();
+    
+public static function getByIdUsuario($id) {
+    $db = Database::getConnection();
 
-        $stmt = $db->prepare(
-            "SELECT *
-             FROM preguntas
-             WHERE id_usuario = :id_usuario"
-        );
+    $stmt = $db->prepare(
+        "SELECT p.*, MIN(a.ruta) AS imagen
+         FROM preguntas p
+         LEFT JOIN adjuntos a
+             ON p.id_pregunta = a.id_pregunta
+         WHERE p.id_usuario = :id_usuario
+         GROUP BY p.id_pregunta
+         ORDER BY p.fecha_creacion DESC"
+    );
 
-        $stmt->execute([
-            'id_usuario' => $id
-        ]);
+    $stmt->execute([
+        'id_usuario' => $id
+    ]);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
     //Para La pagina de Mis preguntas y Respuestas
 
@@ -80,7 +95,7 @@ class PreguntaModel {
             "SELECT p.*, MIN(a.ruta) AS imagen
             FROM preguntas p
             LEFT JOIN adjuntos a
-                    ON a.id_pregunta = p.id_pregunta
+            ON a.id_pregunta = p.id_pregunta
             WHERE p.id_usuario = :id_usuario
             GROUP BY p.id_pregunta
             ORDER BY p.fecha_creacion DESC"

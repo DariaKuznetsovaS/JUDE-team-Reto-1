@@ -13,7 +13,18 @@
 
                 <div class="cabecera">
                     <h1><?= htmlspecialchars($pregunta['titulo']) ?></h1>
+                    
+                    
+                    <p>
+                        Publicada por:
+                        <a href="index.php?controller=UsuarioController&accion=verPerfil&id=<?= (int) $pregunta['id_usuario'] ?>">
+                            <?= htmlspecialchars($pregunta['nombre_usuario'] ?? '') ?>
+                        </a>
+                    </p>
+
+
                     <p><?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?></p>
+
                 </div>
 
                 <div class="infoPregunta">
