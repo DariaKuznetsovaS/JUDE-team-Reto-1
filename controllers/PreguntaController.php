@@ -91,15 +91,24 @@ class PreguntaController extends BaseController {
 }
 
     
-    public function destroy() {
-        
+    public function crear() {
+    if (!isset($_SESSION['id_usuario'])) {
+        $this->redirect("index.php?controller=UsuarioController&accion=login");
+        return;
+    }
+
+    $this->render('formularioPregunta.view.php');
     }
     
     public function destroyAll() {
         
     }
 
+<<<<<<< Updated upstream
     public function crear() {
     redirect 
 }
+=======
+    
+>>>>>>> Stashed changes
 }
