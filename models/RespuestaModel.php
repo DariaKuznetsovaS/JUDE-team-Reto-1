@@ -17,18 +17,29 @@ class RespuestaModel {
         
     } */
 
-    public static function getByPreguntaId($id) {
-        $db = Database::getConnection();
+public static function getByPreguntaId($id) {
+    $db = Database::getConnection();
 
-        $stmt = $db->prepare("SELECT r.*, a.ruta AS imagen_ruta
-                              FROM respuestas r
-                              LEFT JOIN adjuntos a ON r.id_respuesta = a.id_respuesta
-                              WHERE r.id_pregunta = :id_pregunta");
+    $stmt = $db->prepare("
+        SELECT
+            r.*,
+            u.nombre_usuario,
+            a.ruta AS imagen_ruta
+        FROM respuestas r
+        INNER JOIN usuarios u
+            ON r.id_usuario = u.id_usuario
+        LEFT JOIN adjuntos a
+            ON r.id_respuesta = a.id_respuesta
+        WHERE r.id_pregunta = :id_pregunta
+        ORDER BY r.fecha ASC
+    ");
 
-        $stmt->execute(['id_pregunta' => $id]);
+    $stmt->execute([
+        'id_pregunta' => $id
+    ]);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
     
 public static function store($idPregunta, $idUsuario, $texto, $ruta = null, $nombre = null) {
