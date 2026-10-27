@@ -14,8 +14,8 @@
             <span>Mis Preguntas/Respuestas</span>
         </a>
 
-        <a href="index.php?controller=UsuarioController&accion=favoritos"
-           class="navMisFavoritos opcionNav">
+        <a href="index.php?controller=FavsController&accion=index"
+        class="navMisFavoritos opcionNav">
             <img src="assets/images/Iconos/FavoritoClaro.png" alt="">
             <span>Mis Favoritos</span>
         </a>

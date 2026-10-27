@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/Database.php';
 
-class RespuestaModel {
+class FavsModel {
 
     function getByIdUsuario($id){
 

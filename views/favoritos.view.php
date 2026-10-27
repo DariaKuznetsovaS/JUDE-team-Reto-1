@@ -35,7 +35,7 @@ require "layout/header.php";
         <a href="index.php?controller=PreguntaController&accion=crear" class="btnPublicar">+ Publicar nueva pregunta</a>
         <div class="misPreguntas">
             <div>
-                <h2> <img src="assets/images/Iconos/Favorito.php" alt=""> Respuestas favoritas</h2>
+                <h2> <img src="assets/images/Iconos/Favorito.png" alt=""> Respuestas favoritas</h2>
                 <?php if (!empty($respuestasFavoritas)): ?>
 
                     <?php foreach ($respuestasFavoritas as $fav): ?>

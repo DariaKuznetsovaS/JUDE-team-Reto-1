@@ -1,40 +1,33 @@
 <?php
 
-require "BaseController.php";
+require_once __DIR__ . '/BaseController.php';
+require_once __DIR__ . '/../models/FavsModel.php';
 
-
-class FavsController extends BaseController{
+class FavsController extends BaseController {
 
     public function index() {
-        $respuestasFavoritas=FavsModel::getByIdUsuario();
-         $user = UsuarioModel::getById($id);
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
+        if (!isset($_SESSION['id_usuario'])) {
+            $this->redirect("index.php?controller=UsuarioController&accion=login");
+        }
 
-        $this-> redirect(
-            "views/favoritos.view.php"
-        ) ;
-         
+        $user = (array) $_SESSION['id_usuario'];
+        $id = $user['id_usuario'];
 
-    }
-   
-    public function show() {
-        
-    }
-    
-    public function store() {
-        
-        
-    }
-    
-    public function destroy() {
-        
-    }
-    
-    public function destroyAll() {
-        
+        $favsModel = new FavsModel();
+        $respuestasFavoritas = $favsModel->getByIdUsuario($id);
+
+        $this->render('favoritos.view.php', [
+            'user' => $user,
+            'respuestasFavoritas' => $respuestasFavoritas
+        ]);
     }
 
+    public function show() {}
+    public function store() {}
+    public function destroy() {}
+    public function destroyAll() {}
 }
-
-?>
-
