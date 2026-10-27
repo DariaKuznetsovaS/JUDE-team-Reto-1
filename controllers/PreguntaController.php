@@ -6,17 +6,38 @@ require_once __DIR__ . '/../models/RespuestaModel.php';
 class PreguntaController extends BaseController {
     
     public function index() {
-        $id=$_GET["id"];
-        $pregunta=PreguntaModel::getById($id);
-        $respuestas=RespuestaModel::getByPreguntaId($id);
-        $this->render('pregunta.view.php', [
-        'pregunta' => $pregunta,
-        'respuestas' => $respuestas
-    ]);
-        
 
+        $id = $_GET["id"] ?? null;
+
+        if (!$id) {
+            $this->redirect("index.php");
+            return;
+        }
+
+        $pregunta = PreguntaModel::getById($id);
+
+        // Obtener el usuario de la sesión.
+        $usuarioSesion = $_SESSION["id_usuario"] ?? null;
+
+        if (is_object($usuarioSesion)) {
+            $idUsuario = $usuarioSesion->id_usuario ?? 0;
+        } else {
+            $idUsuario = $usuarioSesion ?? 0;
+        }
+
+        // Recuperar las respuestas con sus favoritos.
+        $respuestas = RespuestaModel::getByPreguntaId(
+            $id,
+            (int) $idUsuario
+        );
+
+        $this->render('pregunta.view.php', [
+            'pregunta' => $pregunta,
+            'respuestas' => $respuestas
+        ]);
     }
-   
+
+
     public function show() {
         
     }
@@ -79,6 +100,6 @@ class PreguntaController extends BaseController {
     }
 
     public function crear() {
-    require "views/crearPregunta.view.php";
+    redirect 
 }
 }

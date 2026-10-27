@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
-    <link rel="stylesheet" href="assets/css/registro.css">
+    <link rel="stylesheet" href="assets/css/perfil.css">
 </head>
 <body>
+    <main class="registro">
     <div id="d1">
         <img src="assets/images/Iconos/UsuarioNuevo.png" alt="No se pudo cargar esta imagen">
         <h2>Registro</h2>
@@ -21,7 +22,7 @@
 
         <input type="submit" value="Iniciar Sesión">
     </form>
-
+</main>
     <script src="assets/scripts/scriptRegistro.js"></script>
 </body>
 </html>

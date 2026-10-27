@@ -68,6 +68,8 @@ class PreguntaModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Para La pagina de Mis preguntas y Respuestas
+
     public static function preguntasPorId($id) :array{
         $db = Database::getConnection();
 

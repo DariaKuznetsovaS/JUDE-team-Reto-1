@@ -14,8 +14,8 @@
             <span>Mis Preguntas/Respuestas</span>
         </a>
 
-        <a href="index.php?controller=UsuarioController&accion=favoritos"
-           class="navMisFavoritos opcionNav">
+        <a href="index.php?controller=FavsController&accion=index"
+        class="navMisFavoritos opcionNav">
             <img src="assets/images/Iconos/FavoritoClaro.png" alt="">
             <span>Mis Favoritos</span>
         </a>
@@ -29,7 +29,7 @@
         <!-- SOLO VISIBLE PARA ADMINS -->
         <?php if (isset($_SESSION["id_usuario"]->tipo) && $_SESSION["id_usuario"]->tipo === "admin"): ?>
 
-            <a href="index.php?controller=UsuarioController&accion=listar"
+            <a href="index.php?controller=UsuarioController&accion=index"
                class="navUsuarios opcionNav">
                 <img src="assets/images/Iconos/UsuariosClaro.png" alt="">
                 <span>Usuarios</span>
