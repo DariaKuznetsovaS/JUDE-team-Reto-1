@@ -11,7 +11,8 @@ class PreguntaModel {
         $stmt = $db->prepare(
             "SELECT p.*, a.ruta AS imagen_ruta
              FROM preguntas p
-             LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta"
+             LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
+             ORDER BY fecha_creacion DESC"
         );
 
         $stmt->execute();
