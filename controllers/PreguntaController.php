@@ -45,65 +45,59 @@ class PreguntaController extends BaseController {
     
     public function store() {
 
-    if (!isset($_SESSION["id_usuario"])) {
-        //This porque hereda el método de base controller
-        $this->redirect("index.php?controller=UsuarioController&accion=login");
-    }
-    
-    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        $this->redirect("index.php");
+        if (!isset($_SESSION["id_usuario"])) {
+            //This porque hereda el método de base controller
+            $this->redirect("index.php?controller=UsuarioController&accion=login");
+        }
         
-    }
-
-    
-    $titulo = $_POST["titulo"] ?? "";
-    $descripcion = $_POST["descripcion"] ?? "";
-    $tipo = $_POST["tipo"] ?? "";
-    $idUsuario = $_SESSION["id_usuario"];
-
-    if ($titulo === "" || $descripcion === "" || $tipo === "") {
-        exit("Debes rellenar todos los campos.");
-    }
-
-    $idPregunta = PreguntaModel::create(
-        $idUsuario,
-        $titulo,
-        $descripcion,
-        $tipo
-    );
-
-    // Si se ha adjuntado un archivo
-    if (
-        isset($_FILES["adjunto"]) &&
-        $_FILES["adjunto"]["error"] !== UPLOAD_ERR_NO_FILE
-    ) {
-        if ($_FILES["adjunto"]["error"] !== UPLOAD_ERR_OK) {
-            exit("Se ha producido un error al subir el archivo.");
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            $this->redirect("index.php");
+            
         }
 
-        // Aquí se debe validar y guardar el archivo
-        // y registrar su ruta mediante el modelo de adjuntos.
+        
+        $titulo = $_POST["titulo"] ?? "";
+        $descripcion = $_POST["descripcion"] ?? "";
+        $tipo = $_POST["tipo"] ?? "";
+        $idUsuario = $_SESSION["id_usuario"];
+
+        if ($titulo === "" || $descripcion === "" || $tipo === "") {
+            exit("Debes rellenar todos los campos.");
+        }
+
+        $idPregunta = PreguntaModel::create(
+            $idUsuario,
+            $titulo,
+            $descripcion,
+            $tipo
+        );
+
+        // Si se ha adjuntado un archivo
+        if (
+            isset($_FILES["adjunto"]) &&
+            $_FILES["adjunto"]["error"] !== UPLOAD_ERR_NO_FILE
+        ) {
+            if ($_FILES["adjunto"]["error"] !== UPLOAD_ERR_OK) {
+                exit("Se ha producido un error al subir el archivo.");
+            }
+
+            // Aquí se debe validar y guardar el archivo
+            // y registrar su ruta mediante el modelo de adjuntos.
+        }
+
+        // Volver a la página principal
+        $this->redirect("index.php");
+    
     }
 
-    // Volver a la página principal
-    $this->redirect("index.php");
+    
    
-}
-
-    
-    public function destroy() {
-        
-    }
-    
-    public function destroyAll() {
-        
-    }
 
     public function crear() {
-    if (!isset($_SESSION["id_usuario"])) {
-        $this->redirect("index.php?controller=UsuarioController&accion=login");
-    }
+        if (!isset($_SESSION["id_usuario"])) {
+            $this->redirect("index.php?controller=UsuarioController&accion=login");
+        }
 
-    $this->render('formularioPregunta.view.php');
+        $this->render('formularioPregunta.view.php');
     }
 }
