@@ -67,4 +67,21 @@ class PreguntaModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function preguntasPorId($id) :array{
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare(
+            "SELECT p.*, MIN(a.ruta) AS imagen
+            FROM preguntas p
+            LEFT JOIN adjuntos a
+                    ON a.id_pregunta = p.id_pregunta
+            WHERE p.id_usuario = :id_usuario
+            GROUP BY p.id_pregunta
+            ORDER BY p.fecha_creacion DESC"
+        );
+        $stmt->execute(['id_usuario'=> $id]);
+
+        return $stmt->fetchAll();
+    }
 }
