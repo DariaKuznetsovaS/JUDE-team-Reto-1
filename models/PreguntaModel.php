@@ -37,20 +37,22 @@ class PreguntaModel {
     }
 
     public static function create($idUsuario, $titulo, $descripcion, $tipo) {
-        $db = Database::getConnection();
+    $db = Database::getConnection();
 
-        $stmt = $db->prepare(
-            "INSERT INTO preguntas (id_usuario, titulo, descripcion, tipo)
-             VALUES (:id_usuario, :titulo, :descripcion, :tipo)"
-        );
+    $stmt = $db->prepare(
+        "INSERT INTO preguntas (id_usuario, titulo, descripcion, tipo)
+         VALUES (:id_usuario, :titulo, :descripcion, :tipo)"
+    );
 
-        $stmt->execute([
-            'id_usuario' => $idUsuario,
-            'titulo' => $titulo,
-            'descripcion' => $descripcion,
-            'tipo' => $tipo
-        ]);
-    }
+    $stmt->execute([
+        'id_usuario' => $idUsuario,
+        'titulo' => $titulo,
+        'descripcion' => $descripcion,
+        'tipo' => $tipo
+    ]);
+
+    return $db->lastInsertId();
+}
 
     public static function getByIdUsuario($id) {
         $db = Database::getConnection();
@@ -67,4 +69,38 @@ class PreguntaModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    //Para La pagina de Mis preguntas y Respuestas
+
+    public static function preguntasPorId($id) :array{
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare(
+            "SELECT p.*, MIN(a.ruta) AS imagen
+            FROM preguntas p
+            LEFT JOIN adjuntos a
+                    ON a.id_pregunta = p.id_pregunta
+            WHERE p.id_usuario = :id_usuario
+            GROUP BY p.id_pregunta
+            ORDER BY p.fecha_creacion DESC"
+        );
+        $stmt->execute(['id_usuario'=> $id]);
+
+        return $stmt->fetchAll();
+    }
+
+    public static function guardarAdjunto($idPregunta, $ruta, $nombre) {
+    $db = Database::getConnection();
+
+    $stmt = $db->prepare(
+        "INSERT INTO adjuntos (id_pregunta, ruta, nombre)
+         VALUES (:id_pregunta, :ruta, :nombre)"
+    );
+
+    $stmt->execute([
+        'id_pregunta' => $idPregunta,
+        'ruta' => $ruta,
+        'nombre' => $nombre
+    ]);
+}
 }
