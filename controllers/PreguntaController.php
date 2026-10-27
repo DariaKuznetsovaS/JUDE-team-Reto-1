@@ -102,13 +102,5 @@ class PreguntaController extends BaseController {
     
     public function destroyAll() {
         
-    }
-
-<<<<<<< Updated upstream
-    public function crear() {
-    redirect 
-}
-=======
-    
->>>>>>> Stashed changes
+    } 
 }
