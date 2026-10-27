@@ -277,40 +277,136 @@ header .bRegistrarse {
     box-shadow: 0 3px 5px #00000030;
 }
 
-/* RESPUESTAS */
+
+/* Sección de respuestas */
+
+.respuestas {
+    margin-top: 35px;
+}
 
 .respuestas h2 {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    color: #163A5F;
 }
+
+/* Tarjeta individual */
 
 .respuestaCard {
+    background-color: #FFFFFF;
+    border: 1px solid #DCE4EB;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 6px rgba(22, 58, 95, 0.06);
+}
+
+/* Cabecera: usuario y favoritos */
+
+.cabeceraRespuesta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #E8EDF2;
+}
+
+.infoAutorRespuesta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+.nombreUsuarioRespuesta {
+    color: #163A5F;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.fechaRespuesta {
+    color: #7B8794;
+    font-size: 12px;
+}
+
+/* Corazón y contador */
+
+.favoritosRespuesta {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background-color: #C5DDE6;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px #00000035;
+    gap: 5px;
 }
 
-.respuestaCard img {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 4px;
+.botonFavorito {
+    background: none;
+    border: none;
+    color: #D94F70;
+    font-size: 27px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
 }
 
-.respuestaCard p {
+.numeroFavoritos {
+    color: #687786;
+    font-size: 13px;
+}
+
+/* Contenido de la respuesta */
+
+.contenidoRespuesta {
+    padding-top: 16px;
+}
+
+.textoRespuesta {
+    margin: 0;
+    color: #344454;
+    font-size: 15px;
+    line-height: 1.7;
     overflow-wrap: anywhere;
-    line-height: 1.4;
+    white-space: normal;
 }
 
-.respuestas > p {
-    text-align: center;
-    padding: 20px;
+/* Imagen adjunta */
+
+.imagenRespuesta {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    max-height: 350px;
+    object-fit: contain;
+    object-position: left center;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: 1px solid #E8EDF2;
+}
+
+/* Estado vacío */
+
+.sinRespuestas {
+    color: #7B8794;
+    padding: 15px 0;
+}
+
+/* Adaptación a pantallas pequeñas */
+
+@media (max-width: 600px) {
+    .respuestaCard {
+        padding: 16px;
+    }
+
+    .cabeceraRespuesta {
+        gap: 10px;
+    }
+
+    .nombreUsuarioRespuesta {
+        font-size: 14px;
+    }
+
+    .imagenRespuesta {
+        max-height: 260px;
+    }
 }
 
 

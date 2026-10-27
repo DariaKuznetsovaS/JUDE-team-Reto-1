@@ -33,26 +33,69 @@
 
             </div>
 
-            <section class="respuestas">
-                <h2>Respuestas</h2>
+      
+<section class="respuestas">
+    <h2>Respuestas</h2>
 
-                <?php if (!empty($respuestas)): ?>
+    <?php if (!empty($respuestas)): ?>
 
-                    <?php foreach ($respuestas as $respuesta): ?>
-                        <div class="respuestaCard">
-                            <p><?= htmlspecialchars($respuesta['texto']) ?></p>
+        <?php foreach ($respuestas as $respuesta): ?>
 
-                            <?php if (!empty($respuesta['imagen_ruta'])): ?>
-                                <img src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
-                                     alt="Imagen de la respuesta">
-                            <?php endif; ?>
-                        </div>
-                    <?php endforeach; ?>
+            <article class="respuestaCard">
 
-                <?php else: ?>
-                    <p>No hay respuestas disponibles.</p>
-                <?php endif; ?>
-            </section>
+                <div class="cabeceraRespuesta">
+
+                    <div class="infoAutorRespuesta">
+                       
+                        <a class="nombreUsuarioRespuesta"
+                        href="index.php?controller=UsuarioController&accion=perfil&id=<?= urlencode($respuesta['id_usuario']) ?>">
+                            <?= htmlspecialchars($respuesta['nombre_usuario']) ?>
+                        </a>
+
+
+                        <span class="fechaRespuesta">
+                            <?= date('d/m/Y H:i', strtotime($respuesta['fecha'])) ?>
+                        </span>
+
+                    </div>
+
+                    <div class="favoritosRespuesta">
+                        <button type="button"
+                                class="botonFavorito"
+                                aria-label="Añadir respuesta a favoritos">
+                            ♡
+                        </button>
+
+                        <span class="numeroFavoritos">0</span>
+                    </div>
+
+                </div>
+
+                <div class="contenidoRespuesta">
+
+                    <p class="textoRespuesta">
+                        <?= nl2br(htmlspecialchars($respuesta['texto'])) ?>
+                    </p>
+
+                    <?php if (!empty($respuesta['imagen_ruta'])): ?>
+                        <img class="imagenRespuesta"
+                             src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
+                             alt="Imagen adjunta a la respuesta">
+                    <?php endif; ?>
+
+                </div>
+
+            </article>
+
+        <?php endforeach; ?>
+
+    <?php else: ?>
+
+        <p class="sinRespuestas">Todavía no hay respuestas. ¡Sé la primera persona en responder!</p>
+
+    <?php endif; ?>
+</section>
+
 
         <?php else: ?>
             <p>La pregunta no existe.</p>
