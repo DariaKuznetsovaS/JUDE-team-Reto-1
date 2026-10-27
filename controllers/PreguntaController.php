@@ -100,7 +100,4 @@ class PreguntaController extends BaseController {
     $this->render('formularioPregunta.view.php');
     }
     
-    public function destroyAll() {
-        
-    } 
 }
