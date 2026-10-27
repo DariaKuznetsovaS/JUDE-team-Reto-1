@@ -59,15 +59,31 @@
 
                     </div>
 
+              
                     <div class="favoritosRespuesta">
-                        <button type="button"
-                                class="botonFavorito"
-                                aria-label="Añadir respuesta a favoritos">
-                            ♡
-                        </button>
 
-                        <span class="numeroFavoritos">0</span>
+                        <?php if (isset($_SESSION['id_usuario'])): ?>
+
+                            <button type="button"
+                                    class="botonFavorito <?= !empty($respuesta['usuario_favorito']) ? 'favoritoActivo' : '' ?>"
+                                    data-id-respuesta="<?= (int) $respuesta['id_respuesta'] ?>"
+                                    aria-label="Añadir o quitar de favoritos"
+                                    aria-pressed="<?= !empty($respuesta['usuario_favorito']) ? 'true' : 'false' ?>">
+                                <?= !empty($respuesta['usuario_favorito']) ? '♥' : '♡' ?>
+                            </button>
+
+                        <?php else: ?>
+
+                            <span class="botonFavorito" aria-hidden="true">♡</span>
+
+                        <?php endif; ?>
+
+                        <span class="numeroFavoritos">
+                            <?= (int) ($respuesta['total_favoritos'] ?? 0) ?>
+                        </span>
+
                     </div>
+
 
                 </div>
 
@@ -131,5 +147,5 @@
     </main>
 
 </div>
-
+<script src="assets/scripts/favoritos.js" defer></script>
 <?php include __DIR__ . '/layout/footer.php'; ?>
