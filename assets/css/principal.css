@@ -332,26 +332,36 @@ header .bRegistrarse {
 
 /* Corazón y contador */
 
-.favoritosRespuesta {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
 .botonFavorito {
     background: none;
     border: none;
-    color: #D94F70;
-    font-size: 27px;
+    color: #8A96A3;
+    font-size: 28px;
     line-height: 1;
     cursor: pointer;
-    padding: 0;
+    padding: 2px;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.botonFavorito:hover {
+    transform: scale(1.15);
+}
+
+.botonFavorito.favoritoActivo {
+    color: #D62850;
+}
+
+.botonFavorito:disabled {
+    cursor: wait;
+    opacity: 0.7;
 }
 
 .numeroFavoritos {
     color: #687786;
     font-size: 13px;
+    min-width: 12px;
 }
+
 
 /* Contenido de la respuesta */
 

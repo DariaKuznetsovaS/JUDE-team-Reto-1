@@ -135,11 +135,67 @@ class RespuestaController extends BaseController {
         );
     }
 
-    public function destroy() {
 
+    public function toggleFavorito() {
+
+        header('Content-Type: application/json; charset=utf-8');
+
+        // Comprobar que hay un usuario conectado.
+        $sesion = $_SESSION['id_usuario'] ?? null;
+
+        // Si la sesión contiene un objeto usuario, obtener su ID.
+        if (is_object($sesion)) {
+            $sesion = $sesion->id_usuario ?? null;
+        }
+
+        $idUsuario = filter_var($sesion, FILTER_VALIDATE_INT);
+
+        if (!$idUsuario || $idUsuario < 1) {
+            http_response_code(401);
+
+            echo json_encode([
+                'error' => 'Debes iniciar sesión para guardar favoritos.'
+            ]);
+
+            exit;
+        }
+
+        // Obtener el ID de la respuesta.
+        $idRespuesta = filter_input(
+            INPUT_POST,
+            'id_respuesta',
+            FILTER_VALIDATE_INT
+        );
+
+        if (!$idRespuesta || $idRespuesta < 1) {
+            http_response_code(400);
+
+            echo json_encode([
+                'error' => 'La respuesta no es válida.'
+            ]);
+
+            exit;
+        }
+
+        try {
+
+            $resultado = RespuestaModel::toggleFavorito(
+                $idRespuesta,
+                $idUsuario
+            );
+
+            echo json_encode($resultado);
+
+        } catch (PDOException $e) {
+
+            http_response_code(500);
+
+            echo json_encode([
+                'error' => 'No se ha podido actualizar el favorito.'
+            ]);
+        }
+
+        exit;
     }
 
-    public function destroyAll() {
-
-    }
 }
