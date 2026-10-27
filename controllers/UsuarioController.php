@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../models/RespuestaModel.php';
+require_once __DIR__ . '/../models/PreguntaModel.php';
 
 
 
@@ -9,6 +11,9 @@ class UsuarioController extends BaseController {
     public function index() {
         $id = $_SESSION["id_usuario"]->id_usuario;
         $user = UsuarioModel::getById($id);
+        $preguntasUsuario = UsuarioModel::getByIdUsuario($id);
+        $usuarios = UsuarioModel::getAll();
+        require "views/listaUsuarios.view.php";
         $preguntasUsuario = PreguntaModel::getByIdUsuario($id);
         
          
@@ -91,6 +96,16 @@ class UsuarioController extends BaseController {
 
     }
 
+    public function misPreguntas(){
+        $id=$_SESSION["id_usuario"]->id_usuario;
+        $preguntas=[];
+        $respuestas=[];
+        $preguntas=PreguntaModel::preguntasPorId($id);
+        $respuestas=RespuestaModel::respuestasPorId($id);
+
+        require "views/misPreguntas.view.php";
+    }
+
 
     public function store() {
         
@@ -151,6 +166,8 @@ class UsuarioController extends BaseController {
         exit();
     }
     
+
+
 
 
 }
