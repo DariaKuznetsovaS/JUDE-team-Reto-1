@@ -11,6 +11,7 @@
 
     <title>AERGIBIDE, S.L.</title>
     <link rel="stylesheet" href="assets/css/principal.css">
+    <link rel="stylesheet" href="assets/css/perfil.css">
     <script src="assets/scripts/script.js" defer></script>
 </head>
 <body>
