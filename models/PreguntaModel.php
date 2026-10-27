@@ -37,20 +37,22 @@ class PreguntaModel {
     }
 
     public static function create($idUsuario, $titulo, $descripcion, $tipo) {
-        $db = Database::getConnection();
+    $db = Database::getConnection();
 
-        $stmt = $db->prepare(
-            "INSERT INTO preguntas (id_usuario, titulo, descripcion, tipo)
-             VALUES (:id_usuario, :titulo, :descripcion, :tipo)"
-        );
+    $stmt = $db->prepare(
+        "INSERT INTO preguntas (id_usuario, titulo, descripcion, tipo)
+         VALUES (:id_usuario, :titulo, :descripcion, :tipo)"
+    );
 
-        $stmt->execute([
-            'id_usuario' => $idUsuario,
-            'titulo' => $titulo,
-            'descripcion' => $descripcion,
-            'tipo' => $tipo
-        ]);
-    }
+    $stmt->execute([
+        'id_usuario' => $idUsuario,
+        'titulo' => $titulo,
+        'descripcion' => $descripcion,
+        'tipo' => $tipo
+    ]);
+
+    return $db->lastInsertId();
+}
 
     public static function getByIdUsuario($id) {
         $db = Database::getConnection();
@@ -86,4 +88,19 @@ class PreguntaModel {
 
         return $stmt->fetchAll();
     }
+
+    public static function guardarAdjunto($idPregunta, $ruta, $nombre) {
+    $db = Database::getConnection();
+
+    $stmt = $db->prepare(
+        "INSERT INTO adjuntos (id_pregunta, ruta, nombre)
+         VALUES (:id_pregunta, :ruta, :nombre)"
+    );
+
+    $stmt->execute([
+        'id_pregunta' => $idPregunta,
+        'ruta' => $ruta,
+        'nombre' => $nombre
+    ]);
+}
 }
