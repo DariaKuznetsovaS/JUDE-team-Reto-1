@@ -23,6 +23,22 @@ public static function getByIdUsuario($id){
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+public static function getByIdUsuario($id){
+    $db = Database::getConnection();
+
+    $stmt = $db->prepare(
+        "SELECT r.*, a.ruta AS imagen_ruta
+         FROM respuestas r
+         LEFT JOIN adjuntos a ON r.id_respuesta = a.id_respuesta
+         WHERE r.id_usuario = :id
+         ORDER BY r.fecha DESC"
+    );
+
+    $stmt->execute(['id' => $id]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 public static function getByPreguntaId($id, $idUsuario = 0) {
 
         
