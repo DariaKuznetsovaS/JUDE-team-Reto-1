@@ -103,12 +103,3 @@ class PreguntaController extends BaseController {
     public function destroyAll() {
         
     }
-
-<<<<<<< Updated upstream
-    public function crear() {
-    require "views/crearPregunta.view.php";
-}
-=======
-    
->>>>>>> Stashed changes
-}
