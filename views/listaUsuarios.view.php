@@ -10,7 +10,8 @@ require "layout/header.php"
         <h1>Lista de usuarios</h1>
     
     </div>
-    <?php foreach($usuarios as $u): ?>
+    <?php if(!empty($usuarios)) : ?>
+        <?php foreach($usuarios as $u): ?>
         <div>
             <img src="assets/images/Iconos/User.png" alt="">
             <p> <?= $u['nombre_usuario'] ?> </p>
@@ -22,9 +23,13 @@ require "layout/header.php"
             </div>
         </div>
 
-    <?php endforeach ; ?>
+        <?php endforeach ; ?>
+    <?php else: ?>
+        <p> No hay usuarios registrados. </p>
+    <?php endif; ?>
 
-    <a href="">+Crear nuevo usuario</a>
+
+    <a href="index.php?controller=UsuarioController&accion=">+Crear nuevo usuario</a>
 
 </main>
 
@@ -37,4 +42,4 @@ require "layout/header.php"
 <?php
 require "layout/footer.php"
 
-?
+?>

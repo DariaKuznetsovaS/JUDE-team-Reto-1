@@ -13,14 +13,14 @@ class UsuarioController extends BaseController {
         $user = UsuarioModel::getById($id);
         $preguntasUsuario = UsuarioModel::getByIdUsuario($id);
         $usuarios = UsuarioModel::getAll();
-        require "views/listaUsuarios.view.php";
+        
         $preguntasUsuario = PreguntaModel::getByIdUsuario($id);
         
          
 
     }
 
-    public function obtenerUsuarios() {
+    public function listarUsers() {
 
         $usuarios = UsuarioModel::getAll();
         $this->render("views/listaUsuarios.view.php", [
