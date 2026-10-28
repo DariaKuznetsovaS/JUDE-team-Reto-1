@@ -7,7 +7,7 @@ $usuario=$_SESSION["id_usuario"];?>
     <?php include __DIR__ . '/layout/nav.php'; ?>
 
     <main>
-        <div id="datosUsuario">
+        <div class ="datosUsuario">
             <img src="assets/images/Iconos/User.png" alt="Foto de perfil">
 
             <div id="infoUsuario">
@@ -21,12 +21,12 @@ $usuario=$_SESSION["id_usuario"];?>
                     <img src="assets/images/Iconos/Editar.png" alt="Editar datos">
                 </a>
                 <a href="index.php?controller=UsuarioController&accion=cerrarSesion">
-                    <img src="assets/images/Iconos/CerrarSesion.png" alt="Cerrar sesión">
+                    <img src="assets/images/Iconos/Salir.png" alt="Cerrar sesión">
                 </a>
             </div>
         </div>
 
-        <a href="index.php?controller=PreguntaController&accion=publicar" id="botonPublicar">
+        <a href="index.php?controller=PreguntaController&accion=crear" id="botonPublicar">
             + Publicar nueva pregunta
         </a>
 
@@ -34,8 +34,8 @@ $usuario=$_SESSION["id_usuario"];?>
 
             <div class="columna">
                 <h3>Preguntas</h3>
-
                 <?php foreach ($preguntas as $pregunta): ?>
+                <a href="index.php?controller=PreguntaController&accion=index&id=<?=$pregunta->id_pregunta?>" class="enlacePregunta">
                     <div class="preguntaCard">
                         <div class="cabeceraCard">
                             <h4><?= $pregunta->titulo ?></h4>
@@ -46,13 +46,16 @@ $usuario=$_SESSION["id_usuario"];?>
                             <p><?= $pregunta->descripcion ?></p>
                         </div>
                     </div>
+                </a>
                 <?php endforeach; ?>
+                </a>
             </div>
 
             <div class="columna">
                 <h3>Respuestas</h3>
 
-                <?php foreach ($respuestas as $respuesta): ?>
+                <?php foreach ($respuestas as $respuesta): ?>    
+                <a href="index.php?controller=PreguntaController&accion=index&id=<?=$respuesta->id_pregunta?>" class="enlacePregunta">
                     <div class="respuestaCard">
                         <div class="cabeceraCard">
                             <h4><?= $usuario->nombre_usuario ?></h4>
@@ -63,6 +66,7 @@ $usuario=$_SESSION["id_usuario"];?>
                             <p><?= $respuesta->texto ?></p>
                         </div>
                     </div>
+                </a>
                 <?php endforeach; ?>
             </div>
 
