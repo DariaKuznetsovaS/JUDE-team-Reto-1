@@ -21,14 +21,16 @@
                 <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="<?=$usuario->nombre_usuario?>">
                 <p id="msgUsuario"></p>
                 <?php if($usuario->tipo==="admin"):?>
-                    <select name="tipo">
-                        <option value="user"  <?= $usuario->tipo === "user"  ? "selected" : "" ?>>user</option>
-                        <option value="admin" <?= $usuario->tipo === "admin" ? "selected" : "" ?>>admin</option>
+                    <select name="tipo" id=tipo>
+                        <option value="user">user</option>
+                        <option value="admin" selected >admin</option>
                     </select>
+                    <p id="msgTipo"></p>
+
                 <?php else:?>
                     <select name="tipo" disabled>
-                        <option value="user"  <?= $usuario->tipo === "user"  ? "selected" : "" ?>>user</option>
-                        <option value="admin" <?= $usuario->tipo === "admin" ? "selected" : "" ?>>admin</option>
+                        <option value="user" selected >user</option>
+                        <option value="admin">admin</option>
                     </select>
                 <?php endif;?>
 

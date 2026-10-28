@@ -57,3 +57,36 @@ inputContrasenna.addEventListener('input', function () {
             }
         });
 });
+
+
+const inputTipo = document.getElementById('tipo');
+const mensajeTipo = document.getElementById('msgTipo');
+
+if (inputTipo) {
+    inputTipo.addEventListener('change', function () {
+        const tipo = inputTipo.value;
+
+        if (tipo !== 'user') {
+            mensajeTipo.innerText = '';
+            return;
+        }
+
+        const datos = new FormData();
+        datos.append('tipo', tipo);
+
+        fetch('index.php?controller=AjustesController&accion=comprobarTipo', {
+            method: 'POST',
+            body: datos
+        })
+            .then(respuesta => respuesta.json())
+            .then(datos => {
+                if (datos.valida) {
+                    mensajeTipo.innerText = 'Se puede cambiar a user';
+                    mensajeTipo.style.color = '#20B8A6';
+                } else {
+                    mensajeTipo.innerText = datos.mensaje;
+                    mensajeTipo.style.color = '#b3261e';
+                }
+            });
+    });
+}

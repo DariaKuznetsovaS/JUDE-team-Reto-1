@@ -164,7 +164,7 @@ public function verPerfil() {
     public function comprobarUsuario() {
         header('Content-Type: application/json');
 
-        $nombreUsuario = trim($_GET['nombreUsuario'] ?? '');
+        $nombreUsuario = $_GET['nombreUsuario'] ?? '';
 
         if (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $nombreUsuario)) {
             echo json_encode(['disponible' => false]);

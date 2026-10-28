@@ -68,6 +68,18 @@ class AjustesController extends BaseController {
         exit;
     }
 
+    // Responde al fetch del tipo
+    public function comprobarTipo() {
+        $tipo = $_POST['tipo'] ?? '';
+        $id = $_SESSION['id_usuario']->id_usuario;
+
+        $mensaje = $this->validarTipo($tipo, $id);
+
+        header('Content-Type: application/json');
+        echo json_encode(['valida' => $mensaje === '', 'mensaje' => $mensaje]);
+        exit;
+    }
+
     private function validarNombreUsuario($nombre, $idActual) {
         if (strlen($nombre) < 3) {
             return 'Debe tener al menos 3 caracteres';
@@ -91,6 +103,13 @@ class AjustesController extends BaseController {
         }
         if (!preg_match('/\d/', $contrasenna)) {
             return 'Debe tener un número';
+        }
+        return '';
+    }
+
+    private function validarTipo($tipo, $idActual) {
+        if ($tipo === 'user' && !AjustesModel::hayOtroAdmin($idActual)) {
+            return 'Es el último admin, no se puede cambiar a user';
         }
         return '';
     }

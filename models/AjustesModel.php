@@ -51,6 +51,18 @@ class AjustesModel {
  
         return $stmt->fetchColumn() > 0;
     }
+
+    public static function hayOtroAdmin($idActual) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare(
+            "SELECT COUNT(*) FROM usuarios
+            WHERE tipo = 'admin'
+            AND id_usuario <> :idActual"
+        );
+        $stmt->execute(['idActual' => $idActual]);
+
+        return $stmt->fetchColumn() > 0;
+    }
  
     // Devuelve el usuario como objeto (para refrescar la sesión)
     public static function obtenerPorId($id) {
