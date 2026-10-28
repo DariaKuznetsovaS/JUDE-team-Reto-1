@@ -221,6 +221,8 @@ public static function getByPreguntaId($id, $idUsuario = 0) {
     }
 
 
+
+
     public static function getFavoritosByUsuario($idUsuario) {
 
         $db = Database::getConnection();
