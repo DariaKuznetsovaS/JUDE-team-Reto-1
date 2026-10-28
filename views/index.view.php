@@ -13,17 +13,21 @@
             <a href="index.php?controller=PreguntaController&accion=index&id=<?=$pregunta["id_pregunta"]?>" class="enlacePregunta">
             <div class="preguntaCard">
 
-                <div class="cabeceraCard">
-                    <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
+                
+            <div class="cabeceraCard">
+                <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
+
+                <div class="metadatosCard">
+                    <span class="categoriaPregunta">
+                        <?= htmlspecialchars(ucfirst($pregunta["tipo"])) ?>
+                    </span>
 
                     <p class="cardFecha">
                         <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
                     </p>
-
-                    <span class="categoriaPregunta">
-                    <?= htmlspecialchars(ucfirst($pregunta["tipo"])) ?>
-                    </span>
                 </div>
+            </div>
+
 
                 <div class="contenidoCard">
 

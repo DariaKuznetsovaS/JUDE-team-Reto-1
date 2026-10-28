@@ -2,7 +2,7 @@
 
 
 
-    <div id="contenedorAjustes">
+    <div class="contenedorPrincipal">
         <?php include __DIR__ . '/layout/nav.php'; ?>
         <div id="tarjeta">
             <div id="d1">

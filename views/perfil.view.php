@@ -47,7 +47,16 @@ $esAdmin = $tipoUsuarioSesion === 'admin';
 
 
     <div class="preguntasRespuestasContainer">
-        <a href="index.php?controller=PreguntaController&accion=crear" class="btnPublicar">+ Publicar nueva pregunta</a>
+        <?php if (
+        isset($_SESSION["id_usuario"]) &&
+        $_SESSION["id_usuario"]->id_usuario == $usuario["id_usuario"]
+    ): ?>
+
+        <a href="index.php?controller=PreguntaController&accion=crear" class="btnPublicar">
+            + Publicar nueva pregunta
+        </a>
+
+<?php endif; ?>
         <div class="misPreguntas">
             <div>
                 <h2>Preguntas</h2>
