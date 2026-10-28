@@ -1305,3 +1305,69 @@ footer {
     text-decoration: none;
 }
 
+/* Fondo oscuro del visor */
+.visorImagen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Visor visible */
+.visorImagen.activo {
+    display: flex;
+}
+
+/* Imagen ampliada */
+.visorImagen img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón para cerrar */
+.cerrarVisor {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 42px;
+    cursor: pointer;
+}
+
+.cerrarVisor:hover {
+    color: #16B8A8;
+}
+
+/* Indicar que las imágenes se pueden pulsar */
+.imagenPregunta,
+.imagenRespuesta {
+    cursor: zoom-in;
+}
+
+@media (max-width: 600px) {
+    .visorImagen {
+        padding: 15px;
+    }
+
+    .visorImagen img {
+        max-width: 100%;
+        max-height: 85%;
+    }
+
+    .cerrarVisor {
+        top: 10px;
+        right: 15px;
+    }
+}

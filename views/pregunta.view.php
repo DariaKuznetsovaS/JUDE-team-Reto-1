@@ -259,6 +259,15 @@
 
 </div>
 
-<script src="assets/scripts/favoritos.js" defer></script>
 
+
+<div id="visorImagen" class="visorImagen">
+    <button type="button" id="cerrarVisor" class="cerrarVisor"
+            aria-label="Cerrar imagen">&times;</button>
+
+    <img id="imagenAmpliada" src="" alt="Imagen ampliada">
+</div>
+
+<script src="assets/scripts/favoritos.js" defer></script>
+<script src="assets/scripts/visorImagen.js" defer></script>
 <?php include __DIR__ . '/layout/footer.php'; ?>
