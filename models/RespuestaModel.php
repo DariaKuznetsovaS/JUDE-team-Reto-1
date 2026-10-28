@@ -140,13 +140,6 @@ class RespuestaModel {
 
             // Si no es favorita, guardarla.
             $stmt = $db->prepare("
-<<<<<<< HEAD
-                INSERT INTO respuestas_favoritas
-                    (id_respuesta, id_usuario)
-                VALUES
-                    (:id_respuesta, :id_usuario)
-=======
->>>>>>> dev-Jose
                 SELECT COUNT(*)
                 FROM respuestas_favoritas
                 WHERE id_respuesta = :id_respuesta
@@ -188,13 +181,10 @@ class RespuestaModel {
                 ON r.id_respuesta = a.id_respuesta
             WHERE f.id_usuario = :id_usuario
             ORDER BY r.fecha DESC
-<<<<<<< HEAD
-=======
             INSERT INTO respuestas_favoritas
                 (id_respuesta, id_usuario)
             VALUES
                 (:id_respuesta, :id_usuario)
->>>>>>> dev-Jose
         ");
 
         $stmt->execute([
