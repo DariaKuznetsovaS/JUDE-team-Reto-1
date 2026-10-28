@@ -23,7 +23,7 @@ class UsuarioController extends BaseController {
     public function listarUsers() {
 
         $usuarios = UsuarioModel::getAll();
-        $this->render("views/listaUsuarios.view.php", [
+        $this->render("listaUsuarios.view.php", [
             'usuarios' => $usuarios
         ]);
         
@@ -196,9 +196,17 @@ public function verPerfil() {
         exit();
     }
     
+/*
+    public function crearUser() {
 
+        $usuario = UsuarioModel::insertarUsuario();
+        $this->render("listaUsuarios.view.php", [
+            '' => $
+        ]);
+        
 
+    }
 
-
+*/
 }
 
