@@ -10,11 +10,27 @@
                 <h2>Editar datos</h2>
             </div>
 
+            
+
+
             <form action="index.php?controller=AjustesController&accion=editarDatos" method="post">
-                <input type="text" name="apellidos" placeholder="Nuevos Apellidos">
-                <input type="text" name="nombre" placeholder="Nuevo Nombre">
-                <input type="password" name="contrasenna" placeholder="Nueva Contraseña">
-                <input type="text" name="nombreUsuario" placeholder="Nuevo username">
+                <input type="text" name="apellidos" placeholder="<?=$usuario->apellidos?>">
+                <input type="text" name="nombre" placeholder="<?=$usuario->nombre?>">
+                <input type="password" name="contrasenna" id="contrasenna" placeholder="<?=$usuario->contrasenna?>">
+                <p id="msgContrasenna"></p>
+                <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="<?=$usuario->nombre_usuario?>">
+                <p id="msgUsuario"></p>
+                <?php if($usuario->tipo==="admin"):?>
+                    <select name="tipo">
+                        <option value="user"  <?= $usuario->tipo === "user"  ? "selected" : "" ?>>user</option>
+                        <option value="admin" <?= $usuario->tipo === "admin" ? "selected" : "" ?>>admin</option>
+                    </select>
+                <?php else:?>
+                    <select name="tipo" disabled>
+                        <option value="user"  <?= $usuario->tipo === "user"  ? "selected" : "" ?>>user</option>
+                        <option value="admin" <?= $usuario->tipo === "admin" ? "selected" : "" ?>>admin</option>
+                    </select>
+                <?php endif;?>
 
                 <div id="d2">
                     <input type="submit" value="Aceptar cambios">
@@ -23,6 +39,7 @@
             </form>
         </div>
     </div>
-</body>
+    <script src="assets/scripts/ajustes.js"></script>
+
 
 <?php include __DIR__ . '/layout/footer.php'; ?>

@@ -47,7 +47,7 @@ class UsuarioController extends BaseController {
             $tipo = $usuario->tipo;
             
             
-            $this->redirect("index.php?controller=PrincipalController&accion=index&tipo=$tipo");
+            $this->redirect("index.php?controller=PrincipalController&accion=index");
             
         } else {
 

@@ -527,48 +527,46 @@ header .bRegistrarse {
 }
 
 /* AJUSTES */
- 
+
 #contenedorAjustes {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
-    gap: 20px;
-    padding: 40px 16px;
+    gap: 12px;
+    padding: 8px 12px 40px;
 }
- 
-/* Tarjeta: todo lo de dentro centrado */
+
 #tarjeta {
     width: 100%;
     max-width: 580px;
+    margin: 0 auto;
     padding: 64px 32px 72px;
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 2px 8px #163A5F33;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
- 
-/* Icono encima del título, centrados */
-#d1 {
-    display: flex;
-    flex-direction: column;
+
+/* Icono + título */
+#tarjeta #d1 {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 12px;
     margin-bottom: 40px;
 }
- 
-#d1 img {
+
+#tarjeta #d1 img {
     width: 36px;
-    margin: 0;
+    height: 36px;
+    object-fit: contain;
+    justify-self: start;
+    margin-left: 10%;
 }
- 
-#d1 h2 {
+
+#tarjeta #d1 h2 {
     color: #247BA0;
     font-size: 1.6rem;
 }
- 
-/* Formulario a todo el ancho y centrado */
+
+/* Formulario */
 #tarjeta form {
     width: 100%;
     display: flex;
@@ -576,9 +574,10 @@ header .bRegistrarse {
     align-items: center;
     gap: 34px;
 }
- 
+
 #tarjeta input[type="text"],
-#tarjeta input[type="password"] {
+#tarjeta input[type="password"],
+#tarjeta select {
     width: 170px;
     padding: 14px 8px;
     border: 2px solid transparent;
@@ -588,63 +587,88 @@ header .bRegistrarse {
     font-family: inherit;
     font-weight: 500;
     font-size: 0.9rem;
+    text-align: center;
+    text-align-last: center;
 }
- 
+
 #tarjeta input[type="text"]::placeholder,
 #tarjeta input[type="password"]::placeholder {
     color: #6B767B;
+    text-align: center;
 }
- 
+
 #tarjeta input[type="text"]:focus,
-#tarjeta input[type="password"]:focus {
+#tarjeta input[type="password"]:focus,
+#tarjeta select:focus {
     outline: none;
     border-color: #20B8A6;
     background-color: white;
 }
- 
-/* Botones: mismo tamaño y alineados */
+
+#tarjeta select {
+    cursor: pointer;
+}
+
+#tarjeta select:disabled {
+    color: #6B767B;
+    cursor: not-allowed;
+}
+
+/* Botones */
 #tarjeta #d2 {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 32px;
+    width: 100%;
 }
- 
+
 #tarjeta #d2 input[type="submit"],
 #tarjeta #d2 a {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 139px;
-    height: 43px;
+    height: 44px;
     margin: 0;
     padding: 0;
     border: none;
     border-radius: 6px;
+    color: white;
     font-family: inherit;
     font-weight: 500;
     font-size: 0.9rem;
+    text-decoration: none;
     cursor: pointer;
 }
- 
+
 #tarjeta #d2 input[type="submit"] {
     background-color: #247BA0;
-    color: white;
 }
- 
-#tarjeta #d2 a,
-#tarjeta #d2 a:link,
-#tarjeta #d2 a:visited {
+
+#tarjeta #d2 a {
     background-color: #6B767B;
-    color: white;
-    text-decoration: none;
 }
- 
+
 #tarjeta #d2 input[type="submit"]:hover,
 #tarjeta #d2 a:hover {
     filter: brightness(0.92);
 }
- 
+
+#contenedorAjustes #tarjeta form {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    float: none;
+}
+
+#contenedorAjustes #tarjeta #d2 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
 /* PERFIL DE USUARIO */
  
 #perfil {
@@ -783,8 +807,17 @@ header .bRegistrarse {
     color: #163A5F;
 }
 
+/*JS AJUSTES*/
+#tarjeta #errores {
+    margin-bottom: 24px;
+    text-align: center;
+    color: #b3261e;
+    font-size: 0.9rem;
+}
 
-
+#tarjeta #errores p {
+    margin-bottom: 6px;
+}
 
 
 /* PUBLICAR PREGUNTA */
