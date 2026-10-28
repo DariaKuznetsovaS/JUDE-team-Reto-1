@@ -67,25 +67,26 @@ class UsuarioModel {
     }
 
 
-    public static function updateUsuario($id,$datos) {
+    public static function updateUsuario($id, $datos) {
+    $db = Database::getConnection();
 
-        $db = Database::getConnection();
+    $stmt = $db->prepare("UPDATE usuarios
+                          SET nombre_usuario = :nombre_usuario,
+                              contrasenna = :contrasenna,
+                              nombre = :nombre,
+                              apellidos = :apellidos,
+                              tipo = :tipo
+                          WHERE id_usuario = :id_usuario");
 
-        $stmt = $db->prepare("UPDATE usuarios 
-                              SET nombre_usuario = :nombre_usuario, contrasenna = :contrasenna, nombre = :nombre, apellidos = :apellidos
-                              WHERE id_usuario = :id_usuario");
-
-
-        $stmt->bindParam(':id_usuario',$id );
-        $stmt->bindParam(':nombre_usuario',$datos['nombre_usuario']);
-        $stmt->bindParam(':contrasena',$datos['contrasena']);
-        $stmt->bindParam(':nombre',$datos['nombre']);
-        $stmt->bindParam(':apellido',$datos['apellido']);
-
-
-        return $stmt->execute();
-
-    }
+    return $stmt->execute([
+        'nombre_usuario' => $datos['nombre_usuario'],
+        'contrasenna'    => $datos['contrasenna'],
+        'nombre'         => $datos['nombre'],
+        'apellidos'      => $datos['apellidos'],
+        'tipo'           => $datos['tipo'],
+        'id_usuario'     => $id
+    ]);
+}
 
     public static function existeNombreUsuario($nombreUsuario) {
         $db = Database::getConnection();

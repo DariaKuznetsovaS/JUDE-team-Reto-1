@@ -164,32 +164,38 @@ public function verPerfil() {
     }
 
     public function actualizarUsuario() {
+        $id = $_POST['id'] ?? '';
 
-        $id = $_POST['id'] ?? null;
-        
+        if ($id === '' || !is_numeric($id)) {
+            $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+            return;
+        }
+
         $actual = UsuarioModel::getById($id);
 
-        $nuevoNombre = $_POST['nuevoNombre'] ?? '';
-        $nuevoApellido = $_POST['nuevoApellido'] ?? '';
-        $nuevoUsername = $_POST['nuevoUsername'] ?? '';
-        $nuevContrasena = $_POST['nuevaContrasena'] ?? '';
-        $tipo = $_POST['tipo'] ?? '';
+        if (!$actual) {
+            $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+            return;
+        }
+
+        $nuevoNombre     = $_POST['nuevoNombre'] ?? '';
+        $nuevoApellido   = $_POST['nuevoApellido'] ?? '';
+        $nuevoUsername   = $_POST['nuevoUsername'] ?? '';
+        $nuevaContrasena = $_POST['nuevaContrasena'] ?? '';
+        $tipo            = $_POST['tipo'] ?? '';
 
         $datos = [
             'nombre_usuario' => $nuevoUsername !== '' ? $nuevoUsername : $actual['nombre_usuario'],
-            'contrasenna' => $nuevaContrasena !== '' ? $nuevaContrasena : $actual['contrasenna'],
-            'nombre' => $nuevoNombre !== '' ? $nuevoNombre : $actual['nombre'],
-            'apellidos'=> $nuevoApellido !== '' ? $nuevoApellido : $actual['apellidos'],
-            'tipo' => in_array($tipo, ['User', 'Admin'], true) ? $tipo : $actual['tipo']
-                
-            
+            'contrasenna'    => $nuevaContrasena !== '' ? $nuevaContrasena : $actual['contrasenna'],
+            'nombre'         => $nuevoNombre !== '' ? $nuevoNombre : $actual['nombre'],
+            'apellidos'      => $nuevoApellido !== '' ? $nuevoApellido : $actual['apellidos'],
+            'tipo'           => in_array($tipo, ['User', 'Admin'], true) ? $tipo : $actual['tipo']
         ];
 
-        UsuarioModel::updateUsuario($id,$datos);
+        UsuarioModel::updateUsuario($id, $datos);
 
         $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
-
-    }
+}
     
 
 
