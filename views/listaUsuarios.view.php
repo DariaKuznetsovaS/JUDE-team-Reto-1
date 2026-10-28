@@ -3,7 +3,8 @@ require "layout/header.php"
 
 ?>
 
-<main>
+<div class ="contenedorPrincipal">
+    <?php include __DIR__ . '/layout/nav.php'; ?>
     <div class="cabecera">
 
         <img src="assets/images/Iconos/Usuarios.png" alt="">
@@ -29,9 +30,9 @@ require "layout/header.php"
     <?php endif; ?>
 
 
-    <a href="index.php?controller=UsuarioController&accion=">+Crear nuevo usuario</a>
+    <a href="index.php?controller=UsuarioController&accion=crearUser">+Crear nuevo usuario</a>
 
-</main>
+</div>
 
 
 

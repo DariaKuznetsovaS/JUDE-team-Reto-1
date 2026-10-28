@@ -32,6 +32,7 @@ class UsuarioModel {
         $db = Database::getConnection();
 
         $stmt = $db-> prepare("SELECT * FROM usuarios");
+        $stmt -> execute();
 
         return $stmt-> fetchAll(PDO::FETCH_ASSOC);
 
@@ -94,5 +95,13 @@ class UsuarioModel {
     }
 
 
+    public static function insertarUsuario() {
+
+        $db = Database::getConnection();
+        $stmt = $db->prepare("INSERT INTO usuarios (nombre_usuario, contrasenna, nombre, apellidos, tipo)
+                            VALUES :nombre_usuario, :contrasenna, :nombre, :apellidos, :tipo");
+
+        
+    }
 
 }
