@@ -119,4 +119,72 @@ public static function getByIdUsuario($id) {
         'nombre' => $nombre
     ]);
 }
+
+    public static function update($id, $titulo, $descripcion, $tipo) {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("
+            UPDATE preguntas
+            SET titulo = :titulo,
+                descripcion = :descripcion,
+                tipo = :tipo
+            WHERE id_pregunta = :id
+        ");
+
+        return $stmt->execute([
+            'titulo' => $titulo,
+            'descripcion' => $descripcion,
+            'tipo' => $tipo,
+            'id' => $id
+        ]);
+    }
+
+    public static function delete($id) {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("
+            DELETE FROM preguntas
+            WHERE id_pregunta = :id
+        ");
+
+        return $stmt->execute([
+            'id' => $id
+        ]);
+    }
+
+    
+public static function reemplazarAdjuntoPregunta($idPregunta, $ruta, $nombre) {
+    $db = Database::getConnection();
+
+    // Obtener las rutas de las imágenes anteriores de la pregunta
+    $stmt = $db->prepare(
+        "SELECT ruta
+         FROM adjuntos
+         WHERE id_pregunta = :id_pregunta
+           AND id_respuesta IS NULL"
+    );
+
+    $stmt->execute([
+        'id_pregunta' => $idPregunta
+    ]);
+
+    $rutasAnteriores = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    // Eliminar las referencias anteriores
+    $stmt = $db->prepare(
+        "DELETE FROM adjuntos
+         WHERE id_pregunta = :id_pregunta
+           AND id_respuesta IS NULL"
+    );
+
+    $stmt->execute([
+        'id_pregunta' => $idPregunta
+    ]);
+
+    // Guardar la nueva imagen
+    self::guardarAdjunto($idPregunta, $ruta, $nombre);
+
+    return $rutasAnteriores;
+}
+
 }
