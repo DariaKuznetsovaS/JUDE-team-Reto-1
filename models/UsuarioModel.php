@@ -28,6 +28,13 @@ class UsuarioModel {
     
     public static function getAll() {
         
+        
+        $db = Database::getConnection();
+
+        $stmt = $db-> prepare("SELECT * FROM usuarios");
+
+        return $stmt-> fetchAll(PDO::FETCH_ASSOC);
+
     }
     
     public static function getById($id) {
@@ -85,6 +92,7 @@ class UsuarioModel {
         $stmt->execute([':u' => $nombreUsuario]);
         return $stmt->fetchColumn() > 0;
     }
+
 
 
 }
