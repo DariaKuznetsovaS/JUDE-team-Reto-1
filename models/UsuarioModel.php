@@ -43,7 +43,7 @@ class UsuarioModel {
         $db = Database::getConnection();
 
         $stmt = $db->prepare(
-            "SELECT id_usuario, nombre_usuario, nombre, apellidos, tipo
+            "SELECT id_usuario, nombre_usuario, contrasenna, nombre, apellidos, tipo
             FROM usuarios
             WHERE id_usuario = :id_usuario"
         );
@@ -73,10 +73,10 @@ class UsuarioModel {
 
         $stmt = $db->prepare("UPDATE usuarios 
                               SET nombre_usuario = :nombre_usuario, contrasenna = :contrasenna, nombre = :nombre, apellidos = :apellidos
-                              WHERE id = :id");
+                              WHERE id_usuario = :id_usuario");
 
 
-        $stmt->bindParam(':id',$id );
+        $stmt->bindParam(':id_usuario',$id );
         $stmt->bindParam(':nombre_usuario',$datos['nombre_usuario']);
         $stmt->bindParam(':contrasena',$datos['contrasena']);
         $stmt->bindParam(':nombre',$datos['nombre']);

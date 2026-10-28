@@ -150,16 +150,48 @@ public function verPerfil() {
     }
 
 
-    public function editar() {
+    public function prepararEditar() {
         $id = $_GET["id"] ?? null;
 
         if ($id === null) {
             return;
         }
 
-        $user = UsuarioModel::getById($id);
-        require "views/editarUser.view.php";
+        $usuarioAEditar = UsuarioModel::getById($id);
+        $this-> render("editarAdmin.view.php", [
+            'usuarioAEditar' => $usuarioAEditar
+        ]) ;
     }
+
+    public function actualizarUsuario() {
+
+        $id = $_POST['id'] ?? null;
+        
+        $actual = UsuarioModel::getById($id);
+
+        $nuevoNombre = $_POST['nuevoNombre'] ?? '';
+        $nuevoApellido = $_POST['nuevoApellido'] ?? '';
+        $nuevoUsername = $_POST['nuevoUsername'] ?? '';
+        $nuevContrasena = $_POST['nuevaContrasena'] ?? '';
+        $tipo = $_POST['tipo'] ?? '';
+
+        $datos = [
+            'nombre_usuario' => $nuevoUsername !== '' ? $nuevoUsername : $actual['nombre_usuario'],
+            'contrasenna' => $nuevaContrasena !== '' ? $nuevaContrasena : $actual['contrasenna'],
+            'nombre' => $nuevoNombre !== '' ? $nuevoNombre : $actual['nombre'],
+            'apellidos'=> $nuevoApellido !== '' ? $nuevoApellido : $actual['apellidos'],
+            'tipo' => in_array($tipo, ['User', 'Admin'], true) ? $tipo : $actual['tipo']
+                
+            
+        ];
+
+        UsuarioModel::updateUsuario($id,$datos);
+
+        $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+
+    }
+    
+
 
     public function comprobarUsuario() {
         header('Content-Type: application/json');

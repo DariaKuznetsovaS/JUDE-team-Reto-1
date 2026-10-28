@@ -1,5 +1,5 @@
 <?php
-require "layout/header.php"
+include __DIR__ . "/layout/header.php"
 
 ?>
 
@@ -19,7 +19,7 @@ require "layout/header.php"
             <p> <?= $u['nombre'] . ' ' . $u['apellidos'] ?> </p>
             
             <div class="opciones">
-                <a href="editarAdmin.view.php?id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Ajustes.png" alt=""> </a>
+                <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Ajustes.png" alt=""> </a>
 <!-- con js sacar una ventana de confirmación y directamente eliminar -->  <img src="assets/images/Iconos/Trash.png" alt="">
             </div>
         </div>
