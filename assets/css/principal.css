@@ -23,6 +23,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 10rem;
+    padding: 2rem;
 }
 
 header .logo {
@@ -532,8 +533,9 @@ header .bRegistrarse {
 /* Contenedor que centra la tarjeta */
 #contenedorAjustes {
     display: flex;
-    justify-content: center;
-    padding: 40px 16px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
 }
 
 /* Tarjeta blanca */
@@ -638,13 +640,16 @@ header .bRegistrarse {
 
 .publicarPregunta {
     background-color: white;
-    border: 2px dotted #168BFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #163A5F33;
     min-height: 600px;
-    padding: 70px 20px;
+    width: 600px;
+    padding: 4rem;
+    margin: auto;
 }
 
 .publicarPregunta form {
-    max-width: 440px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -652,7 +657,7 @@ header .bRegistrarse {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
     margin-bottom: 85px;
 }
 

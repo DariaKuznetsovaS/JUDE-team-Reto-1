@@ -32,9 +32,9 @@
                     <p><?= htmlspecialchars($pregunta['descripcion']) ?></p>
                 </div>
 
-                <?php if (!empty($pregunta['imagen_ruta'])): ?>
+                <?php if (!empty($pregunta['imagen'])): ?>
                     <img class="imagenPregunta"
-                         src="<?= htmlspecialchars($pregunta['imagen_ruta']) ?>"
+                         src="<?= htmlspecialchars($pregunta['imagen']) ?>"
                          alt="Imagen de la pregunta">
                 <?php else: ?>
                     <img class="imagenPregunta"
