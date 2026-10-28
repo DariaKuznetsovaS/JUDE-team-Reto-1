@@ -119,4 +119,145 @@ public static function getByIdUsuario($id) {
         'nombre' => $nombre
     ]);
 }
+
+    public static function update($id, $titulo, $descripcion, $tipo) {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("
+            UPDATE preguntas
+            SET titulo = :titulo,
+                descripcion = :descripcion,
+                tipo = :tipo
+            WHERE id_pregunta = :id
+        ");
+
+        return $stmt->execute([
+            'titulo' => $titulo,
+            'descripcion' => $descripcion,
+            'tipo' => $tipo,
+            'id' => $id
+        ]);
+    }
+
+    public static function delete($id) {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("
+            DELETE FROM preguntas
+            WHERE id_pregunta = :id
+        ");
+
+        return $stmt->execute([
+            'id' => $id
+        ]);
+    }
+
+    
+public static function reemplazarAdjuntoPregunta($idPregunta, $ruta, $nombre) {
+    $db = Database::getConnection();
+
+    // Obtener las rutas de las imágenes anteriores de la pregunta
+    $stmt = $db->prepare(
+        "SELECT ruta
+         FROM adjuntos
+         WHERE id_pregunta = :id_pregunta
+           AND id_respuesta IS NULL"
+    );
+
+    $stmt->execute([
+        'id_pregunta' => $idPregunta
+    ]);
+
+    $rutasAnteriores = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    // Eliminar las referencias anteriores
+    $stmt = $db->prepare(
+        "DELETE FROM adjuntos
+         WHERE id_pregunta = :id_pregunta
+           AND id_respuesta IS NULL"
+    );
+
+    $stmt->execute([
+        'id_pregunta' => $idPregunta
+    ]);
+
+    // Guardar la nueva imagen
+    self::guardarAdjunto($idPregunta, $ruta, $nombre);
+
+    return $rutasAnteriores;
+}
+
+    public static function buscar($buscar) {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare(
+            "SELECT p.*, a.ruta AS imagen_ruta
+            FROM preguntas p
+            LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
+            WHERE p.titulo LIKE :titulo
+                OR p.descripcion LIKE :descripcion
+                OR p.tipo LIKE :tipo
+            ORDER BY p.fecha_creacion DESC"
+        );
+
+        $texto = "%" . $buscar . "%";
+
+        $stmt->execute([
+            "titulo" => $texto,
+            "descripcion" => $texto,
+            "tipo" => $texto
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    
+public static function filtrar($buscar, $categoria) {
+    $db = Database::getConnection();
+
+    $sql = "SELECT p.*, a.ruta AS imagen_ruta
+            FROM preguntas p
+            LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
+            WHERE 1 = 1";
+
+    $parametros = [];
+
+    if ($buscar !== "") {
+        $sql .= " AND (
+                    p.titulo LIKE :titulo
+                    OR p.descripcion LIKE :descripcion
+                    OR p.tipo LIKE :tipo
+                  )";
+
+        $texto = "%" . $buscar . "%";
+
+        $parametros["titulo"] = $texto;
+        $parametros["descripcion"] = $texto;
+        $parametros["tipo"] = $texto;
+    }
+
+    $categoriasValidas = [
+        "aerodinamica",
+        "materiales",
+        "motores",
+        "software",
+        "procesos",
+        "diseño",
+        "otros"
+    ];
+
+    if (in_array($categoria, $categoriasValidas, true)) {
+        $sql .= " AND p.tipo = :categoria";
+        $parametros["categoria"] = $categoria;
+    }
+
+    $sql .= " ORDER BY p.fecha_creacion DESC";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute($parametros);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
 }
