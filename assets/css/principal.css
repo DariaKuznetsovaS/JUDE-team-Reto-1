@@ -145,6 +145,16 @@ header .bRegistrarse {
     box-sizing: border-box;
 }
 
+.categoriaPregunta {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #E4F0F5;
+    color: #163A5F;
+    font-size: 13px;
+    font-weight: 700;
+}
+
 .preguntaCard {
     display: flex;
     flex-direction: column;
@@ -1370,4 +1380,86 @@ footer {
         top: 10px;
         right: 15px;
     }
+}
+
+/*BUSCADOR*/
+.buscadorHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 850px;
+    height: 48px;
+    margin: 0 30px;
+    border: 1px solid #D5DEE7;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.buscadorHeader input {
+    display: block;
+    flex: 1;
+    width: 0;
+    min-width: 0;
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #163A5F;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.buscadorHeader button {
+    display: flex;
+    flex: 0 0 48px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.buscadorHeader button img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.buscadorHeader:focus-within {
+    border-color: #247BA0;
+    box-shadow: 0 0 0 3px #247BA025;
+}
+
+.buscadorHeader button:hover {
+    background-color: #F3F6F9;
+}
+
+
+.buscadorHeader select {
+    flex: 0 0 auto;
+    max-width: 150px;
+    height: 100%;
+    padding: 0 8px;
+    border: none;
+    border-right: 1px solid #D5DEE7;
+    outline: none;
+    background-color: transparent;
+    color: #163A5F;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.buscadorHeader input {
+    flex: 1;
+    width: 0;
+    min-width: 0;
 }

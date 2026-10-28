@@ -19,6 +19,10 @@
                     <p class="cardFecha">
                         <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
                     </p>
+
+                    <span class="categoriaPregunta">
+                    <?= htmlspecialchars(ucfirst($pregunta["tipo"])) ?>
+                    </span>
                 </div>
 
                 <div class="contenidoCard">

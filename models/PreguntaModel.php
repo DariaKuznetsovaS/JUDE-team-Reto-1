@@ -187,4 +187,77 @@ public static function reemplazarAdjuntoPregunta($idPregunta, $ruta, $nombre) {
     return $rutasAnteriores;
 }
 
+    public static function buscar($buscar) {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare(
+            "SELECT p.*, a.ruta AS imagen_ruta
+            FROM preguntas p
+            LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
+            WHERE p.titulo LIKE :titulo
+                OR p.descripcion LIKE :descripcion
+                OR p.tipo LIKE :tipo
+            ORDER BY p.fecha_creacion DESC"
+        );
+
+        $texto = "%" . $buscar . "%";
+
+        $stmt->execute([
+            "titulo" => $texto,
+            "descripcion" => $texto,
+            "tipo" => $texto
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    
+public static function filtrar($buscar, $categoria) {
+    $db = Database::getConnection();
+
+    $sql = "SELECT p.*, a.ruta AS imagen_ruta
+            FROM preguntas p
+            LEFT JOIN adjuntos a ON p.id_pregunta = a.id_pregunta
+            WHERE 1 = 1";
+
+    $parametros = [];
+
+    if ($buscar !== "") {
+        $sql .= " AND (
+                    p.titulo LIKE :titulo
+                    OR p.descripcion LIKE :descripcion
+                    OR p.tipo LIKE :tipo
+                  )";
+
+        $texto = "%" . $buscar . "%";
+
+        $parametros["titulo"] = $texto;
+        $parametros["descripcion"] = $texto;
+        $parametros["tipo"] = $texto;
+    }
+
+    $categoriasValidas = [
+        "aerodinamica",
+        "materiales",
+        "motores",
+        "software",
+        "procesos",
+        "diseño",
+        "otros"
+    ];
+
+    if (in_array($categoria, $categoriasValidas, true)) {
+        $sql .= " AND p.tipo = :categoria";
+        $parametros["categoria"] = $categoria;
+    }
+
+    $sql .= " ORDER BY p.fecha_creacion DESC";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute($parametros);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
 }
