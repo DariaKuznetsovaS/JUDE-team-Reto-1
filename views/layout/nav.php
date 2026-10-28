@@ -29,7 +29,7 @@
         <!-- SOLO VISIBLE PARA ADMINS -->
         <?php if (isset($_SESSION["id_usuario"]->tipo) && $_SESSION["id_usuario"]->tipo === "admin"): ?>
 
-            <a href="index.php?controller=UsuarioController&accion=index"
+            <a href="index.php?controller=UsuarioController&accion=listarUsers"
                class="navUsuarios opcionNav">
                 <img src="assets/images/Iconos/UsuariosClaro.png" alt="">
                 <span>Usuarios</span>

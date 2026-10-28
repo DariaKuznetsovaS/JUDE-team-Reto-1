@@ -3,14 +3,16 @@ require "layout/header.php"
 
 ?>
 
-<main>
+<div class ="contenedorPrincipal">
+    <?php include __DIR__ . '/layout/nav.php'; ?>
     <div class="cabecera">
 
         <img src="assets/images/Iconos/Usuarios.png" alt="">
         <h1>Lista de usuarios</h1>
     
     </div>
-    <?php foreach($usuarios as $u): ?>
+    <?php if(!empty($usuarios)) : ?>
+        <?php foreach($usuarios as $u): ?>
         <div>
             <img src="assets/images/Iconos/User.png" alt="">
             <p> <?= $u['nombre_usuario'] ?> </p>
@@ -22,7 +24,15 @@ require "layout/header.php"
             </div>
         </div>
 
-</main>
+        <?php endforeach ; ?>
+    <?php else: ?>
+        <p> No hay usuarios registrados. </p>
+    <?php endif; ?>
+
+
+    <a href="index.php?controller=UsuarioController&accion=crearUser">+Crear nuevo usuario</a>
+
+</div>
 
 
 
@@ -33,4 +43,4 @@ require "layout/header.php"
 <?php
 require "layout/footer.php"
 
-?
+?>
