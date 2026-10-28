@@ -2,31 +2,13 @@
 $usuario=$_SESSION["id_usuario"];?>
 
 
-<div id="perfil">
+<div class="contenedorPrincipal">
 
     <?php include __DIR__ . '/layout/nav.php'; ?>
 
-    <main>
-        <div class ="datosUsuario">
-            <img src="assets/images/Iconos/User.png" alt="Foto de perfil">
+    <main id="perfil">
 
-            <div id="infoUsuario">
-                <h1><?= $usuario->nombre_usuario ?></h1>
-                <h3><?= $usuario->nombre . ' ' . $usuario->apellidos ?></h3>
-                <p><?= $usuario->tipo ?></p>
-            </div>
-
-            <div id="accionesUsuario">
-                <a href="index.php?controller=AjustesController&accion=ajustes">
-                    <img src="assets/images/Iconos/Editar.png" alt="Editar datos">
-                </a>
-                <a href="index.php?controller=UsuarioController&accion=cerrarSesion">
-                    <img src="assets/images/Iconos/Salir.png" alt="Cerrar sesión">
-                </a>
-            </div>
-        </div>
-
-        <a href="index.php?controller=PreguntaController&accion=crear" id="botonPublicar">
+        <a href="index.php?controller=PreguntaController&accion=crear" class="btnPublicar">
             + Publicar nueva pregunta
         </a>
 
