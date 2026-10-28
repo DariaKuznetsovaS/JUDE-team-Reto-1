@@ -140,10 +140,13 @@ class RespuestaModel {
 
             // Si no es favorita, guardarla.
             $stmt = $db->prepare("
+<<<<<<< HEAD
                 INSERT INTO respuestas_favoritas
                     (id_respuesta, id_usuario)
                 VALUES
                     (:id_respuesta, :id_usuario)
+=======
+>>>>>>> dev-Jose
                 SELECT COUNT(*)
                 FROM respuestas_favoritas
                 WHERE id_respuesta = :id_respuesta
@@ -185,6 +188,13 @@ class RespuestaModel {
                 ON r.id_respuesta = a.id_respuesta
             WHERE f.id_usuario = :id_usuario
             ORDER BY r.fecha DESC
+<<<<<<< HEAD
+=======
+            INSERT INTO respuestas_favoritas
+                (id_respuesta, id_usuario)
+            VALUES
+                (:id_respuesta, :id_usuario)
+>>>>>>> dev-Jose
         ");
 
         $stmt->execute([
@@ -215,7 +225,26 @@ class RespuestaModel {
     }
 
 
-    
+     //Para La pagina de Mis preguntas y Respuestas
+
+    public static function respuestasPorId($id): array {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare(
+            "SELECT r.*, MIN(a.ruta) AS imagen
+            FROM respuestas r
+            LEFT JOIN adjuntos a
+                    ON a.id_respuesta = r.id_respuesta
+            WHERE r.id_usuario = :id_usuario
+            GROUP BY r.id_respuesta
+            ORDER BY r.fecha DESC"
+        );
+        $stmt->execute(['id_usuario' => $id]);
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
 
 
 }
