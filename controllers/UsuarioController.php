@@ -126,6 +126,15 @@ public function verPerfil() {
     ]);
 }
 
+    public function misPreguntas(){
+        $id=$_SESSION["id_usuario"]->id_usuario;
+
+        $preguntas=PreguntaModel::preguntasPorId($id);
+        $respuestas=RespuestaModel::respuestasPorId($id);
+        
+        require "views/misPreguntas.view.php";
+    }
+
 
 
     public function store() {
