@@ -101,6 +101,7 @@ class RespuestaModel {
         return $idRespuesta;
     }
 
+    
     public static function toggleFavorito($idRespuesta, $idUsuario) {
 
         $db = Database::getConnection();
@@ -140,60 +141,19 @@ class RespuestaModel {
 
             // Si no es favorita, guardarla.
             $stmt = $db->prepare("
-                SELECT COUNT(*)
-                FROM respuestas_favoritas
-                WHERE id_respuesta = :id_respuesta
+                INSERT INTO respuestas_favoritas
+                    (id_respuesta, id_usuario)
+                VALUES
+                    (:id_respuesta, :id_usuario)
             ");
 
             $stmt->execute([
-                'id_respuesta' => $idRespuesta
+                'id_respuesta' => $idRespuesta,
+                'id_usuario' => $idUsuario
             ]);
 
-            $total = (int) $stmt->fetchColumn();
-
-            return [
-                'favorito' => $favorito,
-                'total' => $total
-            ];
+            $favorito = true;
         }
-    }
-
-
-    public static function getFavoritosByUsuario($idUsuario) {
-
-        $db = Database::getConnection();
-
-        $stmt = $db->prepare("
-            SELECT
-                r.*,
-                u.nombre_usuario,
-                a.ruta AS imagen_ruta,
-                (SELECT COUNT(*)
-                FROM respuestas_favoritas rf
-                WHERE rf.id_respuesta = r.id_respuesta
-                ) AS total_favoritos
-            FROM respuestas_favoritas f
-            INNER JOIN respuestas r
-                ON f.id_respuesta = r.id_respuesta
-            INNER JOIN usuarios u
-                ON r.id_usuario = u.id_usuario
-            LEFT JOIN adjuntos a
-                ON r.id_respuesta = a.id_respuesta
-            WHERE f.id_usuario = :id_usuario
-            ORDER BY r.fecha DESC
-            INSERT INTO respuestas_favoritas
-                (id_respuesta, id_usuario)
-            VALUES
-                (:id_respuesta, :id_usuario)
-        ");
-
-        $stmt->execute([
-            'id_respuesta' => $idRespuesta,
-            'id_usuario' => $idUsuario
-        ]);
-
-        $favorito = true;
-    
 
         // Obtener el número actualizado de favoritos.
         $stmt = $db->prepare("
@@ -213,6 +173,40 @@ class RespuestaModel {
             'total' => $total
         ];
     }
+
+
+    public static function getFavoritosByUsuario($idUsuario) {
+
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("
+            SELECT
+                r.*,
+                u.nombre_usuario,
+                a.ruta AS imagen_ruta,
+                (
+                    SELECT COUNT(*)
+                    FROM respuestas_favoritas rf
+                    WHERE rf.id_respuesta = r.id_respuesta
+                ) AS total_favoritos
+            FROM respuestas_favoritas f
+            INNER JOIN respuestas r
+                ON f.id_respuesta = r.id_respuesta
+            INNER JOIN usuarios u
+                ON r.id_usuario = u.id_usuario
+            LEFT JOIN adjuntos a
+                ON r.id_respuesta = a.id_respuesta
+            WHERE f.id_usuario = :id_usuario
+            ORDER BY r.fecha DESC
+        ");
+
+        $stmt->execute([
+            'id_usuario' => $idUsuario
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 
      //Para La pagina de Mis preguntas y Respuestas
