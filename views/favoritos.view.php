@@ -8,29 +8,9 @@ require "layout/header.php";
 
 <div class="contenedorPrincipal">
     <?php include __DIR__ . '/layout/nav.php'; ?>
-    <div class="userContainer">
 
-        <img src="assets/images/Iconos/User.png" alt="Imagen usuario">
-        <div class="datosUsuario">
-            <h1><?= htmlspecialchars($user['nombre_usuario'] ?? '') ?></h1>
 
-            <p> <?= htmlspecialchars(($user['nombre'] ?? '') . ' ' . ($user['apellido'] ?? '')) ?></p>
-
-            <p> <?= htmlspecialchars($user['tipo'] ?? '') ?></p>
-        </div>
-
-        <div class="enlaces">
-
-            <a href="index.php?controller=AjustesController&accion=ajustes">
-                <img src="assets/images/Iconos/Editar.png" alt="">
-            </a>
-
-            <a href="index.php?controller=UsuarioController&accion=logout">
-                <img src="assets/images/Iconos/Salir.png" alt="">
-            </a>
-    </div>
-
-    </div>
+    
 
 
     <div class="favsContainer">
@@ -80,6 +60,8 @@ require "layout/header.php";
             
         </div>
     </div>
+</div>
+
 </div>
 
 
