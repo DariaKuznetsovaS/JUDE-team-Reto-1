@@ -646,13 +646,7 @@ header .bRegistrarse {
 }
 
 /* AJUSTES */
-
-#contenedorAjustes {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 8px 12px 40px;
-}
+/* El contenedor es .contenedorPrincipal (menú a la izquierda, tarjeta al lado) */  
 
 #tarjeta {
     width: 100%;
@@ -663,7 +657,7 @@ header .bRegistrarse {
     border-radius: 12px;
     box-shadow: 0 2px 8px #163A5F33;
 }
-
+ 
 /* Icono + título */
 #tarjeta #d1 {
     display: grid;
@@ -671,7 +665,7 @@ header .bRegistrarse {
     align-items: center;
     margin-bottom: 40px;
 }
-
+ 
 #tarjeta #d1 img {
     width: 36px;
     height: 36px;
@@ -679,12 +673,12 @@ header .bRegistrarse {
     justify-self: start;
     margin-left: 10%;
 }
-
+ 
 #tarjeta #d1 h2 {
     color: #247BA0;
     font-size: 1.6rem;
 }
-
+ 
 /* Formulario */
 #tarjeta form {
     width: 100%;
@@ -693,7 +687,7 @@ header .bRegistrarse {
     align-items: center;
     gap: 34px;
 }
-
+ 
 #tarjeta input[type="text"],
 #tarjeta input[type="password"],
 #tarjeta select {
@@ -709,13 +703,13 @@ header .bRegistrarse {
     text-align: center;
     text-align-last: center;
 }
-
+ 
 #tarjeta input[type="text"]::placeholder,
 #tarjeta input[type="password"]::placeholder {
     color: #6B767B;
     text-align: center;
 }
-
+ 
 #tarjeta input[type="text"]:focus,
 #tarjeta input[type="password"]:focus,
 #tarjeta select:focus {
@@ -723,16 +717,25 @@ header .bRegistrarse {
     border-color: #20B8A6;
     background-color: white;
 }
-
+ 
 #tarjeta select {
     cursor: pointer;
 }
-
+ 
 #tarjeta select:disabled {
     color: #6B767B;
     cursor: not-allowed;
 }
-
+ 
+/* Mensajes de validación (JS): pegados bajo su campo, sin mover el resto */
+#tarjeta form p {
+    height: 0;
+    margin-top: -30px;
+    font-size: 0.8rem;
+    text-align: center;
+    white-space: nowrap;
+}
+ 
 /* Botones */
 #tarjeta #d2 {
     display: flex;
@@ -741,7 +744,7 @@ header .bRegistrarse {
     gap: 32px;
     width: 100%;
 }
-
+ 
 #tarjeta #d2 input[type="submit"],
 #tarjeta #d2 a {
     display: flex;
@@ -760,31 +763,37 @@ header .bRegistrarse {
     text-decoration: none;
     cursor: pointer;
 }
-
+ 
 #tarjeta #d2 input[type="submit"] {
     background-color: #247BA0;
 }
-
+ 
 #tarjeta #d2 a {
     background-color: #6B767B;
 }
-
+ 
 #tarjeta #d2 input[type="submit"]:hover,
 #tarjeta #d2 a:hover {
     filter: brightness(0.92);
 }
-
-#contenedorAjustes #tarjeta form {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    padding: 0;
-    float: none;
+ 
+/* Botón de guardar bloqueado por errores */
+#tarjeta #d2 input[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: none;
 }
-
-#contenedorAjustes #tarjeta #d2 {
-    width: 100%;
-    margin: 0 auto;
+ 
+/* Errores que devuelve el servidor */
+#tarjeta .errores {
+    margin-bottom: 30px;
+    text-align: center;
+}
+ 
+#tarjeta .errores .error {
+    margin-bottom: 6px;
+    color: #b3261e;
+    font-size: 0.9rem;
 }
 
 
@@ -926,17 +935,6 @@ header .bRegistrarse {
     color: #163A5F;
 }
 
-/*JS AJUSTES*/
-#tarjeta #errores {
-    margin-bottom: 24px;
-    text-align: center;
-    color: #b3261e;
-    font-size: 0.9rem;
-}
-
-#tarjeta #errores p {
-    margin-bottom: 6px;
-}
 
 
 /* PUBLICAR PREGUNTA */
