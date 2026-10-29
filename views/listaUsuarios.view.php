@@ -20,7 +20,7 @@ include __DIR__ . "/layout/header.php"
             
             <div class="opciones">
                 <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Ajustes.png" alt=""> </a>
-<!-- con js sacar una ventana de confirmación y directamente eliminar -->  <img src="assets/images/Iconos/Trash.png" alt="">
+                <a class="eliminar" href="index.php?controller=UsuarioController&accion=eliminar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Trash.png" alt=""></a>
             </div>
         </div>
 
@@ -33,6 +33,8 @@ include __DIR__ . "/layout/header.php"
     <a href="index.php?controller=UsuarioController&accion=crearUser">+Crear nuevo usuario</a>
 
 </div>
+
+<script src="assets/scripts/eliminarUser.js" ></script>
 
 
 

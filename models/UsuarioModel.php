@@ -105,4 +105,14 @@ class UsuarioModel {
         
     }
 
+    public static function deleteUsuarioById($id) {
+
+        $db = Database::getConnection();
+        $stmt = $db->prepare('DELETE FROM usuarios WHERE id_usuario = :id_usuario');
+        $stmt->execute([':id_usuario' => $id]);
+        return $stmt->fetchColumn() > 0;
+
+    }
+    
+    
 }
