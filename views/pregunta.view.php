@@ -171,6 +171,54 @@
                                     </span>
 
                                 </div>
+                                
+    <?php
+    $sesion = $_SESSION['id_usuario'] ?? null;
+
+    $esPropietario = is_object($sesion)
+        && (int) $sesion->id_usuario === (int) $respuesta['id_usuario'];
+
+    $esAdmin = is_object($sesion)
+        && ($sesion->tipo ?? '') === 'admin';
+    ?>
+
+    <?php if ($esPropietario || $esAdmin): ?>
+
+        <div class="accionesRespuesta">
+
+            <a
+                href="index.php?controller=RespuestaController&accion=editar&id=<?= (int) $respuesta['id_respuesta'] ?>"
+                class="botonEditarRespuesta"
+                aria-label="Editar respuesta"
+                title="Editar respuesta"
+            >
+                <img src="assets/images/Iconos/Editar.png">
+            </a>
+
+            <form
+                action="index.php?controller=RespuestaController&accion=borrar"
+                method="POST"
+                onsubmit="return confirm('¿Seguro que quieres borrar esta respuesta?');"
+            >
+                <input
+                    type="hidden"
+                    name="id_respuesta"
+                    value="<?= (int) $respuesta['id_respuesta'] ?>"
+                >
+
+                <button
+                    type="submit"
+                    class="botonBorrarRespuesta"
+                    aria-label="Borrar respuesta"
+                    title="Borrar respuesta"
+                >
+                <img src="assets/images/Iconos/Trash.png" alt="Borrar">
+                </button>
+            </form>
+
+        </div>
+
+    <?php endif; ?>
 
                             </div>
 

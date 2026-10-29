@@ -11,6 +11,15 @@ include __DIR__ . "/layout/header.php"
         <h1>Lista de usuarios</h1>
     
     </div>
+
+
+    <?php if (!empty($_SESSION['error'])): ?>
+        <div id="mensajeError" data-mensaje="<?= htmlspecialchars($_SESSION['error']) ?>"></div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+
+    
     <?php if(!empty($usuarios)) : ?>
         <?php foreach($usuarios as $u): ?>
         <div>
@@ -34,7 +43,7 @@ include __DIR__ . "/layout/header.php"
 
 </div>
 
-<script src="assets/scripts/eliminarUser.js" ></script>
+<script src="assets/scripts/listaUsuarios.js" ></script>
 
 
 
