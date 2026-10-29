@@ -1,6 +1,8 @@
 
 <?php include __DIR__ . '/layout/header.php'; ?>
-<?php include __DIR__ . '/layout/nav.php'; ?>
+
+<div class="contenedorPrincipal">
+    <?php include __DIR__ . '/layout/nav.php'; ?>
 
 <main class="listaPreguntas">
 
@@ -11,13 +13,21 @@
             <a href="index.php?controller=PreguntaController&accion=index&id=<?=$pregunta["id_pregunta"]?>" class="enlacePregunta">
             <div class="preguntaCard">
 
-                <div class="cabeceraCard">
-                    <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
+                
+            <div class="cabeceraCard">
+                <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
+
+                <div class="metadatosCard">
+                    <span class="categoriaPregunta">
+                        <?= htmlspecialchars(ucfirst($pregunta["tipo"])) ?>
+                    </span>
 
                     <p class="cardFecha">
                         <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
                     </p>
                 </div>
+            </div>
+
 
                 <div class="contenidoCard">
 
@@ -30,7 +40,7 @@
 
                         <?php else: ?>
 
-                            <img src="../assets/images/SinImagen.png" alt="Imagen de la pregunta">
+                            <img src="assets/images/Iconos/SinImagen.png" alt="Imagen de la pregunta">
 
                         <?php endif; ?>
                     </div>
@@ -52,6 +62,12 @@
 
     <?php endif; ?>
 
+    <button type="button" id="verMasPreguntas" hidden>
+        Ver más
+    </button>
+
 </main>
+
+</div>
 
 <?php include __DIR__ . '/layout/footer.php'; ?>

@@ -4,12 +4,20 @@ require_once __DIR__ . '/../models/PreguntaModel.php';
 
 class PrincipalController extends BaseController {
     
+    
+    
     public function index() {
-        $preguntas=PreguntaModel::getAll();
-        require "views/index.view.php";
-         
+        $buscar = trim($_GET["buscar"] ?? "");
+        $categoria = $_GET["categoria"] ?? "";
 
+        $preguntas = PreguntaModel::filtrar($buscar, $categoria);
+
+        $this->render("index.view.php", [
+            "preguntas" => $preguntas
+        ]);
     }
+
+
    
     public function show() {
         

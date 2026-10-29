@@ -1,58 +1,47 @@
+
 <?php if (isset($_SESSION["id_usuario"])): ?>
 
     <nav class="menuLateral">
 
-    <div class="navInicio">
-        <img href="../assets/images/Iconos/Home.png">
-        <a href="index.php" class="opcionNav">
-            Inicio
+        <a href="index.php" class="navInicio opcionNav">
+            <img src="assets/images/Iconos/HomeClaro.png" alt="">
+            <span>Inicio</span>
         </a>
-    </div>
 
-    <div class="navMisPreguntas">
-        <img href="../assets/images/Iconos/Pregunta.png">
-        <a href="index.php?controller=usuario&accion=misPreguntas"
-           class="opcionNav">
-            Mis Preguntas/Respuestas
+        <a href="index.php?controller=UsuarioController&accion=misPreguntas"
+           class="navMisPreguntas opcionNav">
+            <img src="assets/images/Iconos/PreguntaClaro.png" alt="">
+            <span>Mis Preguntas/Respuestas</span>
         </a>
-    </div>
 
-    <div class="navMisFavoritos">
-        <img href="../assets/images/Iconos/Favorito.png">
-        <a href="index.php?controller=usuario&accion=favoritos"
-           class="opcionNav">
-            Mis Favoritos
+        <a href="index.php?controller=FavsController&accion=index"
+        class="navMisFavoritos opcionNav">
+            <img src="assets/images/Iconos/FavoritoClaro.png" alt="">
+            <span>Mis Favoritos</span>
         </a>
-    </div>
-    
-    <div class="navAjustes">
-        <img href="../assets/images/Iconos/Ajustes.png">
-        <a href="index.php?controller=usuario&accion=ajustes"
-           class="opcionNav">
-            Ajustes
+
+        <a href="index.php?controller=AjustesController&accion=ajustes"
+           class="navAjustes opcionNav">
+            <img src="assets/images/Iconos/AjustesClaro.png" alt="">
+            <span>Ajustes</span>
         </a>
-    </div>
 
-    <!-- SOLO VISIBLE PARA ADMINS: -->
-    <?php if (isset($_SESSION["tipo"]) && $_SESSION["tipo"] === "admin"): ?>
+        <!-- SOLO VISIBLE PARA ADMINS -->
+        <?php if (isset($_SESSION["id_usuario"]->tipo) && $_SESSION["id_usuario"]->tipo === "admin"): ?>
 
-    <div class="navUsuarios">
-        <img src="assets/images/Iconos/Usuarios.png" alt="">
-            <a href="index.php?controller=usuario&accion=listar"
-                class="opcionNav">
-                Usuarios
+            <a href="index.php?controller=UsuarioController&accion=listarUsers"
+               class="navUsuarios opcionNav">
+                <img src="assets/images/Iconos/UsuariosClaro.png" alt="">
+                <span>Usuarios</span>
             </a>
-    </div>
 
         <?php endif; ?>
 
-    <div class="navSalir">
-        <img href="../assets/images/Iconos/Salir.png">
-        <a href="index.php?controller=usuario&accion=logout"
-           class="opcionNav">
-            Salir
+        <a href="index.php?controller=UsuarioController&accion=logout"
+           class="navSalir opcionNav">
+            <img src="assets/images/Iconos/SalirClaro.png" alt="">
+            <span>Salir</span>
         </a>
-    </div>
 
     </nav>
 

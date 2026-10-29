@@ -11,6 +11,8 @@
 
     <title>AERGIBIDE, S.L.</title>
     <link rel="stylesheet" href="assets/css/principal.css">
+    <link rel="stylesheet" href="assets/css/perfil.css">
+    <script src="assets/scripts/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -18,25 +20,64 @@
     <img src="assets/images/logoAergibide.png" alt="Logo de Aergibide" class="logo">
         </a>
 
-        <input type="search" placeholder="Buscar por título, tema...">
+<!-- Barra de búsqueda: -->     
+        <?php
+        $esPaginaPrincipal = (
+            !isset($_GET['controller'])
+            || $_GET['controller'] === 'PrincipalController'
+        ) && (
+            !isset($_GET['accion'])
+            || $_GET['accion'] === 'index'
+        );
+        ?>
+
+        
+        <?php if ($esPaginaPrincipal): ?>
+            <form action="index.php" method="GET" class="buscadorHeader">
+
+                <select name="categoria" aria-label="Filtrar por categoría">
+                    <option value="">Todas las categorías</option>
+                    <option value="aerodinamica" <?= ($_GET["categoria"] ?? "") === "aerodinamica" ? "selected" : "" ?>>Aerodinámica</option>
+                    <option value="materiales" <?= ($_GET["categoria"] ?? "") === "materiales" ? "selected" : "" ?>>Materiales</option>
+                    <option value="motores" <?= ($_GET["categoria"] ?? "") === "motores" ? "selected" : "" ?>>Motores</option>
+                    <option value="software" <?= ($_GET["categoria"] ?? "") === "software" ? "selected" : "" ?>>Software</option>
+                    <option value="procesos" <?= ($_GET["categoria"] ?? "") === "procesos" ? "selected" : "" ?>>Procesos</option>
+                    <option value="diseño" <?= ($_GET["categoria"] ?? "") === "diseño" ? "selected" : "" ?>>Diseño</option>
+                    <option value="otros" <?= ($_GET["categoria"] ?? "") === "otros" ? "selected" : "" ?>>Otros</option>
+                </select>
+
+                <input
+                    type="search"
+                    name="buscar"
+                    placeholder="Buscar por título o descripción..."
+                    value="<?= htmlspecialchars($_GET["buscar"] ?? "") ?>"
+                >
+
+                <button type="submit" aria-label="Buscar">
+                    <img src="assets/images/Iconos/Buscar.png" alt="">
+                </button>
+
+            </form>
+        <?php endif; ?>
+
 
         <div class="botonesSesion">
 
             <?php if (isset($_SESSION["id_usuario"])): ?>
 
-                <a href="index.php?controller=usuario&accion=perfil"
+                <a href="index.php?controller=UsuarioController&accion=perfil"
                    class="bPerfil">
-                    Mi perfil
+                    <img src="assets/images/Iconos/User.png">
                 </a>
 
             <?php else: ?>
 
-                <a href="index.php?controller=usuario&accion=login"
+                <a href="index.php?controller=UsuarioController&accion=login"
                    class="bIniciarSesion">
                     Iniciar sesión
                 </a>
 
-                <a href="index.php?controller=usuario&accion=registro"
+                <a href="index.php?controller=UsuarioController&accion=registro"
                    class="bRegistrarse">
                     Registrarse
                 </a>
