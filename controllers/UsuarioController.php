@@ -234,18 +234,22 @@ public function verPerfil() {
         exit();
     }
     
-/*
-    public function crearUser() {
 
-        $usuario = UsuarioModel::insertarUsuario();
-        $this->render("listaUsuarios.view.php", [
-            '' => $
-        ]);
-        
+    public function crearUser() {
+        require "views/nuevoUserAdmin.view.php";
 
     }
 
-*/
+    public function annadirUsuarioNuevo(){
+        $nombre=$_POST["nombre"];
+        $apellidos=$_POST["apellidos"];
+        $nombreUsuario=$_POST["nombreUsuario"];
+        $contrasenna=$_POST["contrasenna"];
+        $tipo=$_POST["tipo"];
+
+    }
+
+
 
 
     public function eliminar() {
