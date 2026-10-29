@@ -246,5 +246,18 @@ public function verPerfil() {
     }
 
 */
+
+
+    public function eliminar() {
+
+        $id = $_GET["id"] ?? null;
+
+        if ($id === null) {
+            return;
+        }
+        
+        UsuarioModel::deleteUsuarioById($id);
+        $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+    }
 }
 
