@@ -118,184 +118,184 @@
 
             </div>
 
-            <!-- Respuestas -->
-            <section class="respuestas">
 
-                <h2>Respuestas</h2>
+<!-- Respuestas -->
+<section class="respuestas">
 
-                <?php if (!empty($respuestas)): ?>
+    <h2>Respuestas</h2>
 
-                    <?php foreach ($respuestas as $respuesta): ?>
+    <?php if (!empty($respuestas)): ?>
 
-                        <article class="respuestaCard">
+        <?php foreach ($respuestas as $respuesta): ?>
 
-                            <div class="cabeceraRespuesta">
+            <?php
+            $esPropietarioRespuesta = (int) $idUsuarioSesion === (int) $respuesta['id_usuario'];
+            ?>
 
-                                <div class="infoAutorRespuesta">
+            <article class="respuestaCard">
 
-                                    <a
-                                        class="nombreUsuarioRespuesta"
-                                        href="index.php?controller=UsuarioController&accion=perfil&id=<?= (int) $respuesta['id_usuario'] ?>"
-                                    >
-                                        <?= htmlspecialchars($respuesta['nombre_usuario']) ?>
-                                    </a>
+                <div class="cabeceraRespuesta">
 
-                                    <span class="fechaRespuesta">
-                                        <?= date('d/m/Y H:i', strtotime($respuesta['fecha'])) ?>
-                                    </span>
+                    <div class="infoAutorRespuesta">
 
-                                </div>
-
-                                <div class="favoritosRespuesta">
-
-                                    <?php if (isset($_SESSION['id_usuario'])): ?>
-
-                                        <button
-                                            type="button"
-                                            class="botonFavorito <?= !empty($respuesta['usuario_favorito']) ? 'favoritoActivo' : '' ?>"
-                                            data-id-respuesta="<?= (int) $respuesta['id_respuesta'] ?>"
-                                            aria-label="Añadir o quitar de favoritos"
-                                            aria-pressed="<?= !empty($respuesta['usuario_favorito']) ? 'true' : 'false' ?>"
-                                        >
-                                            <?= !empty($respuesta['usuario_favorito']) ? '♥' : '♡' ?>
-                                        </button>
-
-                                    <?php else: ?>
-
-                                        <span class="botonFavorito" aria-hidden="true">♡</span>
-
-                                    <?php endif; ?>
-
-                                    <span class="numeroFavoritos">
-                                        <?= (int) ($respuesta['total_favoritos'] ?? 0) ?>
-                                    </span>
-
-                                </div>
-                                
-    <?php
-    $sesion = $_SESSION['id_usuario'] ?? null;
-
-    $esPropietario = is_object($sesion)
-        && (int) $sesion->id_usuario === (int) $respuesta['id_usuario'];
-
-    $esAdmin = is_object($sesion)
-        && ($sesion->tipo ?? '') === 'admin';
-    ?>
-
-    <?php if ($esPropietario || $esAdmin): ?>
-
-        <div class="accionesRespuesta">
-
-            <a
-                href="index.php?controller=RespuestaController&accion=editar&id=<?= (int) $respuesta['id_respuesta'] ?>"
-                class="botonEditarRespuesta"
-                aria-label="Editar respuesta"
-                title="Editar respuesta"
-            >
-                <img src="assets/images/Iconos/Editar.png">
-            </a>
-
-            <form
-                action="index.php?controller=RespuestaController&accion=borrar"
-                method="POST"
-                onsubmit="return confirm('¿Seguro que quieres borrar esta respuesta?');"
-            >
-                <input
-                    type="hidden"
-                    name="id_respuesta"
-                    value="<?= (int) $respuesta['id_respuesta'] ?>"
-                >
-
-                <button
-                    type="submit"
-                    class="botonBorrarRespuesta"
-                    aria-label="Borrar respuesta"
-                    title="Borrar respuesta"
-                >
-                <img src="assets/images/Iconos/Trash.png" alt="Borrar">
-                </button>
-            </form>
-
-        </div>
-
-    <?php endif; ?>
-
-                            </div>
-
-                            <div class="contenidoRespuesta">
-
-                                <p class="textoRespuesta">
-                                    <?= nl2br(htmlspecialchars($respuesta['texto'])) ?>
-                                </p>
-
-                                <?php if (!empty($respuesta['imagen_ruta'])): ?>
-
-                                    <img
-                                        class="imagenRespuesta"
-                                        src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
-                                        alt="Imagen adjunta a la respuesta"
-                                    >
-
-                                <?php endif; ?>
-
-                            </div>
-
-                        </article>
-
-                    <?php endforeach; ?>
-
-                <?php else: ?>
-
-                    <p class="sinRespuestas">
-                        Todavía no hay respuestas. ¡Sé la primera persona en responder!
-                    </p>
-
-                <?php endif; ?>
-
-            </section>
-
-            <!-- Formulario para añadir una respuesta -->
-            <?php if (isset($_SESSION['id_usuario'])): ?>
-
-                <div class="formularioRespuesta">
-
-                    <h2>Añade tu respuesta:</h2>
-
-                    <form
-                        action="index.php?controller=RespuestaController&accion=store"
-                        method="POST"
-                        enctype="multipart/form-data"
-                    >
-
-                        <input
-                            type="hidden"
-                            name="id_pregunta"
-                            value="<?= (int) $pregunta['id_pregunta'] ?>"
+                        <a
+                            class="nombreUsuarioRespuesta"
+                            href="index.php?controller=UsuarioController&accion=perfil&id=<?= (int) $respuesta['id_usuario'] ?>"
                         >
+                            <?= htmlspecialchars($respuesta['nombre_usuario']) ?>
+                        </a>
 
-                        <textarea
-                            name="texto"
-                            placeholder="Escribe tu respuesta..."
-                            required
-                        ></textarea>
+                        <span class="fechaRespuesta">
+                            <?= date('d/m/Y H:i', strtotime($respuesta['fecha'])) ?>
+                        </span>
 
-                        <div class="accionesRespuesta">
+                    </div>
 
-                            <input
-                                type="file"
-                                name="adjunto"
-                                id="adjunto"
-                            >
+                    <div class="controlesRespuesta">
 
-                            <button type="submit">Publicar</button>
+                        <div class="favoritosRespuesta">
+
+                            <?php if (isset($_SESSION['id_usuario'])): ?>
+
+                                <button
+                                    type="button"
+                                    class="botonFavorito <?= !empty($respuesta['usuario_favorito']) ? 'favoritoActivo' : '' ?>"
+                                    data-id-respuesta="<?= (int) $respuesta['id_respuesta'] ?>"
+                                    aria-label="Añadir o quitar de favoritos"
+                                    aria-pressed="<?= !empty($respuesta['usuario_favorito']) ? 'true' : 'false' ?>"
+                                >
+                                    <?= !empty($respuesta['usuario_favorito']) ? '♥' : '♡' ?>
+                                </button>
+
+                            <?php else: ?>
+
+                                <span class="botonFavorito" aria-hidden="true">♡</span>
+
+                            <?php endif; ?>
+
+                            <span class="numeroFavoritos">
+                                <?= (int) ($respuesta['total_favoritos'] ?? 0) ?>
+                            </span>
 
                         </div>
 
-                    </form>
+                        <?php if ($esPropietarioRespuesta || $esAdmin): ?>
+
+                            <div class="accionesRespuesta">
+
+                                <a
+                                    href="index.php?controller=RespuestaController&accion=editar&id=<?= (int) $respuesta['id_respuesta'] ?>"
+                                    class="botonEditarRespuesta"
+                                    aria-label="Editar respuesta"
+                                    title="Editar respuesta"
+                                >
+                                    <img src="assets/images/Iconos/Editar.png" alt="Editar">
+                                </a>
+
+                                <form
+                                    action="index.php?controller=RespuestaController&accion=borrar"
+                                    method="POST"
+                                    onsubmit="return confirm('¿Seguro que quieres borrar esta respuesta?');"
+                                >
+                                    <input
+                                        type="hidden"
+                                        name="id_respuesta"
+                                        value="<?= (int) $respuesta['id_respuesta'] ?>"
+                                    >
+
+                                    <button
+                                        type="submit"
+                                        class="botonBorrarRespuesta"
+                                        aria-label="Borrar respuesta"
+                                        title="Borrar respuesta"
+                                    >
+                                        <img src="assets/images/Iconos/Trash.png" alt="Borrar">
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                    </div>
 
                 </div>
 
-            <?php endif; ?>
+                <div class="contenidoRespuesta">
+
+                    <p class="textoRespuesta">
+                        <?= nl2br(htmlspecialchars($respuesta['texto'])) ?>
+                    </p>
+
+                    <?php if (!empty($respuesta['imagen_ruta'])): ?>
+
+                        <img
+                            class="imagenRespuesta"
+                            src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
+                            alt="Imagen adjunta a la respuesta"
+                        >
+
+                    <?php endif; ?>
+
+                </div>
+
+            </article>
+
+        <?php endforeach; ?>
+
+    <?php else: ?>
+
+        <p class="sinRespuestas">
+            Todavía no hay respuestas. ¡Sé la primera persona en responder!
+        </p>
+
+    <?php endif; ?>
+
+</section>
+
+<!-- Formulario para añadir una respuesta -->
+<?php if (isset($_SESSION['id_usuario'])): ?>
+
+    <div class="formularioRespuesta">
+
+        <h2>Añade tu respuesta:</h2>
+
+        <form
+            action="index.php?controller=RespuestaController&accion=store"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <input
+                type="hidden"
+                name="id_pregunta"
+                value="<?= (int) $pregunta['id_pregunta'] ?>"
+            >
+
+            <textarea
+                name="texto"
+                placeholder="Escribe tu respuesta..."
+                required
+            ></textarea>
+
+            <div class="accionesFormularioRespuesta">
+
+                <input
+                    type="file"
+                    name="adjunto"
+                    id="adjunto"
+                >
+
+                <button type="submit">Publicar</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+<?php endif; ?>
+
 
         <?php else: ?>
 

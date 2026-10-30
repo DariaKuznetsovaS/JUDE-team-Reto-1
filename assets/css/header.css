@@ -3,76 +3,41 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10rem;
+    gap: 1.5rem;
+    height: 8rem;
     padding: 2rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D5DEE7;
 }
+
+/* LOGO*/
 
 header .logo {
-    width: 100px;
+    display: block;
+    width: 6.25rem;
     height: auto;
+    flex-shrink: 0;
 }
 
-header input[type="search"] {
-    width: 500px;
-    padding: 10px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    background-color: white;
-    box-shadow: inset 0 2px 3px #6B767B;
-    outline: none;
-}
+/* BUSCADOR*/
 
-header input[type="search"]:focus {
-    border-color: #247BA0;
-    box-shadow: 0 0 0 3px #247BA025;
-    outline: none;
-}
-/* Contenedor de los botones */
-
-header .botonesSesion {
-    display: flex;
-    gap: 5px;
-}
-
-
-header .bIniciarSesion {
-    background-color: #247BA0;
-    color: white;
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: .5rem;
-}
-
-header .bIniciarSesion:hover, header .bRegistrarse:hover{
-    background-color: #20B8A6;
-    color: #163A5F;
-    font-weight: bold;
-}
-
-
-header .bRegistrarse {
-    background-color: #163A5F;
-    color: white;
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: .5rem;
-}
-
-/*BUSCADOR*/
 .buscadorHeader {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
-    max-width: 850px;
-    height: 48px;
-    margin: 0 30px;
+    max-width: 53rem;
+    min-width: 0;
+    height: 3rem;
+    margin: 0 1rem;
     border: 1px solid #D5DEE7;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     background-color: #FFFFFF;
     overflow: hidden;
     box-sizing: border-box;
 }
+
+/* Campo de búsqueda */
 
 .buscadorHeader input {
     display: block;
@@ -80,19 +45,38 @@ header .bRegistrarse {
     width: 0;
     min-width: 0;
     height: 100%;
-    padding: 0 15px;
+    padding: 0 0.9rem;
     border: none;
     outline: none;
     background: transparent;
     color: #163A5F;
     font-family: inherit;
-    font-size: 15px;
+    font-size: 0.9rem;
     box-sizing: border-box;
 }
 
+/* Selector de categoría */
+
+.buscadorHeader select {
+    flex: 0 0 auto;
+    max-width: 9.3rem;
+    height: 100%;
+    padding: 0 0.5rem;
+    border: none;
+    border-right: 1px solid #D5DEE7;
+    outline: none;
+    background-color: #E4F0F5;
+    color: #163A5F;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Botón de búsqueda */
+
 .buscadorHeader button {
     display: flex;
-    flex: 0 0 48px;
+    flex: 0 0 3rem;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -104,10 +88,12 @@ header .bRegistrarse {
 
 .buscadorHeader button img {
     display: block;
-    width: 22px;
-    height: 22px;
+    width: 1.3rem;
+    height: 1.3rem;
     object-fit: contain;
 }
+
+/* Efectos del buscador */
 
 .buscadorHeader:focus-within {
     border-color: #247BA0;
@@ -118,24 +104,196 @@ header .bRegistrarse {
     background-color: #F3F6F9;
 }
 
+/* BOTONES DE SESIÓN*/
 
-.buscadorHeader select {
-    flex: 0 0 auto;
-    max-width: 150px;
-    height: 100%;
-    padding: 0 8px;
-    border: none;
-    border-right: 1px solid #D5DEE7;
-    outline: none;
-    background-color: transparent;
-    color: #163A5F;
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
+header .botonesSesion {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-shrink: 0;
 }
 
-.buscadorHeader input {
-    flex: 1;
-    width: 0;
-    min-width: 0;
+header .bIniciarSesion,
+header .bRegistrarse {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+}
+
+header .bIniciarSesion {
+    background-color: #247BA0;
+}
+
+header .bRegistrarse {
+    background-color: #163A5F;
+}
+
+header .bIniciarSesion:hover,
+header .bRegistrarse:hover {
+    background-color: #20B8A6;
+    color: #163A5F;
+    font-weight: bold;
+}
+
+/* PERFIL DE USUARIO*/
+
+header .bPerfil {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #163A5F;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+header .bPerfil span {
+    max-width: 12rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+header .bPerfil img {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+header .bPerfil:hover {
+    color: #20B8A6;
+}
+
+/* RESPONSIVE: TABLETS*/
+
+@media (max-width: 900px) {
+
+    header {
+        gap: 0.9rem;
+        padding: 1.5rem;
+    }
+
+    header .logo {
+        width: 5rem;
+    }
+
+    .buscadorHeader {
+        margin: 0 0.6rem;
+    }
+
+    header .bIniciarSesion,
+    header .bRegistrarse {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    header .bPerfil {
+        font-size: 0.8rem;
+    }
+
+    header .bPerfil img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+/* RESPONSIVE: MÓVILES */
+
+@media (max-width: 600px) {
+
+    header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.9rem;
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    header .logo {
+        width: 4rem;
+    }
+
+    /* El buscador ocupa una segunda fila */
+
+    .buscadorHeader {
+        order: 3;
+        flex: 1 1 100%;
+        max-width: 100%;
+        height: 2.75rem;
+        margin: 0;
+    }
+
+    .buscadorHeader input {
+        padding: 0 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .buscadorHeader select {
+        max-width: 6rem;
+        font-size: 0.75rem;
+    }
+
+    .buscadorHeader button {
+        flex-basis: 2.6rem;
+    }
+
+    .buscadorHeader button img {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    /* Botones de sesión */
+
+    header .bIniciarSesion,
+    header .bRegistrarse {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    /* Perfil */
+
+    header .bPerfil {
+        gap: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    header .bPerfil span {
+        max-width: 8rem;
+    }
+
+    header .bPerfil img {
+        width: 2.3rem;
+        height: 2.3rem;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    header {
+        padding: 0.75rem;
+    }
+
+    header .logo {
+        width: 4rem;
+    }
+
+    header .bIniciarSesion,
+    header .bRegistrarse {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    header .bPerfil span {
+        max-width: 6rem;
+    }
+
+    .buscadorHeader select {
+        max-width: 5.6rem;
+        padding: 0 0.3rem;
+    }
 }
