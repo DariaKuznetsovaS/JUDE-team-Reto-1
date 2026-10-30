@@ -1,0 +1,170 @@
+/* Sección de respuestas */
+
+.respuestas {
+    width: 100%;
+    max-width: 900px;
+    margin: 45px auto 0;
+    box-sizing: border-box;
+}
+
+.respuestas > h2 {
+    margin-bottom: 20px;
+    color: #163A5F;
+    text-align: left;
+}
+
+/* Tarjeta individual */
+
+.respuestaCard {
+    background-color: #FFFFFF;
+    border: 1px solid #DCE4EB;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 6px rgba(22, 58, 95, 0.06);
+}
+
+/* Cabecera: usuario y favoritos */
+
+.cabeceraRespuesta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #E8EDF2;
+}
+
+.infoAutorRespuesta {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+.nombreUsuarioRespuesta {
+    color: #163A5F;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.fechaRespuesta {
+    color: #7B8794;
+    font-size: 12px;
+}
+
+/* Corazón y contador */
+
+.botonFavorito {
+    background: none;
+    border: none;
+    color: #8A96A3;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.botonFavorito:hover {
+    transform: scale(1.15);
+}
+
+.botonFavorito.favoritoActivo {
+    color: #D62850;
+}
+
+.botonFavorito:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.numeroFavoritos {
+    color: #687786;
+    font-size: 13px;
+    min-width: 12px;
+}
+
+/* Contenido de la respuesta */
+
+.contenidoRespuesta {
+    padding-top: 16px;
+}
+
+.textoRespuesta {
+    margin: 0;
+    color: #344454;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+/* Imagen adjunta */
+
+.imagenRespuesta {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    max-height: 350px;
+    object-fit: contain;
+    object-position: center;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: 1px solid #E8EDF2;
+}
+
+/* Estado vacío */
+
+.sinRespuestas {
+    color: #7B8794;
+    padding: 15px 0;
+}
+
+/*ACCIONES RESPUESTA*/
+.accionesRespuesta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accionesRespuesta form {
+    margin: 0;
+}
+
+.accionesRespuesta a,
+.accionesRespuesta button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.accionesRespuesta img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+/* Adaptación a pantallas pequeñas */
+
+@media (max-width: 600px) {
+    .respuestaCard {
+        padding: 16px;
+    }
+
+    .cabeceraRespuesta {
+        gap: 10px;
+    }
+
+    .nombreUsuarioRespuesta {
+        font-size: 14px;
+    }
+
+    .imagenRespuesta {
+        max-height: 260px;
+    }
+}

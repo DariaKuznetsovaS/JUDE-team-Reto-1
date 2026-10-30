@@ -1,0 +1,45 @@
+
+.menuLateral {
+    width: 17rem;
+    min-width: 17rem;
+    max-width: 17rem;
+    flex: 0 0 17rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+}
+
+/* Cada opción completa del menú */
+
+.menuLateral > a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 2.8rem;
+    padding: 0.7rem 0.9rem;
+    background-color: #163A5F;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+
+/* Iconos */
+.menuLateral img {
+    width: 1.4rem;
+    height: 1.4rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* Efecto al pasar el ratón */
+.menuLateral > a:hover {
+    background-color: #247BA0;
+}
