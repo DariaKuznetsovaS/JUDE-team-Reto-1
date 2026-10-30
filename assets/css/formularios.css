@@ -1,152 +1,156 @@
-/*FORMULARIO PREGUNTA*/
+/* FORMULARIO DE PUBLICACIÓN DE PREGUNTAS */
 
 .publicarPregunta {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px #163A5F33;
-    min-height: 600px;
-    width: 600px;
-    padding: 4rem;
-    margin: auto;
+    width: 100%;
+    max-width: 800px;
+    min-width: 0;
+    margin: 20px 0;
+    padding: 2.5rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(22, 58, 95, 0.08);
+    box-sizing: border-box;
 }
 
 .publicarPregunta form {
-    max-width: 600px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
 }
+
+/* Cabecera */
 
 .headPregunta {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 85px;
+    margin-bottom: 1rem;
 }
 
 .headPregunta img {
-    width: 65px;
-    height: 65px;
+    width: 3.5rem;
+    height: 3.5rem;
     object-fit: contain;
 }
 
 .headPregunta h1 {
-    color: #247BA0;
-    font-size: 30px;
+    color: #163A5F;
+    font-size: 1.8rem;
 }
+
+/* Campos */
 
 .infoPregunta {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin-bottom: 30px;
+    align-items: stretch;
+    width: 100%;
+    gap: 1.3rem;
 }
 
 .infoPregunta input[type="text"],
-.infoPregunta textarea {
+.infoPregunta textarea,
+.infoPregunta select {
+    display: block;
     width: 100%;
-    background-color: #C5DDE6;
+    min-width: 0;
+    padding: 0.9rem 1rem;
+    background-color: #FFFFFF;
     color: #163A5F;
-    border: none;
-    border-radius: 11px;
-    padding: 12px;
+    border: 1px solid #D5DEE7;
+    border-radius: 8px;
     font-family: inherit;
-    font-size: 16px;
-    box-shadow: 0 2px 4px #00000035;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .infoPregunta input[type="text"] {
-    height: 40px;
+    min-height: 3rem;
 }
 
+
 .infoPregunta textarea {
-    height: 195px;
+    min-height: 12rem;
     resize: vertical;
+    line-height: 1.6;
 }
 
 .infoPregunta input:focus,
-.infoPregunta textarea:focus {
-    outline: 2px solid #247BA0;
+.infoPregunta textarea:focus,
+.infoPregunta select:focus {
+    outline: none;
+    border-color: #247BA0;
+    box-shadow: 0 0 0 3px #247BA025;
 }
 
-.botonesPregunta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.botonAdjuntar,
-.botonesPregunta button {
-    min-height: 43px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    border: none;
-    border-radius: 11px;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: bold;
+.infoPregunta select {
     cursor: pointer;
 }
 
-.botonAdjuntar {
-    background-color: #D9D9D9;
-    color: #247BA0;
+/* Archivo y botón */
+
+.botonesPregunta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 1rem;
 }
 
-.botonAdjuntar span {
-    font-size: 24px;
-    color: #20B8A6;
+.inputArchivo {
+    width: 100%;
+    min-width: 0;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #163A5F;
 }
 
 .botonesPregunta button {
+    width: 100%;
+    min-height: 3rem;
+    border: none;
+    border-radius: 8px;
     background-color: #20B8A6;
-    color: white;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .botonesPregunta button:hover {
     background-color: #163A5F;
 }
 
-.inputArchivo {
-    grid-column: 1 / -1;
-    width: 100%;
-    font-size: 12px;
-}
+/* Móviles */
 
-.infoPregunta select {
-    width: 100%;
-    padding: 12px;
-    background-color: #C5DDE6;
-    color: #163A5F;
-    border: none;
-    border-radius: 11px;
-    font-family: inherit;
-    font-size: 16px;
-    box-shadow: 0 2px 4px #00000035;
-    cursor: pointer;
-}
-
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .publicarPregunta {
-        padding: 40px 15px;
+        margin: 20px 0;
+        padding: 1.5rem;
     }
 
     .headPregunta {
-        margin-bottom: 50px;
-        gap: 10px;
-    }
-
-    .headPregunta h1 {
-        font-size: 23px;
+        gap: 0.7rem;
     }
 
     .headPregunta img {
-        width: 50px;
-        height: 50px;
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .headPregunta h1 {
+        font-size: 1.4rem;
+    }
+
+    .infoPregunta textarea {
+        min-height: 10rem;
     }
 }
-
 
 /* FORMULARIO DE RESPUESTA */
 
@@ -154,29 +158,38 @@
     width: 100%;
     max-width: 900px;
     margin: 35px auto 0;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .formularioRespuesta h2 {
+    width: 100%;
+    box-sizing: border-box;
     text-align: center;
-    font-size: 18px;
-    border-top: 3px solid #247BA0;
-    padding-top: 12px;
+    font-size: 1.2rem;
+    color: #163A5F;
+    border-top: 1px solid #D5DEE7;
+    padding-top: 15px;
     margin-bottom: 25px;
 }
 
 .formularioRespuesta form {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: 15px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .formularioRespuesta textarea {
+    display: block;
     width: 100%;
-    min-height: 160px;
+    min-height: 190px;
     padding: 20px;
     border: 1px solid #C5DDE6;
     border-radius: 8px;
@@ -186,28 +199,35 @@
     box-sizing: border-box;
 }
 
+.formularioRespuesta textarea:focus {
+    outline: none;
+    border-color: #247BA0;
+    box-shadow: 0 0 0 3px #247BA025;
+}
+
 /* Acciones debajo del textarea */
+
 .accionesRespuesta {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+    width: 100%;
 }
-
 
 .accionesRespuesta input[type="file"] {
     max-width: 100%;
     min-width: 0;
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
 .accionesRespuesta button {
-    padding: 10px 22px;
+    padding: 12px 25px;
     border: none;
     border-radius: 8px;
     background-color: #20B8A6;
     color: white;
-    font-size: 13px;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
     flex-shrink: 0;
@@ -217,142 +237,48 @@
     background-color: #163A5F;
 }
 
-/* FORMULARIO DE EDICIÓN DE PREGUNTAS */
-
-.formularioPregunta {
-    width: 100%;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 35px;
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(22, 58, 95, 0.08);
-    box-sizing: border-box;
-}
-
-.formularioPregunta h1 {
-    margin: 0 0 30px;
-    color: #163A5F;
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.formularioPregunta form {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-}
-
-.formularioPregunta .campoFormulario {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.formularioPregunta .campoFormulario label {
-    color: #163A5F;
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.formularioPregunta input[type="text"],
-.formularioPregunta textarea,
-.formularioPregunta select {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #D5DEE7;
-    border-radius: 7px;
-    background-color: #FFFFFF;
-    color: #163A5F;
-    font-family: inherit;
-    font-size: 15px;
-    box-sizing: border-box;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.formularioPregunta textarea {
-    min-height: 180px;
-    resize: vertical;
-    line-height: 1.6;
-}
-
-.formularioPregunta input[type="text"]:focus,
-.formularioPregunta textarea:focus,
-.formularioPregunta select:focus {
-    outline: none;
-    border-color: #247BA0;
-    box-shadow: 0 0 0 3px #247BA025;
-}
-
-.formularioPregunta .accionesFormulario {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 8px;
-}
-
-.formularioPregunta .accionesFormulario button {
-    padding: 12px 22px;
-    border: none;
-    border-radius: 7px;
-    background-color: #247BA0;
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.formularioPregunta .accionesFormulario button:hover {
-    background-color: #163A5F;
-}
-
-.formularioPregunta .accionesFormulario a {
-    padding: 11px 20px;
-    border: 1px solid #D5DEE7;
-    border-radius: 7px;
-    color: #163A5F;
-    text-decoration: none;
-    font-size: 15px;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-.formularioPregunta .accionesFormulario a:hover {
-    background-color: #F3F6F9;
-    border-color: #247BA0;
-}
-
-.formularioPregunta .imagenActualPregunta {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    max-height: 220px;
-    object-fit: contain;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #D5DEE7;
-}
-
-/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
-
 @media (max-width: 600px) {
-    .formularioPregunta {
-        margin: 20px auto;
-        padding: 22px;
+    .formularioRespuesta {
+        margin-top: 25px;
     }
 
-    .formularioPregunta h1 {
-        font-size: 24px;
+    .formularioRespuesta textarea {
+        min-height: 150px;
+        padding: 15px;
     }
 
-    .formularioPregunta .accionesFormulario {
+    .accionesRespuesta {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .formularioPregunta .accionesFormulario button,
-    .formularioPregunta .accionesFormulario a {
-        text-align: center;
+    .accionesRespuesta input[type="file"] {
+        width: 100%;
     }
+
+    .accionesRespuesta button {
+        width: 100%;
+    }
+}
+
+/* Forzar que los campos ocupen todo el formulario */
+
+.publicarPregunta form {
+    width: 100%;
+    max-width: none;
+    align-items: stretch;
+}
+
+.publicarPregunta .infoPregunta {
+    width: 100%;
+    max-width: none;
+    align-items: stretch;
+}
+
+.publicarPregunta .infoPregunta input,
+.publicarPregunta .infoPregunta textarea,
+.publicarPregunta .infoPregunta select {
+    width: 100%;
+    max-width: none;
+    align-self: stretch;
 }
