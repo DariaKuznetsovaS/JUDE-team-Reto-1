@@ -1,0 +1,77 @@
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #287fa0;
+    color:#F3F6F9; 
+    padding: 12px;
+    margin-top: auto;
+}
+
+.copyright {
+    text-align: left;
+}
+
+.nombreEmpresa {
+    text-align: center;
+}
+
+.normasUso a {
+    color: #20b9aa;
+    text-decoration: none;
+}
+
+/* Contenido de las normas */
+.contenidoNormas {
+    position: relative;
+    background-color: #F3F6F9;
+    width: 100%;
+    max-width: 650px;
+    max-height: 80vh;
+    overflow-y: auto;
+
+    padding: 30px;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.contenidoNormas h2 {
+    color: #163A5F;
+    margin-top: 0;
+}
+
+.contenidoNormas h3 {
+    color: #247BA0;
+    margin-top: 20px;
+}
+
+.contenidoNormas p {
+    line-height: 1.6;
+}
+
+/* Botón de cerrar de la esquina */
+.cerrarNormas {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Botón inferior */
+#botonCerrarNormas {
+    background-color: #247BA0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#botonCerrarNormas:hover {
+    background-color: #163A5F;
+}

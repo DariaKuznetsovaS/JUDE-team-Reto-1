@@ -11,6 +11,15 @@ include __DIR__ . "/layout/header.php"
         <h1>Lista de usuarios</h1>
     
     </div>
+
+
+    <?php if (!empty($_SESSION['error'])): ?>
+        <div id="mensajeError" data-mensaje="<?= htmlspecialchars($_SESSION['error']) ?>"></div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+
+    
     <?php if(!empty($usuarios)) : ?>
         <?php foreach($usuarios as $u): ?>
         <div>
@@ -20,7 +29,7 @@ include __DIR__ . "/layout/header.php"
             
             <div class="opciones">
                 <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Ajustes.png" alt=""> </a>
-<!-- con js sacar una ventana de confirmación y directamente eliminar -->  <img src="assets/images/Iconos/Trash.png" alt="">
+                <a class="eliminar" href="index.php?controller=UsuarioController&accion=eliminar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Trash.png" alt=""></a>
             </div>
         </div>
 
@@ -33,6 +42,8 @@ include __DIR__ . "/layout/header.php"
     <a href="index.php?controller=UsuarioController&accion=crearUser">+Crear nuevo usuario</a>
 
 </div>
+
+<script src="assets/scripts/listaUsuarios.js" ></script>
 
 
 

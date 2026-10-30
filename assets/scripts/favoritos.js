@@ -60,3 +60,8 @@ document.addEventListener('click', async function (event) {
         boton.disabled = false;
     }
 });
+
+
+
+
+ 

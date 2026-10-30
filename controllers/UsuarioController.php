@@ -234,17 +234,52 @@ public function verPerfil() {
         exit();
     }
     
-/*
-    public function crearUser() {
 
-        $usuario = UsuarioModel::insertarUsuario();
-        $this->render("listaUsuarios.view.php", [
-            '' => $
-        ]);
-        
+    public function crearUser() {
+        require "views/nuevoUserAdmin.view.php";
 
     }
 
-*/
-}
+    public function annadirUsuarioNuevo(){
+        $nombre=$_POST["nombre"];
+        $apellidos=$_POST["apellidos"];
+        $nombreUsuario=$_POST["nombreUsuario"];
+        $contrasenna=$_POST["contrasenna"];
+        $tipo=$_POST["tipo"];
 
+    }
+
+
+
+
+    public function eliminar() {
+
+        $id = $_GET["id"] ?? null;
+
+        if ($id === null) {
+            $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+            return;
+        }
+        
+        try{
+
+            $usuario = UsuarioModel::getById($id);
+            if ($usuario && $usuario['tipo'] === 'admin' && UsuarioModel::contarAdmins() <= 1){
+                $_SESSION['error'] = "No se puede eliminar al último administrador.";
+            } else {
+
+                UsuarioModel::deleteUsuarioById($id);
+            } 
+            
+        }catch (PDOException $e) {
+
+                $_SESSION['error'] = "No se pudo eliminar el usuario.";
+
+            }
+
+        
+        
+        $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+    }
+
+}

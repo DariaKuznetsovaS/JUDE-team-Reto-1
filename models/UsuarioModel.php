@@ -105,4 +105,23 @@ class UsuarioModel {
         
     }
 
+    public static function deleteUsuarioById($id) {
+
+        $db = Database::getConnection();
+        $stmt = $db->prepare('DELETE FROM usuarios WHERE id_usuario = :id_usuario');
+        $stmt->execute([':id_usuario' => $id]);
+        return $stmt->rowCount() > 0;
+
+    }
+    
+
+    public static function contarAdmins() {
+
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE tipo = 'Admin'");
+        $stmt->execute();
+        
+        return (int) $stmt->fetchColumn();
+
+    }
 }

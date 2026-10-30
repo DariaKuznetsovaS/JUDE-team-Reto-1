@@ -1,0 +1,358 @@
+/*FORMULARIO PREGUNTA*/
+
+.publicarPregunta {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #163A5F33;
+    min-height: 600px;
+    width: 600px;
+    padding: 4rem;
+    margin: auto;
+}
+
+.publicarPregunta form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.headPregunta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 85px;
+}
+
+.headPregunta img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.headPregunta h1 {
+    color: #247BA0;
+    font-size: 30px;
+}
+
+.infoPregunta {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.infoPregunta input[type="text"],
+.infoPregunta textarea {
+    width: 100%;
+    background-color: #C5DDE6;
+    color: #163A5F;
+    border: none;
+    border-radius: 11px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 16px;
+    box-shadow: 0 2px 4px #00000035;
+}
+
+.infoPregunta input[type="text"] {
+    height: 40px;
+}
+
+.infoPregunta textarea {
+    height: 195px;
+    resize: vertical;
+}
+
+.infoPregunta input:focus,
+.infoPregunta textarea:focus {
+    outline: 2px solid #247BA0;
+}
+
+.botonesPregunta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.botonAdjuntar,
+.botonesPregunta button {
+    min-height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    border-radius: 11px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botonAdjuntar {
+    background-color: #D9D9D9;
+    color: #247BA0;
+}
+
+.botonAdjuntar span {
+    font-size: 24px;
+    color: #20B8A6;
+}
+
+.botonesPregunta button {
+    background-color: #20B8A6;
+    color: white;
+}
+
+.botonesPregunta button:hover {
+    background-color: #163A5F;
+}
+
+.inputArchivo {
+    grid-column: 1 / -1;
+    width: 100%;
+    font-size: 12px;
+}
+
+.infoPregunta select {
+    width: 100%;
+    padding: 12px;
+    background-color: #C5DDE6;
+    color: #163A5F;
+    border: none;
+    border-radius: 11px;
+    font-family: inherit;
+    font-size: 16px;
+    box-shadow: 0 2px 4px #00000035;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .publicarPregunta {
+        padding: 40px 15px;
+    }
+
+    .headPregunta {
+        margin-bottom: 50px;
+        gap: 10px;
+    }
+
+    .headPregunta h1 {
+        font-size: 23px;
+    }
+
+    .headPregunta img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+/* FORMULARIO DE RESPUESTA */
+
+.formularioRespuesta {
+    width: 100%;
+    max-width: 900px;
+    margin: 35px auto 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+}
+
+.formularioRespuesta h2 {
+    text-align: center;
+    font-size: 18px;
+    border-top: 3px solid #247BA0;
+    padding-top: 12px;
+    margin-bottom: 25px;
+}
+
+.formularioRespuesta form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formularioRespuesta textarea {
+    width: 100%;
+    min-height: 160px;
+    padding: 20px;
+    border: 1px solid #C5DDE6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px #00000020;
+    font: inherit;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* Acciones debajo del textarea */
+.accionesRespuesta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+
+.accionesRespuesta input[type="file"] {
+    max-width: 100%;
+    min-width: 0;
+    font-size: 12px;
+}
+
+.accionesRespuesta button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    background-color: #20B8A6;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.accionesRespuesta button:hover {
+    background-color: #163A5F;
+}
+
+/* FORMULARIO DE EDICIÓN DE PREGUNTAS */
+
+.formularioPregunta {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 35px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(22, 58, 95, 0.08);
+    box-sizing: border-box;
+}
+
+.formularioPregunta h1 {
+    margin: 0 0 30px;
+    color: #163A5F;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.formularioPregunta form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.formularioPregunta .campoFormulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formularioPregunta .campoFormulario label {
+    color: #163A5F;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.formularioPregunta input[type="text"],
+.formularioPregunta textarea,
+.formularioPregunta select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #D5DEE7;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    color: #163A5F;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formularioPregunta textarea {
+    min-height: 180px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.formularioPregunta input[type="text"]:focus,
+.formularioPregunta textarea:focus,
+.formularioPregunta select:focus {
+    outline: none;
+    border-color: #247BA0;
+    box-shadow: 0 0 0 3px #247BA025;
+}
+
+.formularioPregunta .accionesFormulario {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.formularioPregunta .accionesFormulario button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 7px;
+    background-color: #247BA0;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.formularioPregunta .accionesFormulario button:hover {
+    background-color: #163A5F;
+}
+
+.formularioPregunta .accionesFormulario a {
+    padding: 11px 20px;
+    border: 1px solid #D5DEE7;
+    border-radius: 7px;
+    color: #163A5F;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.formularioPregunta .accionesFormulario a:hover {
+    background-color: #F3F6F9;
+    border-color: #247BA0;
+}
+
+.formularioPregunta .imagenActualPregunta {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    max-height: 220px;
+    object-fit: contain;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #D5DEE7;
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+
+@media (max-width: 600px) {
+    .formularioPregunta {
+        margin: 20px auto;
+        padding: 22px;
+    }
+
+    .formularioPregunta h1 {
+        font-size: 24px;
+    }
+
+    .formularioPregunta .accionesFormulario {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .formularioPregunta .accionesFormulario button,
+    .formularioPregunta .accionesFormulario a {
+        text-align: center;
+    }
+}

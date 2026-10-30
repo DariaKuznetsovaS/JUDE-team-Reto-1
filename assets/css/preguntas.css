@@ -1,0 +1,348 @@
+.listaPreguntas {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+.categoriaPregunta {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #E4F0F5;
+    color: #20B8A6;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.preguntaCard {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-bottom: 12px;
+    padding: 6px;
+    border-radius: .5rem;
+    box-shadow: 0 2px 4px #999;
+}
+
+.cabeceraCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.cabeceraCard h2 {
+    font-size: 14px;
+    margin: 0;
+    color: #163A5F;
+    flex: 1;
+    min-width: 0;
+}
+
+.metadatosCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.cardFecha {
+    font-size: 11px;
+    color: #6B767B;
+    margin: 0;
+    text-align: right;
+}
+
+.contenidoCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    margin-top: 4px;
+}
+
+.imagenCard img {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.descCard {
+    flex: 1;
+}
+
+.descCard p {
+    margin: 0;
+    font-size: 11px;
+    color: #247BA0;
+}
+
+.enlacePregunta {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.preguntaCard {
+    cursor: pointer;
+}
+
+.preguntaCard:hover {
+    box-shadow: 0 4px 12px #00000020;
+}
+
+
+/* Detalle de la pregunta */
+.detallePregunta {
+    width: 100%;
+    min-width: 0;
+    padding: 35px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+}
+
+/* Distribución: texto a la izquierda, imagen a la derecha */
+.contenidoPregunta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 305px;
+    gap: 40px;
+    align-items: start;
+}
+
+.informacionPregunta {
+    min-width: 0;
+}
+
+.informacionPregunta h1 {
+    margin: 0 0 18px;
+    color: #247BA0;
+    font-size: 36px;
+    overflow-wrap: anywhere;
+}
+
+.temaPregunta {
+    margin: 0 0 18px;
+    color: #16B8A8;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.autorPregunta,
+.fechaPregunta {
+    margin: 8px 0;
+    color: #68798B;
+    font-size: 16px;
+}
+
+.autorPregunta a {
+    color: #247BA0;
+    text-decoration: none;
+}
+
+.autorPregunta a:hover {
+    text-decoration: underline;
+}
+
+.descripcionPregunta {
+    margin-top: 45px;
+    color: #163A5F;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Columna derecha: imagen y botones */
+.lateralPregunta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.imagenPregunta {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 3px 10px rgba(22, 58, 95, 0.15);
+}
+
+/* Botones de editar y borrar */
+.accionesPregunta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.accionesPregunta a,
+.accionesPregunta button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #D5DEE7;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.accionesPregunta a:hover,
+.accionesPregunta button:hover {
+    background-color: #F3F6F9;
+    border-color: #247BA0;
+}
+
+.accionesPregunta img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+
+@media (max-width: 700px) {
+    .detallePregunta {
+        padding: 22px;
+    }
+
+    .contenidoPregunta {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .informacionPregunta h1 {
+        font-size: 28px;
+    }
+
+    .descripcionPregunta {
+        margin-top: 28px;
+    }
+
+    .lateralPregunta {
+        width: 100%;
+        max-width: 305px;
+        justify-self: center;
+    }
+
+    .respuestas {
+        margin-top: 38px;
+    }
+
+    .detallePregunta {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .detalleCabecera {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+
+    .cabecera {
+        grid-column: 1;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .infoPregunta {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .imagenPregunta {
+        grid-column: 1;
+        grid-row: auto;
+        width: 140px;
+        height: 140px;
+    }
+
+    .accionesRespuesta {
+        flex-wrap: wrap;
+    }
+
+    .accionesRespuesta input[type="file"] {
+        max-width: 100%;
+    }
+}
+
+/* Fondo oscuro del visor */
+.visorImagen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Visor visible */
+.visorImagen.activo {
+    display: flex;
+}
+
+/* Imagen ampliada */
+.visorImagen img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón para cerrar */
+.cerrarVisor {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 42px;
+    cursor: pointer;
+}
+
+.cerrarVisor:hover {
+    color: #16B8A8;
+}
+
+/* Indicar que las imágenes se pueden pulsar */
+.imagenPregunta,
+.imagenRespuesta {
+    cursor: zoom-in;
+}
+
+@media (max-width: 600px) {
+    .visorImagen {
+        padding: 15px;
+    }
+
+    .visorImagen img {
+        max-width: 100%;
+        max-height: 85%;
+    }
+
+    .cerrarVisor {
+        top: 10px;
+        right: 15px;
+    }
+}

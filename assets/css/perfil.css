@@ -307,6 +307,145 @@ form input[type="submit"]:hover {
     object-fit: contain;
 }
 
+/*MIS PREGUNTAS*/
+/* PERFIL DE USUARIO */
+ 
+#perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 8px 20px;
+}
+ 
+#perfil main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+ 
+/* Foto, nombre y botones */
+.datosUsuario {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+ 
+.datosUsuario > img {
+    width: 110px;
+    height: 110px;
+}
+ 
+#infoUsuario {
+    flex: 1;
+}
+ 
+#infoUsuario h1 {
+    font-size: 30px;
+    color: #247BA0;
+    margin-bottom: 8px;
+}
+ 
+#infoUsuario h3 {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 8px;
+}
+ 
+#infoUsuario p {
+    color: #6B767B;
+}
+ 
+#accionesUsuario {
+    display: flex;
+    gap: 12px;
+}
+ 
+#accionesUsuario img {
+    width: 36px;
+    height: 36px;
+}
+ 
+/* Botón publicar */
+#botonPublicar {
+    align-self: center;
+    background-color: #163A5F;
+    color: white;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px #999;
+}
+ 
+#botonPublicar:hover {
+    background-color: #247BA0;
+}
+
+/* Dos columnas: preguntas y respuestas */
+#listados {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+ 
+.columna {
+    background-color: white;
+    min-height: 400px;
+    padding: 12px;
+    border-radius: .5rem .5rem 0 0;
+}
+ 
+.columna h3 {
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 12px;
+}
+ 
+/* Tarjetas (solo dentro del perfil, para no tocar las de otras páginas) */
+#perfil .respuestaCard {
+    background-color: #C5DDE6;
+    border: none;
+    border-radius: .5rem;
+    padding: 6px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px #999;
+}
+ 
+#perfil .cabeceraCard h4 {
+    font-size: 14px;
+    color: #163A5F;
+}
+ 
+#perfil .cabeceraCard p {
+    font-size: 11px;
+    color: #6B767B;
+}
+ 
+#perfil .contenidoCard img {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: .3rem;
+}
+ 
+#perfil .contenidoCard p {
+    font-size: 11px;
+}
+ 
+#perfil .preguntaCard .contenidoCard p {
+    color: #247BA0;
+}
+ 
+#perfil .respuestaCard .contenidoCard p {
+    color: #163A5F;
+}
+
 /* Adaptación a pantallas pequeñas */
 @media (max-width: 900px) {
     .misPreguntas {

@@ -11,7 +11,14 @@
 
     <title>AERGIBIDE, S.L.</title>
     <link rel="stylesheet" href="assets/css/principal.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/preguntas.css">
+    <link rel="stylesheet" href="assets/css/respuestas.css">
+    <link rel="stylesheet" href="assets/css/formularios.css">
     <link rel="stylesheet" href="assets/css/perfil.css">
+    <link rel="stylesheet" href="assets/css/ajustes.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <script src="assets/scripts/script.js" defer></script>
 </head>
 <body>
