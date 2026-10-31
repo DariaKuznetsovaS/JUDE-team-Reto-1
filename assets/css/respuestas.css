@@ -1,4 +1,5 @@
-/* Sección de respuestas */
+
+/* SECCIÓN DE RESPUESTAS */
 
 .respuestas {
     width: 100%;
@@ -10,60 +11,86 @@
 .respuestas > h2 {
     margin-bottom: 20px;
     color: #163A5F;
-    text-align: left;
+    font-size: 1.4rem;
 }
 
-/* Tarjeta individual */
+/* TARJETAS */
 
 .respuestaCard {
+    width: 100%;
     background-color: #FFFFFF;
-    border: 1px solid #DCE4EB;
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 18px;
-    box-shadow: 0 2px 6px rgba(22, 58, 95, 0.06);
+    border: 1px solid #D5DEE7;
+    border-radius: 10px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px #163A5F10;
+    box-sizing: border-box;
 }
 
-/* Cabecera: usuario y favoritos */
+/* CABECERA */
 
 .cabeceraRespuesta {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    padding-bottom: 14px;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.9rem;
     border-bottom: 1px solid #E8EDF2;
 }
+
+/* AUTOR Y FECHA */
 
 .infoAutorRespuesta {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    align-items: flex-end;
-    margin-left: auto;
+    align-items: flex-start;
+    gap: 0.3rem;
+    min-width: 0;
 }
 
 .nombreUsuarioRespuesta {
     color: #163A5F;
-    font-size: 15px;
+    font-size: 0.95rem;
     font-weight: 600;
+    text-decoration: none;
+}
+
+.nombreUsuarioRespuesta:hover {
+    color: #247BA0;
+    text-decoration: underline;
 }
 
 .fechaRespuesta {
     color: #7B8794;
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
-/* Corazón y contador */
+/* CONTROLES: FAVORITOS Y ACCIONES */
+
+.controlesRespuesta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.favoritosRespuesta {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
 
 .botonFavorito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1rem;
     background: none;
     border: none;
     color: #8A96A3;
-    font-size: 28px;
+    font-size: 1.8rem;
     line-height: 1;
     cursor: pointer;
-    padding: 2px;
     transition: transform 0.15s ease, color 0.15s ease;
 }
 
@@ -82,26 +109,69 @@
 
 .numeroFavoritos {
     color: #687786;
-    font-size: 13px;
-    min-width: 12px;
+    font-size: 0.85rem;
+}
+/* EDITAR Y BORRAR RESPUESTAS */
+.accionesRespuesta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-/* Contenido de la respuesta */
+.accionesRespuesta form {
+    margin: 0;
+    padding: 0;
+}
+
+.accionesRespuesta a,
+.accionesRespuesta button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.accionesRespuesta button:hover,
+.accionesRespuesta a:hover {
+    background: #F0F5F8;
+}
+
+.accionesRespuesta img {
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: contain;
+    transition: transform 0.15s ease;
+}
+
+.accionesRespuesta a:hover img,
+.accionesRespuesta button:hover img {
+    transform: scale(1.15);
+}
+
+/* CONTENIDO */
 
 .contenidoRespuesta {
-    padding-top: 16px;
+    padding-top: 1rem;
 }
 
 .textoRespuesta {
     margin: 0;
     color: #344454;
-    font-size: 15px;
+    font-size: 0.95rem;
     line-height: 1.7;
     overflow-wrap: anywhere;
     white-space: normal;
 }
 
-/* Imagen adjunta */
+/* IMAGEN ADJUNTA */
 
 .imagenRespuesta {
     display: block;
@@ -110,61 +180,81 @@
     max-height: 350px;
     object-fit: contain;
     object-position: center;
-    margin-top: 16px;
+    margin-top: 1rem;
     border-radius: 8px;
     border: 1px solid #E8EDF2;
 }
 
-/* Estado vacío */
+/* SIN RESPUESTAS */
 
 .sinRespuestas {
     color: #7B8794;
-    padding: 15px 0;
+    padding: 1rem 0;
 }
 
-/*ACCIONES RESPUESTA*/
-.accionesRespuesta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.accionesRespuesta form {
-    margin: 0;
-}
-
-.accionesRespuesta a,
-.accionesRespuesta button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.accionesRespuesta img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-}
-/* Adaptación a pantallas pequeñas */
+/* RESPONSIVE */
 
 @media (max-width: 600px) {
+
+    .respuestas {
+        margin-top: 1.5rem;
+    }
+
     .respuestaCard {
-        padding: 16px;
+        padding: 1rem;
     }
 
     .cabeceraRespuesta {
-        gap: 10px;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+    }
+
+    .controlesRespuesta {
+        gap: 0.7rem;
     }
 
     .nombreUsuarioRespuesta {
-        font-size: 14px;
+        font-size: 0.9rem;
+    }
+
+    .fechaRespuesta {
+        font-size: 0.75rem;
+    }
+
+    .botonFavorito {
+        font-size: 1.6rem;
+    }
+
+    .textoRespuesta {
+        font-size: 0.9rem;
     }
 
     .imagenRespuesta {
         max-height: 260px;
     }
+}
+
+/* FORZAR ESTILO DE LOS BOTONES DE ACCIONES DE RESPUESTA */
+.respuestaCard .controlesRespuesta .accionesRespuesta form button.botonBorrarRespuesta {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 5px !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    min-width: 2rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.respuestaCard .controlesRespuesta .accionesRespuesta form button.botonBorrarRespuesta:hover {
+    background: #F0F5F8 !important;
+    background-color: #F0F5F8 !important;
+}
+
+.respuestaCard .controlesRespuesta .accionesRespuesta form button.botonBorrarRespuesta img {
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: contain;
 }

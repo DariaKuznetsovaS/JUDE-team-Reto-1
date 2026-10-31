@@ -43,7 +43,7 @@
             <form action="index.php" method="GET" class="buscadorHeader">
 
                 <select name="categoria" aria-label="Filtrar por categoría">
-                    <option value="">Todas las categorías</option>
+                    <option value="">Categoría</option>
                     <option value="aerodinamica" <?= ($_GET["categoria"] ?? "") === "aerodinamica" ? "selected" : "" ?>>Aerodinámica</option>
                     <option value="materiales" <?= ($_GET["categoria"] ?? "") === "materiales" ? "selected" : "" ?>>Materiales</option>
                     <option value="motores" <?= ($_GET["categoria"] ?? "") === "motores" ? "selected" : "" ?>>Motores</option>
@@ -73,9 +73,15 @@
             <?php if (isset($_SESSION["id_usuario"])): ?>
 
                 <a href="index.php?controller=UsuarioController&accion=perfil"
-                   class="bPerfil">
-                    <img src="assets/images/Iconos/User.png">
-                </a>
+                class="bPerfil">
+
+                    <span>
+                        Hola,<strong> <?= htmlspecialchars($_SESSION["id_usuario"]->nombre_usuario) ?></strong>
+                    </span>
+
+                    <img src="assets/images/Iconos/User.png" alt="Mi perfil">
+
+</a>
 
             <?php else: ?>
 
