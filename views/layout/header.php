@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="assets/css/perfil.css">
     <link rel="stylesheet" href="assets/css/ajustes.css">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/listaUsers.css">
+
+    <link rel="icon" type="image/png" href="assets/images/logoAergibide.png">
+
     <script src="assets/scripts/script.js" defer></script>
 </head>
 <body>
