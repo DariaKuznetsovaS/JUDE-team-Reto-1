@@ -10,7 +10,7 @@ include __DIR__ . '/layout/header.php'; ?>
                 <h2>A&ntilde;adir Nuevo Usuario</h2>
             </div>
  
-            <form id="formAnnadirUser" action="index.php?controller=Usuario&accion=annadirUsuarioNuevo" method="post">
+            <form id="formAnnadirUser" action="index.php?controller=UsuarioController&accion=annadirUsuarioNuevo" method="post">
                 <input type="text" name="apellidos" placeholder="Apellidos" required >
                 <input type="text" name="nombre" placeholder="Nombre" required>
  
@@ -29,7 +29,7 @@ include __DIR__ . '/layout/header.php'; ?>
                 <p id="msgTipo"></p>
  
                 <div id="d2">
-                    <input type="submit" value="Aceptar cambios">
+                    <input type="submit" value="Crear Usuario">
                     <a href="index.php">Cancelar</a>
                 </div>
             </form>
