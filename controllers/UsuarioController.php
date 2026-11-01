@@ -52,6 +52,7 @@ class UsuarioController extends BaseController {
         } else {
 
             
+            $_SESSION['error_login'] = "Usuario o contraseña incorrectos.";
             $this->redirect("index.php?controller=UsuarioController&accion=login");
             
         }
@@ -74,7 +75,17 @@ class UsuarioController extends BaseController {
         }
 
         $usuario=UsuarioModel::registrarse($nombreUsuario,$nombre, $apellidos, $contrasenna);
-        $this->redirect("index.php?controller=PrincipalController&accion=index");
+        if ($usuario) {
+            
+            
+            $this->redirect("index.php?controller=UsuarioController&accion=login");
+            
+        } else {
+
+            
+            $this->redirect("index.php?controller=UsuarioController&accion=registro");
+            
+        }
         
         
     }
@@ -246,6 +257,9 @@ public function verPerfil() {
         $nombreUsuario=$_POST["nombreUsuario"];
         $contrasenna=$_POST["contrasenna"];
         $tipo=$_POST["tipo"];
+
+        $usuario=UsuarioModel::crearUser($nombreUsuario,$nombre, $apellidos, $contrasenna, $tipo);
+        $this->redirect("index.php?controller=UsuarioController&accion=crearUser");
 
     }
 

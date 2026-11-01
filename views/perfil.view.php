@@ -25,10 +25,16 @@ $esAdmin = $tipoUsuarioSesion === 'admin';
 
 <div class="enlaces">
 
-    <?php if ($idUsuarioSesion !== null && ($esMiPerfil || $esAdmin)): ?>
+    <?php if ($esMiPerfil): ?>
 
-        <a href="index.php?controller=UsuarioController&accion=editar&id=<?= (int) $usuario['id_usuario'] ?>">
+        <a href="index.php?controller=AjustesController&accion=ajustes">
             <img src="assets/images/Iconos/Editar.png" alt="Editar perfil">
+        </a>
+
+    <?php elseif ($idUsuarioSesion !== null && $esAdmin): ?>
+
+        <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= (int) $usuario['id_usuario'] ?>">
+            <img src="assets/images/Iconos/Editar.png" alt="Editar usuario">
         </a>
 
     <?php endif; ?>

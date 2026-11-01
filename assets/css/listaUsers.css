@@ -1,0 +1,57 @@
+.listaUsuarios{
+
+    width: 100%;
+    padding: 30px 50px;
+    box-sizing: border-box;
+}
+
+
+.cabecera{
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filaUsuario{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+
+.filaUsuario > img{
+
+    width: 40px;
+    height: 40px;
+}
+
+.opciones {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+
+.opciones img {
+    width: 25px; 
+    height: auto;
+}
+
+.btnCrear {
+    display: inline-block;
+    background-color: #1c3b57; 
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; 
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+}

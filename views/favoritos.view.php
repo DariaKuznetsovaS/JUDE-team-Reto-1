@@ -1,16 +1,8 @@
-<?php 
+<?php include __DIR__ . '/layout/header.php'; ?>
 
-
-require "layout/header.php";
-
-?>
-
-
+<link rel="stylesheet" href="assets/css/favoritos.css">
 <div class="contenedorPrincipal">
     <?php include __DIR__ . '/layout/nav.php'; ?>
-
-
-    
 
 
     <div class="favsContainer">
@@ -26,7 +18,9 @@ require "layout/header.php";
                                 <div class="preguntaCard">
 
                                     <div class="cabeceraCard">
-                                        <h2><?= htmlspecialchars($fav['autor']) ?></h2>
+                                        <h2 class="autorFavorito">
+                                            <?= htmlspecialchars($fav['autor']) ?>
+                                        </h2>
                                         <p class="cardFecha"><?= date('d/m/Y', strtotime($fav['fecha'])) ?></p>
                                     </div>
 
@@ -65,7 +59,4 @@ require "layout/header.php";
 </div>
 
 
-<?php
-
-require "layout/footer.php";
-?>
+<?php include __DIR__ . '/layout/footer.php'; ?>

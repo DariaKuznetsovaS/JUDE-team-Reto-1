@@ -20,7 +20,7 @@
             <input type="password" name="contrasenna" id="contrasenna" placeholder="Contraseña" required >
             <p id="msgContrasenna"></p>
 
-            <input type="submit" value="Iniciar Sesión">
+            <input type="submit" value="Registrarse">
         </form>
     </main>
     <script src="assets/scripts/scriptRegistro.js"></script>

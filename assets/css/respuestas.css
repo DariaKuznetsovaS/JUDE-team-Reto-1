@@ -15,17 +15,17 @@
 }
 
 /* TARJETAS */
-
 .respuestaCard {
     width: 100%;
-    background-color: #FFFFFF;
-    border: 1px solid #D5DEE7;
+    background-color: #EAF4F9;
+    border: 1px solid #D5E7F0;
     border-radius: 10px;
     padding: 1.3rem 1.5rem;
     margin-bottom: 1rem;
     box-shadow: 0 2px 5px #163A5F10;
     box-sizing: border-box;
 }
+
 
 /* CABECERA */
 
@@ -35,7 +35,7 @@
     align-items: center;
     gap: 1rem;
     padding-bottom: 0.9rem;
-    border-bottom: 1px solid #E8EDF2;
+    border-bottom: 1px solid #D5E7F0;
 }
 
 /* AUTOR Y FECHA */
@@ -257,4 +257,8 @@
     width: 1.2rem;
     height: 1.2rem;
     object-fit: contain;
+}
+/*EL fondo de las respuestas*/
+.respuestaCard {
+    background-color: #EAF4F9 !important;
 }
