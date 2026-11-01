@@ -1,149 +1,315 @@
 
-#tarjeta {
+/* AJUSTES DE USUARIO */
+
+/* TARJETA PRINCIPAL */
+
+.formularioAjustes {
     width: 100%;
-    max-width: 580px;
-    margin: 0 auto;
-    padding: 64px 32px 72px;
-    background-color: white;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 45px;
+    background-color: #FFFFFF;
     border-radius: 12px;
-    box-shadow: 0 2px 8px #163A5F33;
+    box-shadow: 0 3px 12px rgba(22, 58, 95, 0.08);
+    box-sizing: border-box;
 }
- 
-/* Icono + título */
-#tarjeta #d1 {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+
+/* CABECERA */
+
+.formularioAjustes .cabecera {
+    display: flex;
     align-items: center;
-    margin-bottom: 40px;
-}
- 
-#tarjeta #d1 img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-    justify-self: start;
-    margin-left: 10%;
-}
- 
-#tarjeta #d1 h2 {
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 35px;
     color: #247BA0;
-    font-size: 1.6rem;
 }
- 
-/* Formulario */
-#tarjeta form {
-    width: 100%;
+
+.formularioAjustes .cabecera img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.formularioAjustes .cabecera h1 {
+    margin: 0;
+    font-size: 1.7rem;
+    color: #163A5F;
+}
+
+/* FORMULARIO */
+
+.formularioAjustes form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 34px;
-}
- 
-#tarjeta input[type="text"],
-#tarjeta input[type="password"],
-#tarjeta select {
-    width: 170px;
-    padding: 14px 8px;
-    border: 2px solid transparent;
-    border-radius: 6px;
-    background-color: #F3F6F9;
-    color: #263746;
-    font-family: inherit;
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-align: center;
-    text-align-last: center;
-}
- 
-#tarjeta input[type="text"]::placeholder,
-#tarjeta input[type="password"]::placeholder {
-    color: #6B767B;
-    text-align: center;
-}
- 
-#tarjeta input[type="text"]:focus,
-#tarjeta input[type="password"]:focus,
-#tarjeta select:focus {
-    outline: none;
-    border-color: #20B8A6;
-    background-color: white;
-}
- 
-#tarjeta select {
-    cursor: pointer;
-}
- 
-#tarjeta select:disabled {
-    color: #6B767B;
-    cursor: not-allowed;
-}
- 
-/* Mensajes de validación (JS): pegados bajo su campo, sin mover el resto */
-#tarjeta form p {
-    height: 0;
-    margin-top: -30px;
-    font-size: 0.8rem;
-    text-align: center;
-    white-space: nowrap;
-}
- 
-/* Botones */
-#tarjeta #d2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
+    align-items: stretch;
+    gap: 25px;
     width: 100%;
-}
- 
-#tarjeta #d2 input[type="submit"],
-#tarjeta #d2 a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 139px;
-    height: 44px;
     margin: 0;
     padding: 0;
+    background: transparent;
     border: none;
-    border-radius: 6px;
-    color: white;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+/* CAMPOS */
+
+.formularioAjustes .camposForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    width: 100%;
+}
+
+.formularioAjustes .camposForm input,
+.formularioAjustes .camposForm select {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    border: 1px solid #D5DEE7;
+    border-radius: 8px;
+    background-color: #F3F6F9;
+    color: #163A5F;
     font-family: inherit;
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-decoration: none;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formularioAjustes .camposForm input::placeholder {
+    color: #6B767B;
+}
+
+.formularioAjustes .camposForm input:focus,
+.formularioAjustes .camposForm select:focus {
+    outline: none;
+    border-color: #247BA0;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px #247BA025;
+}
+
+.formularioAjustes .camposForm select {
     cursor: pointer;
 }
- 
-#tarjeta #d2 input[type="submit"] {
-    background-color: #247BA0;
-}
- 
-#tarjeta #d2 a {
-    background-color: #6B767B;
-}
- 
-#tarjeta #d2 input[type="submit"]:hover,
-#tarjeta #d2 a:hover {
-    filter: brightness(0.92);
-}
- 
-/* Botón de guardar bloqueado por errores */
-#tarjeta #d2 input[type="submit"]:disabled {
-    opacity: 0.5;
+
+.formularioAjustes .camposForm select:disabled {
+    color: #6B767B;
     cursor: not-allowed;
-    filter: none;
 }
- 
-/* Errores que devuelve el servidor */
-#tarjeta .errores {
-    margin-bottom: 30px;
+
+/* MENSAJES DE VALIDACIÓN */
+
+.formularioAjustes .camposForm p {
+    margin: -8px 0 0;
+    color: #B3261E;
+    font-size: 0.8rem;
+}
+
+/* ERRORES DEL SERVIDOR */
+
+.formularioAjustes .errores {
+    margin-bottom: 20px;
     text-align: center;
 }
- 
-#tarjeta .errores .error {
+
+.formularioAjustes .errores .error {
     margin-bottom: 6px;
-    color: #b3261e;
+    color: #B3261E;
     font-size: 0.9rem;
 }
 
+/* BOTONES */
+
+.formularioAjustes .botonesForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+}
+
+.formularioAjustes .botonesForm button {
+    flex: 1;
+    max-width: 190px;
+    min-height: 45px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.formularioAjustes .botonesForm button[type="submit"] {
+    background-color: #247BA0;
+}
+
+.formularioAjustes .botonesForm button[type="submit"]:hover {
+    background-color: #163A5F;
+}
+
+.formularioAjustes .botonesForm button[type="button"] {
+    background-color: #7A8B94;
+}
+
+.formularioAjustes .botonesForm button[type="button"]:hover {
+    background-color: #5C6B73;
+}
+/* DISTRIBUCIÓN DE LA PÁGINA DE AJUSTES */
+
+.contenedorPrincipal.ajustesLayout {
+    display: grid;
+    grid-template-columns: 17rem minmax(0, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    align-items: start;
+}
+
+/* TARJETA */
+
+.ajustesLayout .formularioAjustes {
+    width: 100%;
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 45px;
+    box-sizing: border-box;
+}
+
+/* FORMULARIO */
+
+.ajustesLayout .formularioAjustes form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* CAMPOS */
+
+.ajustesLayout .formularioAjustes .camposForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    gap: 15px;
+}
+
+.ajustesLayout .formularioAjustes .camposForm input,
+.ajustesLayout .formularioAjustes .camposForm select {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* BOTONES */
+
+.ajustesLayout .formularioAjustes .botonesForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    margin: 35px auto 0;
+    gap: 18px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .contenedorPrincipal.ajustesLayout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .ajustesLayout .formularioAjustes {
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .ajustesLayout .formularioAjustes {
+        padding: 25px 20px;
+    }
+
+    .ajustesLayout .formularioAjustes .botonesForm {
+        flex-direction: column;
+    }
+
+    .ajustesLayout .formularioAjustes .botonesForm button {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+
+    .formularioAjustes {
+        max-width: 520px;
+        padding: 35px;
+    }
+
+}
+
+/* MÓVILES */
+
+@media (max-width: 600px) {
+
+    .formularioAjustes {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 25px 20px;
+    }
+
+    .formularioAjustes .cabecera {
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .formularioAjustes .cabecera img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .formularioAjustes .cabecera h1 {
+        font-size: 1.4rem;
+    }
+
+    .formularioAjustes .botonesForm {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .formularioAjustes .botonesForm button {
+        width: 100%;
+        max-width: none;
+    }
+
+}
+
+/* MÓVILES PEQUEÑOS */
+
+@media (max-width: 380px) {
+
+    .formularioAjustes {
+        padding: 20px 15px;
+    }
+
+    .formularioAjustes .cabecera h1 {
+        font-size: 1.2rem;
+    }
+
+}

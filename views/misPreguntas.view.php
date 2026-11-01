@@ -30,7 +30,7 @@ $usuario=$_SESSION["id_usuario"];?>
                     </div>
                 </a>
                 <?php endforeach; ?>
-                </a>
+                
             </div>
 
             <div class="columna">

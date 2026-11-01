@@ -1,7 +1,5 @@
-<?php
-include __DIR__ . "/layout/header.php"
-
-?>
+<?php include __DIR__ . "/layout/header.php" ?>
+<link rel="stylesheet" href="assets/css/listaUsers.css">
 
 <div class ="contenedorPrincipal">
     <?php include __DIR__ . '/layout/nav.php'; ?>

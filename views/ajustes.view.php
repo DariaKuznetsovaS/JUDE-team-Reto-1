@@ -1,55 +1,107 @@
 <?php include __DIR__ . '/layout/header.php'; ?>
- 
-    <div class="contenedorPrincipal">
-        <?php include __DIR__ . '/layout/nav.php'; ?>
-        <main id="tarjeta">
-            <div id="d1">
-                <img src="assets/images/Iconos/Editar.png" alt="Editar">
-                <h2>Editar datos</h2>
-            </div>
- 
-            <?php if (!empty($_SESSION['errores_ajustes'])): ?>
-                <div class="errores">
-                    <?php foreach ($_SESSION['errores_ajustes'] as $error): ?>
-                        <p class="error"><?= $error ?></p>
-                    <?php endforeach; ?>
-                </div>
-                <?php unset($_SESSION['errores_ajustes']); ?>
-            <?php endif; ?>
- 
-            <form id="formAjustes" action="index.php?controller=AjustesController&accion=editarDatos" method="post">
-                <input type="text" name="apellidos" placeholder="<?= $usuario->apellidos ?>" autocomplete="off">
-                <input type="text" name="nombre" placeholder="<?= $usuario->nombre ?>" autocomplete="off">
- 
-                <input type="password" name="contrasenna" id="contrasenna"
-                       placeholder="Nueva Contraseña" autocomplete="new-password">
-                <p id="msgContrasenna"></p>
- 
-                <input type="text" name="nombreUsuario" id="nombreUsuario"
-                       placeholder="<?= $usuario->nombre_usuario ?>" autocomplete="off">
-                <p id="msgUsuario"></p>
- 
-                <?php if ($usuario->tipo === "admin"): ?>
-                    <select name="tipo" id="tipo">
-                        <option value="user">user</option>
-                        <option value="admin" selected>admin</option>
-                    </select>
-                    <p id="msgTipo"></p>
-                <?php else: ?>
-                    <select name="tipo" disabled>
-                        <option value="user" selected>user</option>
-                        <option value="admin">admin</option>
-                    </select>
-                <?php endif; ?>
- 
-                <div id="d2">
-                    <input type="submit" value="Aceptar cambios">
-                    <a href="index.php">Cancelar</a>
-                </div>
-            </form>
-        </main>
+
+<link rel="stylesheet" href="assets/css/ajustes.css">
+<div class="contenedorPrincipal">
+
+    <?php include __DIR__ . '/layout/nav.php'; ?>
+
+<main class="formulario">
+
+    <div class="cabecera">
+        <img src="assets/images/Iconos/Editar.png" alt="Editar">
+        <h1>Editar datos</h1>
     </div>
- 
-    <script src="assets/scripts/ajustes.js"></script>
- 
+
+    <?php if (!empty($_SESSION['errores_ajustes'])): ?>
+        <div class="errores">
+            <?php foreach ($_SESSION['errores_ajustes'] as $error): ?>
+                <p class="error"><?= htmlspecialchars($error) ?></p>
+            <?php endforeach; ?>
+
+            <?php unset($_SESSION['errores_ajustes']); ?>
+        </div>
+    <?php endif; ?>
+
+    <form id="formAjustes"
+          action="index.php?controller=AjustesController&accion=editarDatos"
+          method="POST">
+
+        <div class="camposForm">
+
+            <input
+                type="text"
+                name="apellidos"
+                placeholder="<?= htmlspecialchars($usuario->apellidos) ?>"
+                autocomplete="off"
+            >
+
+            <input
+                type="text"
+                name="nombre"
+                placeholder="<?= htmlspecialchars($usuario->nombre) ?>"
+                autocomplete="off"
+            >
+
+            <input
+                type="password"
+                name="contrasenna"
+                id="contrasenna"
+                placeholder="Nueva contraseña"
+                autocomplete="new-password"
+            >
+
+            <p id="msgContrasenna"></p>
+
+            <input
+                type="text"
+                name="nombreUsuario"
+                id="nombreUsuario"
+                placeholder="<?= htmlspecialchars($usuario->nombre_usuario) ?>"
+                autocomplete="off"
+            >
+
+            <p id="msgUsuario"></p>
+
+            <?php if ($usuario->tipo === "admin"): ?>
+
+                <select name="tipo" id="tipo" required>
+                    <option value="" disabled selected>Tipo de usuario</option>
+                    <option value="user">Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+
+                <p id="msgTipo"></p>
+
+            <?php else: ?>
+
+                <select name="tipo" disabled>
+                    <option value="user" selected>Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+
+            <?php endif; ?>
+
+        </div>
+
+        <div class="botonesForm">
+
+            <button type="submit">
+                Aceptar cambios
+            </button>
+
+            <button type="button" onclick="window.location.href='index.php'">
+                Cancelar
+            </button>
+
+        </div>
+
+    </form>
+</main>
+
+
+
+</div>
+
+<script src="assets/scripts/ajustes.js"></script>
+
 <?php include __DIR__ . '/layout/footer.php'; ?>

@@ -26,8 +26,8 @@ require "layout/header.php";
                 <input type="password" name="nuevaContrasena">
                 <select name="tipo" id="tipo" required>
                     <option value="" disabled selected>Tipo de usuario</option>
-                    <option value="User">Usuario</option>
-                    <option value="Admin">Administrador</option>
+                    <option value="user">Usuario</option>
+                    <option value="admin">Administrador</option>
                 </select>
 
 
@@ -46,7 +46,7 @@ require "layout/header.php";
             </div>
 
         </form>
-    <main>
+    </main>
 </div>
 
 <?php

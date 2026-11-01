@@ -307,190 +307,266 @@ form input[type="submit"]:hover {
     object-fit: contain;
 }
 
-/*MIS PREGUNTAS*/
-/* PERFIL DE USUARIO */
- 
+
+/* MIS PREGUNTAS Y RESPUESTAS */
+
+/* CONTENEDOR PRINCIPAL */
+
 #perfil {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 30px;
-    padding: 8px 20px;
-}
- 
-#perfil main {
     flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
- 
-/* Foto, nombre y botones */
-.datosUsuario {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
- 
-.datosUsuario > img {
-    width: 110px;
-    height: 110px;
-}
- 
-#infoUsuario {
-    flex: 1;
-}
- 
-#infoUsuario h1 {
-    font-size: 30px;
-    color: #247BA0;
-    margin-bottom: 8px;
-}
- 
-#infoUsuario h3 {
-    font-size: 16px;
-    color: black;
-    margin-bottom: 8px;
-}
- 
-#infoUsuario p {
-    color: #6B767B;
-}
- 
-#accionesUsuario {
-    display: flex;
-    gap: 12px;
-}
- 
-#accionesUsuario img {
-    width: 36px;
-    height: 36px;
-}
- 
-/* Botón publicar */
-#botonPublicar {
-    align-self: center;
-    background-color: #163A5F;
-    color: white;
-    text-decoration: none;
-    padding: 10px 22px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px #999;
-}
- 
-#botonPublicar:hover {
-    background-color: #247BA0;
+    align-items: stretch;
+    gap: 25px;
+    padding: 15px 30px;
+    box-sizing: border-box;
 }
 
-/* Dos columnas: preguntas y respuestas */
+/* BOTÓN PUBLICAR */
+
+.btnPublicar {
+    align-self: center;
+    display: inline-block;
+    background-color: #247BA0;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px #999;
+    transition: background-color 0.2s;
+}
+
+.btnPublicar:hover {
+    background-color: #163A5F;
+}
+
+/* DOS COLUMNAS */
+
 #listados {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
- 
+
 .columna {
+    min-width: 0;
+    min-height: 450px;
+    padding: 18px;
     background-color: white;
-    min-height: 400px;
-    padding: 12px;
-    border-radius: .5rem .5rem 0 0;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
- 
+
 .columna h3 {
     text-align: center;
-    font-size: 16px;
-    color: black;
-    margin-bottom: 12px;
+    font-size: 1.2rem;
+    color: #163A5F;
+    margin: 0 0 18px;
 }
- 
-/* Tarjetas (solo dentro del perfil, para no tocar las de otras páginas) */
+
+/* ENLACES DE LAS TARJETAS */
+
+#perfil .enlacePregunta {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+
+#perfil .enlacePregunta:last-child {
+    margin-bottom: 0;
+}
+
+/* TARJETAS */
+
+#perfil .preguntaCard,
+#perfil .respuestaCard {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #999;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+#perfil .preguntaCard {
+    background-color: white;
+    border: 1px solid #D5DEE7;
+}
+
 #perfil .respuestaCard {
     background-color: #C5DDE6;
     border: none;
-    border-radius: .5rem;
-    padding: 6px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 4px #999;
 }
- 
+
+#perfil .preguntaCard:hover,
+#perfil .respuestaCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 9px #999;
+}
+
+/* CABECERA DE LAS TARJETAS */
+
+#perfil .cabeceraCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
 #perfil .cabeceraCard h4 {
-    font-size: 14px;
+    font-size: 1rem;
     color: #163A5F;
+    margin: 0;
+    overflow-wrap: anywhere;
 }
- 
+
 #perfil .cabeceraCard p {
-    font-size: 11px;
+    flex-shrink: 0;
+    font-size: 0.75rem;
     color: #6B767B;
+    margin: 0;
 }
- 
+
+/* CONTENIDO DE LAS TARJETAS */
+
+#perfil .contenidoCard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
 #perfil .contenidoCard img {
-    width: 34px;
-    height: 34px;
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
     object-fit: cover;
-    border-radius: .3rem;
+    border-radius: 7px;
 }
- 
+
 #perfil .contenidoCard p {
-    font-size: 11px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    overflow-wrap: anywhere;
 }
- 
+
 #perfil .preguntaCard .contenidoCard p {
     color: #247BA0;
 }
- 
+
 #perfil .respuestaCard .contenidoCard p {
     color: #163A5F;
 }
 
-/* Adaptación a pantallas pequeñas */
-@media (max-width: 900px) {
-    .misPreguntas {
+
+/* TABLETS */
+
+@media (max-width: 1000px) {
+
+    #perfil {
+        padding: 15px 20px;
+    }
+
+    #listados {
         grid-template-columns: 1fr;
+        max-width: 750px;
+    }
+
+    .columna {
+        min-height: auto;
     }
 }
 
+
+/* MÓVILES */
+
 @media (max-width: 600px) {
-    .perfil {
+
+    #perfil {
+        padding: 12px;
+        gap: 20px;
+    }
+
+    .btnPublicar {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 0.9rem;
         padding: 12px;
     }
 
-    .userContainer {
-        align-items: flex-start;
-        gap: 12px;
-        padding: 18px;
-        padding-top: 65px;
+    #listados {
+        gap: 15px;
     }
 
-    .userContainer > img {
-        width: 60px;
-        height: 60px;
+    .columna {
+        padding: 13px;
     }
 
-    .datosUsuario h1 {
-        font-size: 20px;
-        overflow-wrap: anywhere;
+    .columna h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
     }
 
-    .enlaces {
-        top: 12px;
-        right: 12px;
+    #perfil .preguntaCard,
+    #perfil .respuestaCard {
+        padding: 12px;
     }
 
-    .contenidoCard {
-        flex-direction: column;
-    }
-
-    .imagenCard {
-        width: 100%;
-        height: 160px;
-    }
-
-    .cabeceraCard {
+    #perfil .cabeceraCard {
         flex-direction: column;
         gap: 5px;
+    }
+
+    #perfil .cabeceraCard h4 {
+        font-size: 0.95rem;
+    }
+
+    #perfil .cabeceraCard p {
+        font-size: 0.7rem;
+    }
+
+    #perfil .contenidoCard {
+        gap: 10px;
+    }
+
+    #perfil .contenidoCard img {
+        width: 55px;
+        height: 55px;
+    }
+
+    #perfil .contenidoCard p {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* MÓVILES PEQUEÑOS */
+
+@media (max-width: 380px) {
+
+    #perfil {
+        padding: 8px;
+    }
+
+    .columna {
+        padding: 10px;
+    }
+
+    #perfil .preguntaCard,
+    #perfil .respuestaCard {
+        padding: 10px;
+    }
+
+    #perfil .contenidoCard img {
+        width: 45px;
+        height: 45px;
     }
 }

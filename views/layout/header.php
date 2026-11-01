@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="JUDE team">
-    <link rel="preconnect" href="https://googleapis.com">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>AERGIBIDE, S.L.</title>
     <link rel="stylesheet" href="assets/css/principal.css">
     <link rel="stylesheet" href="assets/css/header.css">
@@ -17,10 +16,8 @@
     <link rel="stylesheet" href="assets/css/respuestas.css">
     <link rel="stylesheet" href="assets/css/formularios.css">
     <link rel="stylesheet" href="assets/css/perfil.css">
-    <link rel="stylesheet" href="assets/css/ajustes.css">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/listaUsers.css">
-
+    
     <link rel="icon" type="image/png" href="assets/images/logoAergibide.png">
 
     <script src="assets/scripts/script.js" defer></script>
@@ -45,7 +42,6 @@
         
         <?php if ($esPaginaPrincipal): ?>
             <form action="index.php" method="GET" class="buscadorHeader">
-
                 <select name="categoria" aria-label="Filtrar por categoría">
                     <option value="">Categoría</option>
                     <option value="aerodinamica" <?= ($_GET["categoria"] ?? "") === "aerodinamica" ? "selected" : "" ?>>Aerodinámica</option>
