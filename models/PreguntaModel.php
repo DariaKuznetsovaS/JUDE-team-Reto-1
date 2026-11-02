@@ -120,14 +120,15 @@ public static function getByIdUsuario($id) {
     ]);
 }
 
-    public static function update($id, $titulo, $descripcion, $tipo) {
+    public static function update($id, $titulo, $descripcion, $tipo, $estado) {
         $db = Database::getConnection();
 
         $stmt = $db->prepare("
             UPDATE preguntas
             SET titulo = :titulo,
                 descripcion = :descripcion,
-                tipo = :tipo
+                tipo = :tipo,
+                estado = :estado
             WHERE id_pregunta = :id
         ");
 
@@ -135,7 +136,8 @@ public static function getByIdUsuario($id) {
             'titulo' => $titulo,
             'descripcion' => $descripcion,
             'tipo' => $tipo,
-            'id' => $id
+            'id' => $id,
+            'estado' => $estado
         ]);
     }
 

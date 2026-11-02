@@ -32,14 +32,12 @@
                 type="text"
                 name="apellidos"
                 placeholder="<?= htmlspecialchars($usuario->apellidos) ?>"
-                autocomplete="off"
             >
 
             <input
                 type="text"
                 name="nombre"
                 placeholder="<?= htmlspecialchars($usuario->nombre) ?>"
-                autocomplete="off"
             >
 
             <input
@@ -47,7 +45,6 @@
                 name="contrasenna"
                 id="contrasenna"
                 placeholder="Nueva contraseña"
-                autocomplete="new-password"
             >
 
             <p id="msgContrasenna"></p>
@@ -57,7 +54,6 @@
                 name="nombreUsuario"
                 id="nombreUsuario"
                 placeholder="<?= htmlspecialchars($usuario->nombre_usuario) ?>"
-                autocomplete="off"
             >
 
             <p id="msgUsuario"></p>

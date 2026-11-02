@@ -11,48 +11,67 @@
         <?php foreach ($preguntas as $pregunta): ?>
 
             <a href="index.php?controller=PreguntaController&accion=index&id=<?=$pregunta["id_pregunta"]?>" class="enlacePregunta">
-            <div class="preguntaCard">
 
-                
-            <div class="cabeceraCard">
-                <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
+    <div class="preguntaCard">
 
-                <div class="metadatosCard">
-                    <span class="categoriaPregunta">
-                        <?= htmlspecialchars(ucfirst($pregunta["tipo"])) ?>
-                    </span>
+        <!-- CABECERA -->
+        <div class="cabeceraCard">
 
-                    <p class="cardFecha">
-                        <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
-                    </p>
-                </div>
-            </div>
+            <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
 
+            <div class="metadatosCard">
 
-                <div class="contenidoCard">
+                <?php if ($pregunta["estado"] === "abierto"): ?>
+                    <span class="categoriaPregunta">Estado: Abierto</span>
+                <?php else: ?>
+                    <span class="categoriaPreguntaContrario">Estado: Cerrado</span>
+                <?php endif; ?>
 
-                    <div class="imagenCard">
-                        <?php if (!empty($pregunta['imagen_ruta'])): ?>
-
-                            <img
-                                src="<?= htmlspecialchars($pregunta['imagen_ruta']) ?>"
-                                alt="Imagen de la pregunta">
-
-                        <?php else: ?>
-
-                            <img src="assets/images/Iconos/SinImagen.png" alt="Imagen de la pregunta">
-
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="descCard">
-                        <p><?= htmlspecialchars($pregunta['descripcion']) ?></p>
-                    </div>
-
-                </div>
+                <span class="categoriaPregunta">
+                    <?= htmlspecialchars(ucfirst($pregunta["tipo"])) ?>
+                </span>
 
             </div>
-            </a>
+
+        </div>
+
+        <!-- CONTENIDO -->
+        <div class="contenidoCard">
+
+            <div class="imagenCard">
+
+                <?php if (!empty($pregunta['imagen_ruta'])): ?>
+
+                    <img
+                        src="<?= htmlspecialchars($pregunta['imagen_ruta']) ?>"
+                        alt="Imagen de la pregunta">
+
+                <?php else: ?>
+
+                    <img src="assets/images/Iconos/SinImagen.png" alt="Imagen de la pregunta">
+
+                <?php endif; ?>
+
+            </div>
+
+            <div class="descCard">
+                <p><?= htmlspecialchars($pregunta['descripcion']) ?></p>
+            </div>
+
+        </div>
+
+        <!-- PIE DE TARJETA -->
+        <div class="pieCard">
+
+            <span class="cardFecha">
+                <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
+            </span>
+
+        </div>
+
+    </div>
+
+</a>
 
         <?php endforeach; ?>
 

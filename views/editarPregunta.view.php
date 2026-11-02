@@ -77,6 +77,15 @@
                 </select>
             </div>
 
+            <div class="campoFormulario">
+                <label for="tipo">Estado</label>
+
+                <select id="estado" name="estado" required>
+                    <option value="abierto" selected>Abierto</option>
+                    <option value="cerrado">Cerrado</option>
+                </select>
+            </div>
+
             <div class="accionesFormulario">
                 <button type="submit">Guardar cambios</button>
 
