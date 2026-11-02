@@ -1,163 +1,185 @@
+
 <?php include __DIR__ . '/layout/header.php'; ?>
+
 <div class="contenedorPrincipal">
-<?php include __DIR__ . '/layout/nav.php'; ?>
 
+    <?php include __DIR__ . '/layout/nav.php'; ?>
 
-<main class="perfil">
-    <div class="userContainer">
+    <main class="perfil">
 
-        <img src="assets/images/Iconos/User.png" alt="Imagen usuario">
-        <div class="datosUsuario">
-            <h1><?= htmlspecialchars($usuario['nombre_usuario'] ?? '') ?></h1>
+        <!-- DATOS DEL USUARIO -->
+        <div class="userContainer">
 
-            <p> <?= htmlspecialchars(($usuario['nombre'] ?? '') . ' ' . ($usuario['apellido'] ?? '')) ?></p>
+            <img src="assets/images/Iconos/User.png" alt="Imagen usuario">
 
-            <p> <?= htmlspecialchars($usuario['tipo'] ?? '') ?></p>
-        </div>
+            <div class="datosUsuario">
+                <h1><?= htmlspecialchars($usuario['nombre_usuario'] ?? '') ?></h1>
 
-<?php
-$idUsuarioSesion = $_SESSION["id_usuario"]->id_usuario ?? null;
-$tipoUsuarioSesion = $_SESSION["id_usuario"]->tipo ?? null;
+                <p><?= htmlspecialchars(($usuario['nombre'] ?? '') . ' ' . ($usuario['apellido'] ?? '')) ?></p>
 
-$esMiPerfil = $idUsuarioSesion == $usuario['id_usuario'];
-$esAdmin = $tipoUsuarioSesion === 'admin';
-?>
+                <p><?= htmlspecialchars($usuario['tipo'] ?? '') ?></p>
+            </div>
 
-<div class="enlaces">
+            <?php
+            $idUsuarioSesion = $_SESSION["id_usuario"]->id_usuario ?? null;
+            $tipoUsuarioSesion = $_SESSION["id_usuario"]->tipo ?? null;
 
-    <?php if ($esMiPerfil): ?>
+            $esMiPerfil = $idUsuarioSesion == $usuario['id_usuario'];
+            $esAdmin = $tipoUsuarioSesion === 'admin';
+            ?>
 
-        <a href="index.php?controller=AjustesController&accion=ajustes">
-            <img src="assets/images/Iconos/Editar.png" alt="Editar perfil">
-        </a>
+            <div class="enlaces">
 
-    <?php elseif ($idUsuarioSesion !== null && $esAdmin): ?>
+                <?php if ($esMiPerfil): ?>
 
-        <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= (int) $usuario['id_usuario'] ?>">
-            <img src="assets/images/Iconos/Editar.png" alt="Editar usuario">
-        </a>
+                    <a href="index.php?controller=AjustesController&accion=ajustes">
+                        <img src="assets/images/Iconos/Editar.png" alt="Editar perfil">
+                    </a>
 
-    <?php endif; ?>
+                <?php elseif ($idUsuarioSesion !== null && $esAdmin): ?>
 
-    <?php if ($esMiPerfil): ?>
-
-        <a href="index.php?controller=UsuarioController&accion=logout">
-            <img src="assets/images/Iconos/Salir.png" alt="Cerrar sesión">
-        </a>
-
-    <?php endif; ?>
-
-</div>
-
-    </div>
-
-
-    <div class="preguntasRespuestasContainer">
-        <?php if (
-        isset($_SESSION["id_usuario"]) &&
-        $_SESSION["id_usuario"]->id_usuario == $usuario["id_usuario"]
-    ): ?>
-
-        <a href="index.php?controller=PreguntaController&accion=crear" class="btnPublicar">
-            + Publicar nueva pregunta
-        </a>
-
-<?php endif; ?>
-        <div class="misPreguntas">
-            <div>
-                <h2>Preguntas</h2>
-                <?php if (!empty($preguntas)): ?>
-
-                    <?php foreach ($preguntas as $pregunta): ?>
-
-                        <a href="index.php?controller=PreguntaController&accion=index&id=<?=$pregunta["id_pregunta"]?>" class="enlacePregunta">
-                        <div class="preguntaCard">
-
-                            <div class="cabeceraCard">
-                                <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
-
-                                <p class="cardFecha">
-                                    <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
-                                </p>
-                            </div>
-
-                            <div class="contenidoCard">
-
-                                <div class="imagenCard">
-                                    <?php if (!empty($pregunta['imagen'])): ?>
-
-                                        <img
-                                            src="<?= htmlspecialchars($pregunta['imagen']) ?>"
-                                            alt="Imagen de la pregunta">
-
-                                    <?php else: ?>
-
-                                        <img src="assets/images/Iconos/SinImagen.png" alt="Imagen de la pregunta">
-
-                                    <?php endif; ?>
-                                </div>
-
-                                <div class="descCard">
-                                    <p><?= htmlspecialchars($pregunta['descripcion']) ?></p>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        </a>
-
-                    <?php endforeach; ?>
-
-                <?php else: ?>
-
-                    <p>No hay preguntas disponibles.</p>
+                    <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= (int) $usuario['id_usuario'] ?>">
+                        <img src="assets/images/Iconos/Editar.png" alt="Editar usuario">
+                    </a>
 
                 <?php endif; ?>
+
+                <?php if ($esMiPerfil): ?>
+
+                    <a href="index.php?controller=UsuarioController&accion=logout">
+                        <img src="assets/images/Iconos/Salir.png" alt="Cerrar sesión">
+                    </a>
+
+                <?php endif; ?>
+
             </div>
+        </div>
 
 
+        <!-- PREGUNTAS Y RESPUESTAS -->
+        <div class="preguntasRespuestasContainer">
 
-            <div>
-                <h2>Respuestas</h2>
-                <?php if (!empty($respuestas)): ?>
+            <?php if ($esMiPerfil): ?>
 
-                   
-<?php foreach ($respuestas as $respuesta): ?>
+                <a href="index.php?controller=PreguntaController&accion=crear" class="btnPublicar">
+                    + Publicar nueva pregunta
+                </a>
 
-    <a href="index.php?controller=PreguntaController&accion=index&id=<?= $respuesta['id_pregunta'] ?>"
-       class="enlacePregunta">
-
-        <div class="respuestaCard">
-
-            <div>
-                <p><?= htmlspecialchars($respuesta['texto']) ?></p>
-            </div>
-
-            <?php if (!empty($respuesta['imagen_ruta'])): ?>
-                <img
-                    src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
-                    alt="Imagen de la respuesta">
             <?php endif; ?>
 
-        </div>
+            <div class="misPreguntas">
 
-    </a>
+                <!-- CONTENEDOR DE PREGUNTAS -->
+                <section class="contenedorPerfil">
 
-<?php endforeach; ?>
+                    <h2>Mis preguntas</h2>
+
+                    <?php if (!empty($preguntas)): ?>
+
+                        <?php foreach ($preguntas as $pregunta): ?>
+
+                            <a href="index.php?controller=PreguntaController&accion=index&id=<?= $pregunta['id_pregunta'] ?>"
+                               class="enlacePregunta">
+
+                                <div class="preguntaCard">
+
+                                    <div class="cabeceraCard">
+
+                                        <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
+
+                                        <p class="cardFecha">
+                                            <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
+                                        </p>
+
+                                    </div>
+
+                                    <div class="contenidoCard">
+
+                                        <div class="imagenCard">
+
+                                            <?php if (!empty($pregunta['imagen'])): ?>
+
+                                                <img
+                                                    src="<?= htmlspecialchars($pregunta['imagen']) ?>"
+                                                    alt="Imagen de la pregunta">
+
+                                            <?php else: ?>
+
+                                                <img
+                                                    src="assets/images/Iconos/SinImagen.png"
+                                                    alt="Sin imagen">
+
+                                            <?php endif; ?>
+
+                                        </div>
+
+                                        <div class="descCard">
+                                            <p><?= htmlspecialchars($pregunta['descripcion']) ?></p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+                        <?php endforeach; ?>
+
+                    <?php else: ?>
+
+                        <p>No hay preguntas disponibles.</p>
+
+                    <?php endif; ?>
+
+                </section>
 
 
-                <?php else: ?>
+                <!-- CONTENEDOR DE RESPUESTAS -->
+                <section class="contenedorPerfil">
 
-                    <p>No hay respuestas disponibles.</p>
+                    <h2>Mis respuestas</h2>
 
-                <?php endif; ?>
+                    <?php if (!empty($respuestas)): ?>
+
+                        <?php foreach ($respuestas as $respuesta): ?>
+
+                            <a href="index.php?controller=PreguntaController&accion=index&id=<?= $respuesta['id_pregunta'] ?>"
+                               class="enlacePregunta">
+
+                                <div class="respuestaCard">
+
+                                    <div>
+                                        <p><?= htmlspecialchars($respuesta['texto']) ?></p>
+                                    </div>
+
+                                    <?php if (!empty($respuesta['imagen_ruta'])): ?>
+
+                                        <img
+                                            src="<?= htmlspecialchars($respuesta['imagen_ruta']) ?>"
+                                            alt="Imagen de la respuesta">
+
+                                    <?php endif; ?>
+
+                                </div>
+
+                            </a>
+
+                        <?php endforeach; ?>
+
+                    <?php else: ?>
+
+                        <p>No hay respuestas disponibles.</p>
+
+                    <?php endif; ?>
+
+                </section>
+
             </div>
+
         </div>
-    </div>
-</main>
+
+    </main>
+
 </div>
 
-<?php
-
-require "layout/footer.php";
-?>
+<?php require "layout/footer.php"; ?>

@@ -27,17 +27,27 @@
 }
 
 .temaPregunta {
-    margin: 0 0 18px;
-    color: #16B8A8;
+    margin: 1rem;
+    color:#247BA0;
     font-size: 24px;
     font-weight: 600;
 }
 
 .autorPregunta,
-.fechaPregunta {
-    margin: 8px 0;
+.estadoPregunta {
     color: #68798B;
-    font-size: 16px;
+    font-size: 15px;
+    margin: 1rem;
+}
+
+.fechaPregunta {
+    margin: 0;
+    padding: 6px 10px;
+    color: #68798B;
+    background-color: #E4F0F5;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .autorPregunta a {
@@ -81,8 +91,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 5rem;
     width: 100%;
+    margin: 15px auto 0;
+}
+
+.accionesPregunta form {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    display: flex;
 }
 
 .accionesPregunta a,
@@ -98,8 +116,8 @@
     border-radius: 8px;
     background-color: #FFFFFF;
     cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
 }
+
 
 .accionesPregunta a:hover,
 .accionesPregunta button:hover {
@@ -223,7 +241,7 @@
     }
 
     .temaPregunta {
-        font-size: 20px;
+        font-size: 10px; 
     }
 
     .autorPregunta,
@@ -237,10 +255,13 @@
     }
 
     .lateralPregunta {
-        width: 100%;
-        max-width: 305px;
-        align-self: center;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    min-width: 0;
+}
+
 
     .imagenPregunta {
         width: 100%;
@@ -321,7 +342,7 @@
     flex-direction: column;
     background-color: white;
     margin-bottom: 0.75rem;
-    padding: 0.3rem;
+    padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px #999;
     cursor: pointer;
@@ -398,8 +419,8 @@
 .contenidoCard {
     display: flex;
     align-items: flex-start;
-    gap: 0.3rem;
-    margin-top: 0.25rem;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .imagenCard img {
@@ -427,18 +448,22 @@
     overflow: hidden;
 }
 
-.detallePregunta,
-.contenidoPregunta,
-.informacionPregunta,
-.lateralPregunta,
-.respuestas,
-.respuestaCard {
-    min-width: 0;
-    max-width: 100%;
+/* PIE DE TARJETA */
+
+.pieCard {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.8rem;
 }
 
-.respuestas {
-    width: 100%;
+.cardFecha {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    background-color: #E4F0F5;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #6B767B;
 }
 
 /* MÓVILES PEQUEÑOS Y ZOOM */
@@ -454,7 +479,7 @@
     }
 
     .temaPregunta {
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .descripcionPregunta {
