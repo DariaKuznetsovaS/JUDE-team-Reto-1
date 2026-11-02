@@ -13,18 +13,21 @@
     margin-bottom: 20px;
 }
 
-.filaUsuario{
-
-    display: flex;
+.filaUsuario {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
+    column-gap: 20px;
     background-color: white;
     border-radius: 10px;
     margin-bottom: 15px;
     padding: 15px 20px;
     width: 100%;
     box-sizing: border-box;
-    
+}
+
+.filaUsuario > p {
+    text-align: center;
 }
 
 .filaUsuario > img{
@@ -54,4 +57,47 @@
     border-radius: 8px;
     margin-top: 15px;
     font-weight: bold;
+}
+
+
+.filaUsuario {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.filaUsuario:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+
+.opciones a {
+    display: flex;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.opciones a:hover {
+    transform: scale(1.15);
+}
+
+.opciones a:hover img {
+    opacity: 0.7;
+}
+
+.opciones a.eliminar:hover img {
+    filter: sepia(1) saturate(5) hue-rotate(-50deg);
+}
+
+
+.btnCrear {
+    display: block;
+    width: fit-content;
+    margin: 15px auto 0;
+}
+
+
+.btnCrear:hover {
+    background-color: #163A5F;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
