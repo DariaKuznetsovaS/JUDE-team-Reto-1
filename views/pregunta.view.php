@@ -48,6 +48,10 @@
                         <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
                     </p>
 
+                    <p class="fechaPregunta">
+                        Estado: <?= $pregunta['estado'] ?>
+                    </p>
+
                     <div class="descripcionPregunta">
                         <?= nl2br(htmlspecialchars($pregunta['descripcion'])) ?>
                     </div>
@@ -254,7 +258,7 @@
 </section>
 
 <!-- Formulario para añadir una respuesta -->
-<?php if (isset($_SESSION['id_usuario'])): ?>
+<?php if (isset($_SESSION['id_usuario'])&& $pregunta["estado"]==="abierto"): ?>
 
     <div class="formularioRespuesta">
 

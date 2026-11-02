@@ -5,7 +5,7 @@ const mensajeContrasenna = document.getElementById('msgContrasenna');
 
 // El formulario se obtiene desde el propio input, así vale para registro y para crear usuario
 const formulario = input.closest('form');
-const botonGuardar = formulario.querySelector('input[type="submit"]');
+const botonGuardar = document.getElementById('botonGuardar');
 
 // Aquí empiezan en false porque los campos son obligatorios
 const estado = {

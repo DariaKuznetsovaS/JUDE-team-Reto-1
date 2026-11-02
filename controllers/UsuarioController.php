@@ -200,7 +200,7 @@ public function verPerfil() {
             'contrasenna'    => $nuevaContrasena !== '' ? $nuevaContrasena : $actual['contrasenna'],
             'nombre'         => $nuevoNombre !== '' ? $nuevoNombre : $actual['nombre'],
             'apellidos'      => $nuevoApellido !== '' ? $nuevoApellido : $actual['apellidos'],
-            'tipo'           => in_array($tipo, ['User', 'Admin'], true) ? $tipo : $actual['tipo']
+            'tipo'           => $tipo !== "" ? $tipo : $actual['tipo']
         ];
 
         UsuarioModel::updateUsuario($id, $datos);
@@ -210,20 +210,25 @@ public function verPerfil() {
     
 
 
+    private function errorNombreUsuario($nombreUsuario) {
+        if (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $nombreUsuario)) {
+            return 'De 3 a 20 caracteres: solo letras, números y _';
+        }
+        if (UsuarioModel::existeNombreUsuario($nombreUsuario)) {
+            return 'Ese nombre de usuario ya está en uso';
+        }
+        return '';
+    }
+
     public function comprobarUsuario() {
         header('Content-Type: application/json');
 
-        $nombreUsuario = $_GET['nombreUsuario'] ?? '';
+        $error = $this->errorNombreUsuario($_GET['nombreUsuario'] ?? '');
 
-        if (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $nombreUsuario)) {
-            echo json_encode(['disponible' => false]);
-            return;
-        }
-
-        
-        $existe = UsuarioModel::existeNombreUsuario($nombreUsuario);
-
-        echo json_encode(['disponible' => !$existe]);
+        echo json_encode([
+            'disponible' => $error === '',
+            'mensaje'    => $error
+        ]);
         exit();
     }
 

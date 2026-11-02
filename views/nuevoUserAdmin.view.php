@@ -29,7 +29,7 @@ include __DIR__ . '/layout/header.php'; ?>
                 <p id="msgTipo"></p>
  
                 <div id="d2">
-                    <input type="submit" value="Crear Usuario">
+                    <input id="botonGuardar" type="submit" value="Crear Usuario">
                     <a href="index.php">Cancelar</a>
                 </div>
             </form>

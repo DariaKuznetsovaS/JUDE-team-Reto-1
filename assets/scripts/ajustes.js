@@ -1,5 +1,5 @@
 const formulario = document.getElementById('formAjustes');
-const botonGuardar = formulario.querySelector('input[type="submit"]');
+const botonGuardar = formulario.querySelector('button[type="submit"]');
  
 // Estado de cada campo: true = se puede enviar
 const estado = {
