@@ -29,7 +29,7 @@
                                             <?php if (!empty($fav['imagen_ruta'])): ?>
                                                 <img src="<?= htmlspecialchars($fav['imagen_ruta']) ?>" alt="Imagen de la respuesta">
                                             <?php else: ?>
-                                                <img src="assets/images/SinImagen.png" alt="Sin imagen">
+                                                <img src="assets/images/Iconos/SinImagen.png" alt="Sin imagen">
                                             <?php endif; ?>
                                         </div>
 
