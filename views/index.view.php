@@ -25,6 +25,14 @@
                     <p class="cardFecha">
                         <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
                     </p>
+
+                    <p class="cardFecha">
+                        <?php if($pregunta["estado"]==="abierto"):?>
+                        <p class="categoriaPregunta">Estado: Abierto</p>
+                        <?php else:?>
+                            <p class="categoriaPreguntaContrario">Estado: Cerrado</p>
+                        <?php endif;?>    
+                    </p>
                 </div>
             </div>
 
