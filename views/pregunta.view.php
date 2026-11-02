@@ -33,27 +33,23 @@
                         <?= htmlspecialchars($pregunta['titulo']) ?>
                     </h1>
 
-                    <p class="temaPregunta">
-                        <?= htmlspecialchars($pregunta['tipo']) ?>
-                    </p>
-
-                    <p class="autorPregunta">
-                        Publicada por:
-                        <a href="index.php?controller=UsuarioController&accion=verPerfil&id=<?= (int) $pregunta['id_usuario'] ?>">
-                            <?= htmlspecialchars($pregunta['nombre_usuario'] ?? '') ?>
-                        </a>
-                    </p>
-
-                    <p class="fechaPregunta">
-                        <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
-                    </p>
-
-                    <p class="fechaPregunta">
+                    <p class="estadoPregunta">
                         <?php if($pregunta["estado"]==="abierto"):?>
                         <p class="categoriaPregunta">Estado: Abierto</p>
                         <?php else:?>
                             <p class="categoriaPreguntaContrario">Estado: Cerrado</p>
                         <?php endif;?>    
+                    </p>
+
+                    <p class="temaPregunta">
+                        <?= htmlspecialchars($pregunta['tipo']) ?>
+                    </p>
+
+                    <p class="autorPregunta">
+                        Autor:
+                        <a href="index.php?controller=UsuarioController&accion=verPerfil&id=<?= (int) $pregunta['id_usuario'] ?>">
+                            <?= htmlspecialchars($pregunta['nombre_usuario'] ?? '') ?>
+                        </a>
                     </p>
 
                     <div class="descripcionPregunta">
@@ -64,6 +60,9 @@
 
                 <!-- Imagen y acciones a la derecha -->
                 <div class="lateralPregunta">
+                    <span class="fechaPregunta">
+                        <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
+                    </span>
 
                     <?php if (!empty($pregunta['imagen'])): ?>
 
@@ -286,7 +285,7 @@
                 required
             ></textarea>
 
-            <div class="accionesFormularioRespuesta">
+            <div class="accionesRespuesta">
 
                 <input
                     type="file"

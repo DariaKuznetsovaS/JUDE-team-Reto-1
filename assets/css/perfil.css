@@ -210,20 +210,32 @@ form input[type="submit"]:hover {
     background-color: #163A5F;
 }
 
-/* Columnas de preguntas y respuestas */
+/* COLUMNAS DE PREGUNTAS Y RESPUESTAS */
+
 .misPreguntas {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
+    width: 100%;
 }
 
-.misPreguntas > div > h2 {
+.contenedorPerfil {
+    min-width: 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.contenedorPerfil > h2 {
     margin-top: 0;
     margin-bottom: 18px;
     color: #163A5F;
+    text-align: center;
 }
 
-/* Enlace de las tarjetas */
+/* ENLACES DE LAS TARJETAS */
+
 .enlacePregunta {
     display: block;
     margin-bottom: 15px;
@@ -231,7 +243,8 @@ form input[type="submit"]:hover {
     text-decoration: none;
 }
 
-/* Tarjetas de preguntas */
+/* TARJETAS */
+
 .preguntaCard,
 .respuestaCard {
     padding: 18px;
@@ -239,12 +252,16 @@ form input[type="submit"]:hover {
     background-color: white;
     border: 1px solid #E1E8EF;
     border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(22, 58, 95, 0.08);
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
-.enlacePregunta:hover .preguntaCard {
+/* EFECTO HOVER */
+
+.enlacePregunta:hover .preguntaCard,
+.enlacePregunta:hover .respuestaCard {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(22, 58, 95, 0.1);
+    box-shadow: 0 4px 12px rgba(22, 58, 95, 0.15);
 }
 
 .cabeceraCard {
@@ -467,106 +484,33 @@ form input[type="submit"]:hover {
 
 
 /* TABLETS */
-
 @media (max-width: 1000px) {
-
-    #perfil {
-        padding: 15px 20px;
-    }
-
-    #listados {
+    .misPreguntas {
         grid-template-columns: 1fr;
-        max-width: 750px;
-    }
-
-    .columna {
-        min-height: auto;
     }
 }
 
-
 /* MÓVILES */
-
 @media (max-width: 600px) {
-
-    #perfil {
-        padding: 12px;
-        gap: 20px;
-    }
-
-    .btnPublicar {
-        width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-        font-size: 0.9rem;
+    .perfil {
         padding: 12px;
     }
 
-    #listados {
-        gap: 15px;
-    }
-
-    .columna {
+    .contenedorPerfil {
         padding: 13px;
     }
 
-    .columna h3 {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-    }
-
-    #perfil .preguntaCard,
-    #perfil .respuestaCard {
+    .preguntaCard,
+    .respuestaCard {
         padding: 12px;
     }
 
-    #perfil .cabeceraCard {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    #perfil .cabeceraCard h4 {
-        font-size: 0.95rem;
-    }
-
-    #perfil .cabeceraCard p {
-        font-size: 0.7rem;
-    }
-
-    #perfil .contenidoCard {
+    .contenidoCard {
         gap: 10px;
     }
 
-    #perfil .contenidoCard img {
-        width: 55px;
-        height: 55px;
-    }
-
-    #perfil .contenidoCard p {
-        font-size: 0.85rem;
-    }
-}
-
-
-/* MÓVILES PEQUEÑOS */
-
-@media (max-width: 380px) {
-
-    #perfil {
-        padding: 8px;
-    }
-
-    .columna {
-        padding: 10px;
-    }
-
-    #perfil .preguntaCard,
-    #perfil .respuestaCard {
-        padding: 10px;
-    }
-
-    #perfil .contenidoCard img {
-        width: 45px;
-        height: 45px;
+    .imagenCard {
+        width: 65px;
+        height: 65px;
     }
 }
