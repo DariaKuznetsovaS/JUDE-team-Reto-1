@@ -49,7 +49,11 @@
                     </p>
 
                     <p class="fechaPregunta">
-                        Estado: <?= $pregunta['estado'] ?>
+                        <?php if($pregunta["estado"]==="abierto"):?>
+                        <p class="categoriaPregunta">Estado: Abierto</p>
+                        <?php else:?>
+                            <p class="categoriaPreguntaContrario">Estado: Cerrado</p>
+                        <?php endif;?>    
                     </p>
 
                     <div class="descripcionPregunta">
