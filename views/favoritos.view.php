@@ -1,16 +1,8 @@
-<?php 
+<?php include __DIR__ . '/layout/header.php'; ?>
 
-
-require "layout/header.php";
-
-?>
-
-
+<link rel="stylesheet" href="assets/css/favoritos.css">
 <div class="contenedorPrincipal">
     <?php include __DIR__ . '/layout/nav.php'; ?>
-
-
-    
 
 
     <div class="favsContainer">
@@ -26,7 +18,9 @@ require "layout/header.php";
                                 <div class="preguntaCard">
 
                                     <div class="cabeceraCard">
-                                        <h2><?= htmlspecialchars($fav['autor']) ?></h2>
+                                        <h2 class="autorFavorito">
+                                            <?= htmlspecialchars($fav['autor']) ?>
+                                        </h2>
                                         <p class="cardFecha"><?= date('d/m/Y', strtotime($fav['fecha'])) ?></p>
                                     </div>
 
@@ -35,7 +29,7 @@ require "layout/header.php";
                                             <?php if (!empty($fav['imagen_ruta'])): ?>
                                                 <img src="<?= htmlspecialchars($fav['imagen_ruta']) ?>" alt="Imagen de la respuesta">
                                             <?php else: ?>
-                                                <img src="assets/images/SinImagen.png" alt="Sin imagen">
+                                                <img src="assets/images/Iconos/SinImagen.png" alt="Sin imagen">
                                             <?php endif; ?>
                                         </div>
 
@@ -65,7 +59,4 @@ require "layout/header.php";
 </div>
 
 
-<?php
-
-require "layout/footer.php";
-?>
+<?php include __DIR__ . '/layout/footer.php'; ?>

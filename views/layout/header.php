@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="JUDE team">
-    <link rel="preconnect" href="https://googleapis.com">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>AERGIBIDE, S.L.</title>
     <link rel="stylesheet" href="assets/css/principal.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/preguntas.css">
+    <link rel="stylesheet" href="assets/css/respuestas.css">
+    <link rel="stylesheet" href="assets/css/formularios.css">
     <link rel="stylesheet" href="assets/css/perfil.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    
+    <link rel="icon" type="image/png" href="assets/images/logoAergibide.png">
+
     <script src="assets/scripts/script.js" defer></script>
 </head>
 <body>
@@ -34,9 +42,8 @@
         
         <?php if ($esPaginaPrincipal): ?>
             <form action="index.php" method="GET" class="buscadorHeader">
-
                 <select name="categoria" aria-label="Filtrar por categoría">
-                    <option value="">Todas las categorías</option>
+                    <option value="">Categoría</option>
                     <option value="aerodinamica" <?= ($_GET["categoria"] ?? "") === "aerodinamica" ? "selected" : "" ?>>Aerodinámica</option>
                     <option value="materiales" <?= ($_GET["categoria"] ?? "") === "materiales" ? "selected" : "" ?>>Materiales</option>
                     <option value="motores" <?= ($_GET["categoria"] ?? "") === "motores" ? "selected" : "" ?>>Motores</option>
@@ -66,9 +73,15 @@
             <?php if (isset($_SESSION["id_usuario"])): ?>
 
                 <a href="index.php?controller=UsuarioController&accion=perfil"
-                   class="bPerfil">
-                    <img src="assets/images/Iconos/User.png">
-                </a>
+                class="bPerfil">
+
+                    <span>
+                        Hola,<strong> <?= htmlspecialchars($_SESSION["id_usuario"]->nombre_usuario) ?></strong>
+                    </span>
+
+                    <img src="assets/images/Iconos/User.png" alt="Mi perfil">
+
+</a>
 
             <?php else: ?>
 

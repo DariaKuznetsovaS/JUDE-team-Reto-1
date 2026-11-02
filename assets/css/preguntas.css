@@ -1,0 +1,487 @@
+.detallePregunta {
+    width: 100%;
+    min-width: 0;
+    padding: 35px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+}
+
+/* Distribución: texto a la izquierda, imagen a la derecha */
+.contenidoPregunta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 305px;
+    gap: 40px;
+    align-items: start;
+}
+
+.informacionPregunta {
+    min-width: 0;
+}
+
+.informacionPregunta h1 {
+    margin: 0 0 18px;
+    color: #247BA0;
+    font-size: 36px;
+    overflow-wrap: anywhere;
+}
+
+.temaPregunta {
+    margin: 0 0 18px;
+    color: #16B8A8;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.autorPregunta,
+.fechaPregunta {
+    margin: 8px 0;
+    color: #68798B;
+    font-size: 16px;
+}
+
+.autorPregunta a {
+    color: #247BA0;
+    text-decoration: none;
+}
+
+.autorPregunta a:hover {
+    text-decoration: underline;
+}
+
+.descripcionPregunta {
+    margin-top: 45px;
+    color: #163A5F;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Columna derecha: imagen y botones */
+.lateralPregunta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.imagenPregunta {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 3px 10px rgba(22, 58, 95, 0.15);
+}
+
+/* Botones de editar y borrar */
+.accionesPregunta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.accionesPregunta a,
+.accionesPregunta button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #D5DEE7;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.accionesPregunta a:hover,
+.accionesPregunta button:hover {
+    background-color: #F3F6F9;
+    border-color: #247BA0;
+}
+
+.accionesPregunta img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* Fondo oscuro del visor */
+.visorImagen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Visor visible */
+.visorImagen.activo {
+    display: flex;
+}
+
+/* Imagen ampliada */
+.visorImagen img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón para cerrar */
+.cerrarVisor {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 42px;
+    cursor: pointer;
+}
+
+.cerrarVisor:hover {
+    color: #16B8A8;
+}
+
+/* Indicar que las imágenes se pueden pulsar */
+.imagenPregunta,
+.imagenRespuesta {
+    cursor: zoom-in;
+}
+
+
+/* TABLETS Y PANTALLAS MEDIANAS */
+
+@media (max-width: 900px) {
+
+    .detallePregunta {
+        padding: 25px;
+    }
+
+    .contenidoPregunta {
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 25px;
+    }
+
+    .informacionPregunta h1 {
+        font-size: 30px;
+    }
+
+    .temaPregunta {
+        font-size: 21px;
+    }
+
+    .descripcionPregunta {
+        margin-top: 30px;
+    }
+
+    .imagenPregunta {
+        max-height: 350px;
+    }
+}
+
+
+/* MÓVILES Y PANTALLAS ESTRECHAS */
+
+@media (max-width: 700px) {
+
+    .detallePregunta {
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .contenidoPregunta {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        width: 100%;
+    }
+
+    .informacionPregunta {
+        width: 100%;
+    }
+
+    .informacionPregunta h1 {
+        font-size: 26px;
+    }
+
+    .temaPregunta {
+        font-size: 20px;
+    }
+
+    .autorPregunta,
+    .fechaPregunta {
+        font-size: 14px;
+    }
+
+    .descripcionPregunta {
+        margin-top: 25px;
+        font-size: 16px;
+    }
+
+    .lateralPregunta {
+        width: 100%;
+        max-width: 305px;
+        align-self: center;
+    }
+
+    .imagenPregunta {
+        width: 100%;
+        max-height: 300px;
+    }
+
+    .accionesPregunta {
+        gap: 20px;
+    }
+
+    /* RESPUESTAS */
+
+    .respuestas {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .respuestaCard {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .cabeceraRespuesta {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .controlesRespuesta {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .contenidoRespuesta {
+        min-width: 0;
+    }
+
+    .textoRespuesta {
+        overflow-wrap: anywhere;
+    }
+
+    .imagenRespuesta {
+        max-width: 100%;
+        max-height: 250px;
+    }
+
+    /* FORMULARIO DE RESPUESTA */
+
+    .accionesRespuesta {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .accionesRespuesta input[type="file"] {
+        max-width: 100%;
+    }
+}
+/*LISTA DE PREGUNTAS */
+
+.listaPreguntas {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+/* TARJETAS DE PREGUNTAS*/
+
+.enlacePregunta {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.preguntaCard {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-bottom: 0.75rem;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px #999;
+    cursor: pointer;
+}
+
+.preguntaCard:hover {
+    box-shadow: 0 4px 12px #00000020;
+}
+
+/* Cabecera de la tarjeta */
+
+.cabeceraCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.cabeceraCard h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #163A5F;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Categoría y fecha */
+
+.metadatosCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+    flex-shrink: 0;
+}
+
+.categoriaPregunta {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    background-color: #E4F0F5;
+    color: #20B8A6;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.categoriaPreguntaContrario {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    background-color: #F5E8E4;
+    color: #D9534F;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.cardFecha {
+    font-size: 0.8;
+    color: #6B767B;
+    margin: 0;
+    text-align: right;
+}
+
+/* Contenido de la tarjeta */
+
+.contenidoCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin-top: 0.25rem;
+}
+
+.imagenCard img {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.descCard {
+    flex: 1;
+    min-width: 0;
+}
+
+.descCard p {
+    margin: 0;
+    font-size: 1rem;
+    color: #247BA0;
+    line-height: 1.5;
+/*Esto es para limitar el texto:*/
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.detallePregunta,
+.contenidoPregunta,
+.informacionPregunta,
+.lateralPregunta,
+.respuestas,
+.respuestaCard {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.respuestas {
+    width: 100%;
+}
+
+/* MÓVILES PEQUEÑOS Y ZOOM */
+
+@media (max-width: 400px) {
+
+    .detallePregunta {
+        padding: 15px;
+    }
+
+    .informacionPregunta h1 {
+        font-size: 23px;
+    }
+
+    .temaPregunta {
+        font-size: 18px;
+    }
+
+    .descripcionPregunta {
+        font-size: 15px;
+    }
+
+    .respuestaCard {
+        padding: 12px;
+    }
+
+    .controlesRespuesta {
+        width: 100%;
+    }
+
+    .imagenRespuesta {
+        max-height: 200px;
+    }
+}
+
+
+/* VISOR DE IMÁGENES */
+
+@media (max-width: 600px) {
+
+    .visorImagen {
+        padding: 15px;
+    }
+
+    .visorImagen img {
+        max-width: 100%;
+        max-height: 85%;
+    }
+
+    .cerrarVisor {
+        top: 10px;
+        right: 15px;
+    }
+}

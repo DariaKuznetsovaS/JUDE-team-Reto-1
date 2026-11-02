@@ -228,7 +228,148 @@ class RespuestaModel {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public static function getById($id) {
+
+    $db = Database::getConnection();
+
+    $stmt = $db->prepare("
+        SELECT r.*, 
+               a.ruta AS adjunto_ruta,
+               a.nombre AS adjunto_nombre
+        FROM respuestas r
+        LEFT JOIN adjuntos a
+            ON r.id_respuesta = a.id_respuesta
+        WHERE r.id_respuesta = :id
+        LIMIT 1
+    ");
+
+    $stmt->execute(['id' => $id]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 
 
+    public static function update($id, $texto) {
 
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("
+            UPDATE respuestas
+            SET texto = :texto
+            WHERE id_respuesta = :id
+        ");
+
+        return $stmt->execute([
+            'texto' => $texto,
+            'id' => $id
+        ]);
+    }
+
+
+    public static function delete($id) {
+
+        $db = Database::getConnection();
+
+        // Obtener los archivos asociados antes de borrar sus registros.
+        $stmt = $db->prepare("
+            SELECT ruta
+            FROM adjuntos
+            WHERE id_respuesta = :id
+        ");
+
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        $adjuntos = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // Eliminar los favoritos asociados a la respuesta.
+        $stmt = $db->prepare("
+            DELETE FROM respuestas_favoritas
+            WHERE id_respuesta = :id
+        ");
+
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        // Eliminar los registros de los adjuntos.
+        $stmt = $db->prepare("
+            DELETE FROM adjuntos
+            WHERE id_respuesta = :id
+        ");
+
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        // Eliminar la respuesta.
+        $stmt = $db->prepare("
+            DELETE FROM respuestas
+            WHERE id_respuesta = :id
+        ");
+
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        // Eliminar los archivos físicos asociados.
+        foreach ($adjuntos as $ruta) {
+
+            $archivo = __DIR__ . '/../' . $ruta;
+
+            if (is_file($archivo)) {
+                unlink($archivo);
+            }
+        }
+
+        return $stmt->rowCount() > 0;
+    }
+
+public static function guardarAdjunto($idRespuesta, $ruta, $nombre) {
+
+    $db = Database::getConnection();
+
+    // Comprobar si la respuesta ya tiene un adjunto.
+    $stmt = $db->prepare("
+        SELECT id_adjunto
+        FROM adjuntos
+        WHERE id_respuesta = :id
+        LIMIT 1
+    ");
+
+    $stmt->execute(['id' => $idRespuesta]);
+
+    $adjunto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($adjunto) {
+
+        // Actualizar el archivo existente.
+        $stmt = $db->prepare("
+            UPDATE adjuntos
+            SET ruta = :ruta, nombre = :nombre
+            WHERE id_adjunto = :id_adjunto
+        ");
+
+        return $stmt->execute([
+            'ruta' => $ruta,
+            'nombre' => $nombre,
+            'id_adjunto' => $adjunto['id_adjunto']
+        ]);
+
+    } else {
+
+        // Si no había archivo, crear su registro.
+        $stmt = $db->prepare("
+            INSERT INTO adjuntos (id_respuesta, ruta, nombre)
+            VALUES (:id_respuesta, :ruta, :nombre)
+        ");
+
+        return $stmt->execute([
+            'id_respuesta' => $idRespuesta,
+            'ruta' => $ruta,
+            'nombre' => $nombre
+        ]);
+    }
+}
 }

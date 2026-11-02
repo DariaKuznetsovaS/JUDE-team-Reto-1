@@ -232,6 +232,7 @@ public function actualizar() {
     $titulo = trim($_POST["titulo"] ?? "");
     $descripcion = trim($_POST["descripcion"] ?? "");
     $tipo = $_POST["tipo"] ?? "";
+    $estado = $_POST["estado"]?? "";
 
     $tiposPermitidos = [
         "aerodinamica",
@@ -256,7 +257,8 @@ public function actualizar() {
         $id,
         $titulo,
         $descripcion,
-        $tipo
+        $tipo,
+        $estado
     );
 
     // Procesar una imagen solo si se ha seleccionado otra

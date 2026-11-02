@@ -18,7 +18,7 @@ class UsuarioModel {
         $db=Database::getConnection();
         $stmt=$db -> prepare("INSERT INTO usuarios (nombre_usuario, contrasenna,nombre, apellidos)
         VALUES (:nombreUsuario, :contrasenna, :nombre, :apellidos);");
-        $stmt->execute([
+        return $stmt->execute([
             'nombreUsuario' => $nombreUsuario,
             'contrasenna'   => $contrasenna,
             'nombre' => $nombre,
@@ -36,6 +36,19 @@ class UsuarioModel {
 
         return $stmt-> fetchAll(PDO::FETCH_ASSOC);
 
+    }
+
+    public static function crearUser($nombreUsuario,$nombre, $apellidos, $contrasenna, $tipo){
+        $db=Database::getConnection();
+        $stmt=$db -> prepare("INSERT INTO usuarios (nombre_usuario, contrasenna,nombre, apellidos, tipo)
+        VALUES (:nombreUsuario, :contrasenna, :nombre, :apellidos, :tipo);");
+        $stmt->execute([
+            'nombreUsuario' => $nombreUsuario,
+            'contrasenna'   => $contrasenna,
+            'nombre' => $nombre,
+            'apellidos'=> $apellidos, 
+            'tipo' => $tipo
+        ]);
     }
     
     public static function getById($id) {
@@ -105,4 +118,23 @@ class UsuarioModel {
         
     }
 
+    public static function deleteUsuarioById($id) {
+
+        $db = Database::getConnection();
+        $stmt = $db->prepare('DELETE FROM usuarios WHERE id_usuario = :id_usuario');
+        $stmt->execute([':id_usuario' => $id]);
+        return $stmt->rowCount() > 0;
+
+    }
+    
+
+    public static function contarAdmins() {
+
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT COUNT(*) FROM usuarios WHERE tipo = 'Admin'");
+        $stmt->execute();
+        
+        return (int) $stmt->fetchColumn();
+
+    }
 }

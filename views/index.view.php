@@ -18,6 +18,14 @@
                 <h2><?= htmlspecialchars($pregunta['titulo']) ?></h2>
 
                 <div class="metadatosCard">
+                    <p class="cardFecha">
+                        <?php if($pregunta["estado"]==="abierto"):?>
+                        <p class="categoriaPregunta">Estado: Abierto</p>
+                        <?php else:?>
+                            <p class="categoriaPreguntaContrario">Estado: Cerrado</p>
+                        <?php endif;?>    
+                    </p>
+                    
                     <span class="categoriaPregunta">
                         <?= htmlspecialchars(ucfirst($pregunta["tipo"])) ?>
                     </span>
@@ -25,6 +33,7 @@
                     <p class="cardFecha">
                         <?= date('d/m/Y', strtotime($pregunta['fecha_creacion'])) ?>
                     </p>
+
                 </div>
             </div>
 

@@ -52,6 +52,7 @@ class UsuarioController extends BaseController {
         } else {
 
             
+            $_SESSION['error_login'] = "Usuario o contraseña incorrectos.";
             $this->redirect("index.php?controller=UsuarioController&accion=login");
             
         }
@@ -74,7 +75,17 @@ class UsuarioController extends BaseController {
         }
 
         $usuario=UsuarioModel::registrarse($nombreUsuario,$nombre, $apellidos, $contrasenna);
-        $this->redirect("index.php?controller=PrincipalController&accion=index");
+        if ($usuario) {
+            
+            
+            $this->redirect("index.php?controller=UsuarioController&accion=login");
+            
+        } else {
+
+            
+            $this->redirect("index.php?controller=UsuarioController&accion=registro");
+            
+        }
         
         
     }
@@ -189,7 +200,7 @@ public function verPerfil() {
             'contrasenna'    => $nuevaContrasena !== '' ? $nuevaContrasena : $actual['contrasenna'],
             'nombre'         => $nuevoNombre !== '' ? $nuevoNombre : $actual['nombre'],
             'apellidos'      => $nuevoApellido !== '' ? $nuevoApellido : $actual['apellidos'],
-            'tipo'           => in_array($tipo, ['User', 'Admin'], true) ? $tipo : $actual['tipo']
+            'tipo'           => $tipo !== "" ? $tipo : $actual['tipo']
         ];
 
         UsuarioModel::updateUsuario($id, $datos);
@@ -199,20 +210,25 @@ public function verPerfil() {
     
 
 
+    private function errorNombreUsuario($nombreUsuario) {
+        if (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $nombreUsuario)) {
+            return 'De 3 a 20 caracteres: solo letras, números y _';
+        }
+        if (UsuarioModel::existeNombreUsuario($nombreUsuario)) {
+            return 'Ese nombre de usuario ya está en uso';
+        }
+        return '';
+    }
+
     public function comprobarUsuario() {
         header('Content-Type: application/json');
 
-        $nombreUsuario = $_GET['nombreUsuario'] ?? '';
+        $error = $this->errorNombreUsuario($_GET['nombreUsuario'] ?? '');
 
-        if (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $nombreUsuario)) {
-            echo json_encode(['disponible' => false]);
-            return;
-        }
-
-        
-        $existe = UsuarioModel::existeNombreUsuario($nombreUsuario);
-
-        echo json_encode(['disponible' => !$existe]);
+        echo json_encode([
+            'disponible' => $error === '',
+            'mensaje'    => $error
+        ]);
         exit();
     }
 
@@ -234,17 +250,55 @@ public function verPerfil() {
         exit();
     }
     
-/*
-    public function crearUser() {
 
-        $usuario = UsuarioModel::insertarUsuario();
-        $this->render("listaUsuarios.view.php", [
-            '' => $
-        ]);
-        
+    public function crearUser() {
+        require "views/nuevoUserAdmin.view.php";
 
     }
 
-*/
-}
+    public function annadirUsuarioNuevo(){
+        $nombre=$_POST["nombre"];
+        $apellidos=$_POST["apellidos"];
+        $nombreUsuario=$_POST["nombreUsuario"];
+        $contrasenna=$_POST["contrasenna"];
+        $tipo=$_POST["tipo"];
 
+        $usuario=UsuarioModel::crearUser($nombreUsuario,$nombre, $apellidos, $contrasenna, $tipo);
+        $this->redirect("index.php?controller=UsuarioController&accion=crearUser");
+
+    }
+
+
+
+
+    public function eliminar() {
+
+        $id = $_GET["id"] ?? null;
+
+        if ($id === null) {
+            $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+            return;
+        }
+        
+        try{
+
+            $usuario = UsuarioModel::getById($id);
+            if ($usuario && $usuario['tipo'] === 'admin' && UsuarioModel::contarAdmins() <= 1){
+                $_SESSION['error'] = "No se puede eliminar al último administrador.";
+            } else {
+
+                UsuarioModel::deleteUsuarioById($id);
+            } 
+            
+        }catch (PDOException $e) {
+
+                $_SESSION['error'] = "No se pudo eliminar el usuario.";
+
+            }
+
+        
+        
+        $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+    }
+
+}
