@@ -22,16 +22,16 @@
         
         <?php if(!empty($usuarios)) : ?>
             <?php foreach($usuarios as $u): ?>
-            <div class="filaUsuario">
-                <img src="assets/images/Iconos/User.png" alt="">
-                <p> <?= $u['nombre_usuario'] ?> </p>
-                <p> <?= $u['nombre'] . ' ' . $u['apellidos'] ?> </p>
-                
-                <div class="opciones">
-                    <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Ajustes.png" alt=""> </a>
-                    <a class="eliminar" href="index.php?controller=UsuarioController&accion=eliminar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Trash.png" alt=""></a>
+                <div class="filaUsuario" onclick="location.href='index.php?controller=UsuarioController&accion=irAPerfil&id=<?= $u['id_usuario'] ?>'">
+                    <img src="assets/images/Iconos/User.png" alt="">
+                    <p> <?= $u['nombre_usuario'] ?> </p>
+                    <p> <?= $u['nombre'] . ' ' . $u['apellidos'] ?> </p>
+
+                    <div class="opciones" onclick="event.stopPropagation()">
+                        <a href="index.php?controller=UsuarioController&accion=prepararEditar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Ajustes.png" alt=""> </a>
+                        <a class="eliminar" href="index.php?controller=UsuarioController&accion=eliminar&id=<?= $u['id_usuario'] ?>"> <img src="assets/images/Iconos/Trash.png" alt=""></a>
                 </div>
-            </div>
+</div>
 
             <?php endforeach ; ?>
         <?php else: ?>

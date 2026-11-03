@@ -301,4 +301,16 @@ public function verPerfil() {
         $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
     }
 
+
+
+    public function irAPerfil() {
+        $id = $_GET['id'] ?? null;
+
+        if (!$id || !is_numeric($id)) {
+            $this->redirect("index.php?controller=UsuarioController&accion=listarUsers");
+            return;
+        }
+
+        $this->redirect("index.php?controller=UsuarioController&accion=verPerfil&id=" . $id);
+}
 }
