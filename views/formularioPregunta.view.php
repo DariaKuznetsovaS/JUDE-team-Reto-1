@@ -39,11 +39,14 @@
         <div class="botonesPregunta">
 
             <input type="file"
-                   name="adjunto"
-                   id="adjuntoPregunta"
-                   class="inputArchivo">
+                name="adjunto"
+                id="adjuntoPregunta"
+                class="inputArchivo">
 
-            <button type="submit">Publicar</button>
+            <div class="accionesPublicar">
+                <button type="submit">Publicar</button>
+                <a href="index.php">Cancelar</a>
+            </div>
 
         </div>
 
