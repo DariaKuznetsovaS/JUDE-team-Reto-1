@@ -293,12 +293,14 @@
 
 /* ARCHIVO Y BOTÓN */
 
-.botonesPregunta {
+.publicarPregunta .botonesPregunta {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    gap: 15px;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 /* SELECTOR DE ARCHIVOS */
@@ -335,6 +337,78 @@
     transform: translateY(-2px);
 }
 
+/* ARCHIVO Y BOTONES */
+
+.publicarPregunta .botonesPregunta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+/* SELECTOR DE ARCHIVOS */
+
+.publicarPregunta .inputArchivo {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* CONTENEDOR DE BOTONES */
+
+.publicarPregunta .accionesPublicar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* BOTONES */
+
+.publicarPregunta .accionesPublicar button,
+.publicarPregunta .accionesPublicar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    min-height: 50px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* PUBLICAR */
+
+.publicarPregunta .accionesPublicar button {
+    border: none;
+    background-color: #247BA0;
+    color: white;
+}
+
+.publicarPregunta .accionesPublicar button:hover {
+    background-color: #163A5F;
+}
+
+/* CANCELAR */
+
+.publicarPregunta .accionesPublicar a {
+    border: 1px solid #D5DEE7;
+    background-color: white;
+    color: #163A5F;
+}
+
+.publicarPregunta .accionesPublicar a:hover {
+    background-color: #F3F6F9;
+}
 /* RESPONSIVE */
 
 @media (max-width: 600px) {
@@ -651,6 +725,7 @@
     background-color: #F3F6F9;
     border-color: #247BA0;
 }
+
 
 /* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
 
