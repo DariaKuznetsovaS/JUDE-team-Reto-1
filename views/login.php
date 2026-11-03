@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Iniciar Sesion</title>
     <link rel="stylesheet" href="assets/css/perfil.css">
+    <link rel="icon" type="image/png" href="assets/images/logoAergibide.png">
 </head>
 <body>
     <main class="login">
