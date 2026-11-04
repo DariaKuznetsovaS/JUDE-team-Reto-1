@@ -225,6 +225,63 @@
     gap: 18px;
 }
 
+/* BOTONES DE AÑADIR USUARIO */
+
+#d2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+#d2 #botonGuardar,
+#d2 button {
+    flex: 0 0 190px;
+    width: 190px;
+    height: 45px;
+    min-height: 45px;
+    max-width: none;
+    margin: 0;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#d2 #botonGuardar {
+    background-color: #247BA0;
+}
+
+#d2 #botonGuardar:hover {
+    background-color: #163A5F;
+}
+
+#d2 button {
+    background-color: #7A8B94;
+}
+
+#d2 button:hover {
+    background-color: #5C6B73;
+}
+
+#d2 #botonGuardar {
+    background-color: #247BA0;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+#d2 #botonGuardar:hover {
+    background-color: #163A5F;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(22, 58, 95, 0.2);
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 900px) {

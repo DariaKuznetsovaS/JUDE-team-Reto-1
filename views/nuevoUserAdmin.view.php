@@ -33,7 +33,9 @@ include __DIR__ . '/layout/header.php'; ?>
  
                 <div class="botonesForm" id="d2">
                     <input id="botonGuardar" type="submit" value="Crear Usuario">
-                    <a href="index.php">Cancelar</a>
+                    <button type="button" onclick="window.location.href='index.php'">
+                        Cancelar
+                    </button>
                 </div>
             </form>
         </main>

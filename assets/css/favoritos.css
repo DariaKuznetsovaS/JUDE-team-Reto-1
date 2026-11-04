@@ -12,29 +12,38 @@
 
 .favsContainer .misPreguntas {
     width: 100%;
-    max-width: 850px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
-/* CABECERA */
 
-.favsContainer .cabeceraCard .autorFavorito {
-    margin: 0;
-    color: #163A5F;
-    font-size: 1rem;
-    font-weight: 700;
+/* CABECERA GENERAL */
+
+.favsContainer h2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 0.5rem;
+    font-size: 1.8rem;
+    color: #000000;
 }
 
 .favsContainer h2 img {
     width: 42px;
     height: 42px;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* ENLACE DE LA TARJETA */
 
 .favsContainer .enlacePregunta {
     display: block;
+    width: 100%;
     text-decoration: none;
     color: inherit;
 }
@@ -45,15 +54,15 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 1rem;
-    padding: 1rem 1.2rem;
+    max-width: none;
+    min-height: 190px;
+    margin: 0;
+    padding: 1.25rem;
     background-color: #FFFFFF;
     border: 1px solid #D5DEE7;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(22, 58, 95, 0.12);
     box-sizing: border-box;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .favsContainer .enlacePregunta:hover .preguntaCard {
@@ -67,21 +76,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .favsContainer .cabeceraCard h2 {
     margin: 0;
     color: #163A5F;
     font-size: 1rem;
-    font-weight: 700;
 }
 
 .favsContainer .cardFecha {
     margin: 0;
+    padding: 0.4rem 0.7rem;
     color: #6B767B;
-    font-size: 0.8rem;
+    background-color: #E5F0F5;
+    border-radius: 7px;
+    font-size: 0.85rem;
     white-space: nowrap;
 }
 
@@ -89,13 +101,18 @@
 
 .favsContainer .contenidoCard {
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     gap: 1rem;
 }
 
+.favsContainer .imagenCard {
+    flex-shrink: 0;
+}
+
 .favsContainer .imagenCard img {
-    width: 100px;
-    height: 85px;
+    width: 110px;
+    height: 90px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -107,7 +124,7 @@
 
 .favsContainer .descCard p {
     margin: 0;
-    color: #163A5F;
+    color: #6B767B;
     font-size: 0.95rem;
     line-height: 1.5;
     overflow-wrap: anywhere;
@@ -122,6 +139,14 @@
 
 /* RESPONSIVE */
 
+@media (max-width: 900px) {
+
+    .favsContainer .enlacePregunta {
+        width: 100%;
+    }
+
+}
+
 @media (max-width: 600px) {
 
     .favsContainer {
@@ -129,7 +154,7 @@
     }
 
     .favsContainer h2 {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
     }
 
     .favsContainer h2 img {
@@ -138,11 +163,17 @@
     }
 
     .favsContainer .preguntaCard {
+        min-height: 170px;
         padding: 0.9rem;
     }
 
     .favsContainer .imagenCard img {
-        width: 75px;
+        width: 85px;
         height: 75px;
     }
+
+    .favsContainer .cabeceraCard {
+        gap: 0.5rem;
+    }
+
 }
