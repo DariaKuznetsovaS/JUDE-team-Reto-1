@@ -8,7 +8,7 @@ require "layout/header.php";
     
     <main class="formulario">
         <div class="cabecera">
-            <img src="assets/images/iconos/Editar.png" alt="">
+            <img src="assets/images/Iconos/Editar.png" alt="editarAdmin">
         <h1>Edición de usuario</h1> 
 
         </div>
